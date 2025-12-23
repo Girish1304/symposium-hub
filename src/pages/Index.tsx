@@ -6,6 +6,7 @@ import Speakers from "@/components/Speakers";
 import Schedule from "@/components/Schedule";
 import Register from "@/components/Register";
 import Footer from "@/components/Footer";
+import ScanLineOverlay from "@/components/ScanLineOverlay";
 
 const Index = () => {
   return (
@@ -19,7 +20,8 @@ const Index = () => {
         <meta name="keywords" content="college symposium, technical fest, hackathon, tech event, NEXUS 2025" />
       </Helmet>
       
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-background relative">
+        <ScanLineOverlay />
         <Navbar />
         <main>
           <Hero />
