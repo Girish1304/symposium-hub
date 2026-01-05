@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Calendar, MapPin, ArrowRight, Zap } from "lucide-react";
-
+import CountdownTimer from "./CountdownTimer";
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -84,6 +84,19 @@ const Hero = () => {
               <MapPin className="w-5 h-5 text-accent" />
               <span className="text-foreground font-medium">NATIONAL INSTITUTE OF TECHNOLOGY</span>
             </div>
+          </motion.div>
+
+          {/* Countdown Timer */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.55, duration: 0.6 }}
+            className="mb-10"
+          >
+            <p className="text-xs text-muted-foreground tracking-[0.3em] uppercase mb-4">
+              System Launch In
+            </p>
+            <CountdownTimer />
           </motion.div>
 
           {/* CTA Buttons */}
