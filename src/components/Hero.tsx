@@ -79,9 +79,6 @@ const Hero = () => {
             transition={{ delay: 0.55, duration: 0.6 }}
             className="mb-10"
           >
-            <p className="text-xs text-muted-foreground tracking-[0.3em] uppercase mb-4">
-              System Launch In
-            </p>
             <CountdownTimer />
           </motion.div>
 
