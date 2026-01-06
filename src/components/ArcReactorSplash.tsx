@@ -1,6 +1,7 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useArcReactorSounds } from "@/hooks/useArcReactorSounds";
+import { useJarvisVoice } from "@/hooks/useJarvisVoice";
 
 interface ArcReactorSplashProps {
   onComplete: () => void;
@@ -9,7 +10,10 @@ interface ArcReactorSplashProps {
 const ArcReactorSplash = ({ onComplete }: ArcReactorSplashProps) => {
   const [clickCount, setClickCount] = useState(0);
   const [isBooting, setIsBooting] = useState(false);
+  const [currentLine, setCurrentLine] = useState("");
   const { playClickSound, playBootSound, playAmbientHum } = useArcReactorSounds();
+  const { speakLine, getLineForClick } = useJarvisVoice();
+  const hasStartedRef = useRef(false);
 
   // Start ambient hum after first interaction
   useEffect(() => {
@@ -19,21 +23,29 @@ const ArcReactorSplash = ({ onComplete }: ArcReactorSplashProps) => {
     }
   }, [clickCount, playAmbientHum]);
 
-  const handleClick = useCallback(() => {
+  const handleClick = useCallback(async () => {
     if (isBooting) return;
     
     const newCount = clickCount + 1;
     setClickCount(newCount);
     playClickSound(newCount);
 
+    // Get and speak the JARVIS line
+    const line = getLineForClick(newCount);
+    if (line) {
+      setCurrentLine(line);
+      // Don't await - let voice play in background
+      speakLine(line);
+    }
+
     if (newCount >= 5) {
       setIsBooting(true);
       playBootSound();
       setTimeout(() => {
         onComplete();
-      }, 1500);
+      }, 2500); // Extended to allow final voice line to play
     }
-  }, [clickCount, isBooting, onComplete, playClickSound, playBootSound]);
+  }, [clickCount, isBooting, onComplete, playClickSound, playBootSound, getLineForClick, speakLine]);
 
   const powerLevel = (clickCount / 5) * 100;
   const glowIntensity = 0.15 + (clickCount * 0.17);
@@ -421,9 +433,33 @@ const ArcReactorSplash = ({ onComplete }: ArcReactorSplashProps) => {
           )}
         </motion.div>
 
+        {/* JARVIS Voice Line Display */}
+        <AnimatePresence mode="wait">
+          {currentLine && (
+            <motion.div
+              key={currentLine}
+              className="absolute top-1/2 mt-52 text-center"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+            >
+              <p 
+                className="text-lg md:text-xl font-mono tracking-wider italic"
+                style={{ 
+                  color: 'rgba(150, 220, 255, 0.9)',
+                  textShadow: '0 0 20px rgba(100, 200, 255, 0.5)'
+                }}
+              >
+                "{currentLine}"
+              </p>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
         {/* HUD Text */}
         <motion.div
-          className="mt-16 text-center"
+          className="mt-32 text-center"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
