@@ -11,7 +11,7 @@ const CountdownTimer = () => {
   const [glitchIndex, setGlitchIndex] = useState<number | null>(null);
 
   useEffect(() => {
-    const targetDate = new Date("2025-03-15T09:00:00").getTime();
+    const targetDate = new Date("2026-02-04T09:00:00").getTime();
 
     const calculateTime = () => {
       const now = new Date().getTime();

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Calendar, MapPin, ArrowRight, Zap } from "lucide-react";
+import { Calendar, MapPin, ArrowRight } from "lucide-react";
 import CountdownTimer from "./CountdownTimer";
 const Hero = () => {
   return (
@@ -33,20 +33,6 @@ const Hero = () => {
           transition={{ duration: 0.8 }}
           className="text-center max-w-5xl mx-auto"
         >
-          {/* Holographic Badge */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-5 py-2.5 mb-8 relative"
-          >
-            <div className="absolute inset-0 bg-card/60 backdrop-blur-md border border-primary/30 rounded-sm cyber-clip" />
-            <Zap className="w-4 h-4 text-primary relative z-10 animate-flicker" />
-            <span className="text-sm text-primary font-semibold uppercase tracking-wider relative z-10">
-              Systems Online
-            </span>
-          </motion.div>
-
           {/* Main heading with chrome effect */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -54,8 +40,8 @@ const Hero = () => {
             transition={{ delay: 0.3, duration: 0.6 }}
             className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-6"
           >
-            <span className="text-chrome">NEXUS</span>
-            <span className="text-gradient animate-flicker"> 2025</span>
+            <span className="text-chrome">JARVIS</span>
+            <span className="text-gradient animate-flicker"> 2026</span>
           </motion.h1>
 
           {/* Tagline */}
@@ -78,11 +64,11 @@ const Hero = () => {
           >
             <div className="flex items-center gap-2 px-4 py-2 bg-card/40 border border-border/50 rounded-sm">
               <Calendar className="w-5 h-5 text-primary" />
-              <span className="text-foreground font-medium">MARCH 15-17, 2025</span>
+              <span className="text-foreground font-medium">FEBRUARY 4, 2026</span>
             </div>
             <div className="flex items-center gap-2 px-4 py-2 bg-card/40 border border-border/50 rounded-sm">
               <MapPin className="w-5 h-5 text-accent" />
-              <span className="text-foreground font-medium">NATIONAL INSTITUTE OF TECHNOLOGY</span>
+              <span className="text-foreground font-medium">CHENNAI INSTITUTE OF TECHNOLOGY</span>
             </div>
           </motion.div>
 
