@@ -45,8 +45,8 @@ const Navbar = () => {
                 <Zap className="w-4 h-4 text-primary" />
               </div>
               <span className="text-xl font-bold tracking-wider">
-                <span className="text-chrome">NEXUS</span>
-                <span className="text-gradient"> '25</span>
+                <span className="text-chrome">JARVIS</span>
+                <span className="text-gradient"> '26</span>
               </span>
             </a>
 

@@ -1,4 +1,4 @@
-import { Instagram, Twitter, Linkedin, Youtube, Mail, Phone, MapPin } from "lucide-react";
+import { Instagram, Twitter, Linkedin, Youtube, Mail, MapPin } from "lucide-react";
 
 const Footer = () => {
   const socialLinks = [
@@ -97,15 +97,6 @@ const Footer = () => {
                 >
                   <Mail className="w-4 h-4" />
                   jarvis@citchennai.edu
-                </a>
-              </li>
-              <li>
-                <a
-                  href="tel:+919876543210"
-                  className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors text-sm"
-                >
-                  <Phone className="w-4 h-4" />
-                  +91 98765 43210
                 </a>
               </li>
               <li className="flex items-start gap-2 text-muted-foreground text-sm">
