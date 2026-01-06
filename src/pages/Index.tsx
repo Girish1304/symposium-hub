@@ -12,12 +12,12 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>NEXUS 2025 - College Technical Symposium | Innovation Meets Inspiration</title>
+        <title>JARVIS 2026 - College Technical Symposium | Innovation Meets Inspiration</title>
         <meta 
           name="description" 
-          content="Join NEXUS 2025, the premier college technical symposium featuring 50+ events, hackathons, workshops, and talks from industry leaders. March 15-17, 2025." 
+          content="Join JARVIS 2026, the premier college technical symposium at Chennai Institute of Technology featuring hackathons, workshops, and talks from industry leaders. February 4, 2026." 
         />
-        <meta name="keywords" content="college symposium, technical fest, hackathon, tech event, NEXUS 2025" />
+        <meta name="keywords" content="college symposium, technical fest, hackathon, tech event, JARVIS 2026, CIT Chennai" />
       </Helmet>
       
       <div className="min-h-screen bg-background relative">

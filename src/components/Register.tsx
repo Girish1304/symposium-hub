@@ -68,7 +68,7 @@ const Register = () => {
                       SECURE YOUR <span className="text-gradient">SLOT</span>
                     </h2>
                     <p className="text-lg text-muted-foreground mb-8 tracking-wide">
-                      Early bird registration ends February 28, 2025. Limited seats available for workshops.
+                      Early bird registration ends January 20, 2026. Limited seats available for workshops.
                     </p>
 
                     {/* Benefits */}

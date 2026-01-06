@@ -3,23 +3,17 @@ import { useRef, useState } from "react";
 import { Clock, MapPin, ChevronRight } from "lucide-react";
 
 const scheduleData = {
-  "DAY_01": [
+  "MORNING": [
     { time: "09:00", title: "Opening Ceremony", venue: "Main Auditorium", type: "ceremony" },
-    { time: "10:30", title: "Keynote: Future of AI", venue: "Hall A", type: "talk" },
-    { time: "14:00", title: "Hackathon Kickoff", venue: "Innovation Lab", type: "event" },
-    { time: "16:00", title: "Workshop: Web3 Basics", venue: "Room 201", type: "workshop" },
+    { time: "09:30", title: "Keynote: Future of AI", venue: "Main Auditorium", type: "talk" },
+    { time: "10:30", title: "Workshop: AI & Machine Learning", venue: "Lab 101", type: "workshop" },
+    { time: "11:30", title: "Hackathon Kickoff", venue: "Innovation Lab", type: "event" },
   ],
-  "DAY_02": [
-    { time: "09:00", title: "Robotics Challenge", venue: "Tech Arena", type: "event" },
-    { time: "11:00", title: "Panel: Startup Journey", venue: "Hall B", type: "talk" },
-    { time: "14:00", title: "Code Wars Finals", venue: "Computer Lab", type: "event" },
-    { time: "17:00", title: "Networking Mixer", venue: "Garden Area", type: "social" },
-  ],
-  "DAY_03": [
-    { time: "09:00", title: "Project Expo", venue: "Exhibition Hall", type: "event" },
-    { time: "12:00", title: "Hackathon Submissions", venue: "Innovation Lab", type: "event" },
-    { time: "15:00", title: "Prize Distribution", venue: "Main Auditorium", type: "ceremony" },
-    { time: "17:00", title: "Closing Ceremony", venue: "Main Auditorium", type: "ceremony" },
+  "AFTERNOON": [
+    { time: "13:00", title: "Code Wars Competition", venue: "Computer Lab", type: "event" },
+    { time: "14:30", title: "Panel: Tech Startup Journey", venue: "Seminar Hall", type: "talk" },
+    { time: "15:30", title: "Project Expo", venue: "Exhibition Hall", type: "event" },
+    { time: "17:00", title: "Prize Distribution & Closing", venue: "Main Auditorium", type: "ceremony" },
   ],
 };
 
@@ -34,9 +28,9 @@ const typeColors: Record<string, string> = {
 const Schedule = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [activeDay, setActiveDay] = useState("DAY_01");
+  const [activeSession, setActiveSession] = useState("MORNING");
 
-  const days = Object.keys(scheduleData);
+  const sessions = Object.keys(scheduleData);
 
   return (
     <section id="schedule" className="py-24 relative overflow-hidden">
@@ -55,51 +49,51 @@ const Schedule = () => {
             <span className="text-primary font-semibold text-sm uppercase tracking-widest">Event Protocol</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6 tracking-tight">
-            THREE DAYS OF <span className="text-gradient">INNOVATION</span>
+            ONE DAY OF <span className="text-gradient">INNOVATION</span>
           </h2>
           <p className="text-lg text-muted-foreground tracking-wide">
-            From workshops to competitions, every moment is designed to inspire and challenge you.
+            From morning workshops to evening celebrations, every moment is designed to inspire and challenge you.
           </p>
         </motion.div>
 
-        {/* Day Tabs - Holographic Style */}
+        {/* Session Tabs - Holographic Style */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="flex justify-center gap-2 mb-12"
         >
-          {days.map((day, index) => (
+          {sessions.map((session) => (
             <button
-              key={day}
-              onClick={() => setActiveDay(day)}
+              key={session}
+              onClick={() => setActiveSession(session)}
               className={`relative px-6 py-3 font-bold uppercase tracking-wider transition-all duration-300 ${
-                activeDay === day
+                activeSession === session
                   ? "text-primary-foreground"
                   : "text-muted-foreground hover:text-foreground bg-card/30 border border-border/50"
               }`}
             >
-              {activeDay === day && (
+              {activeSession === session && (
                 <motion.div
-                  layoutId="activeDay"
+                  layoutId="activeSession"
                   className="absolute inset-0 bg-primary animate-cyber-pulse"
                   transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                 />
               )}
-              <span className="relative z-10">DAY {String(index + 1).padStart(2, '0')}</span>
+              <span className="relative z-10">{session}</span>
             </button>
           ))}
         </motion.div>
 
         {/* Schedule Items */}
         <motion.div
-          key={activeDay}
+          key={activeSession}
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.4 }}
           className="max-w-4xl mx-auto space-y-4"
         >
-          {scheduleData[activeDay as keyof typeof scheduleData].map((item, index) => (
+          {scheduleData[activeSession as keyof typeof scheduleData].map((item, index) => (
             <motion.div
               key={item.title}
               initial={{ opacity: 0, y: 20 }}

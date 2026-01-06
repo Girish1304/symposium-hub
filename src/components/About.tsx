@@ -53,14 +53,14 @@ const About = () => {
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-card/40 border border-primary/30 mb-6">
             <div className="w-2 h-2 bg-primary animate-pulse" />
-            <span className="text-primary font-semibold text-sm uppercase tracking-widest">About NEXUS</span>
+            <span className="text-primary font-semibold text-sm uppercase tracking-widest">About JARVIS</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6 tracking-tight">
             THE ULTIMATE TECH <span className="text-gradient">EXPERIENCE</span>
           </h2>
           <p className="text-lg text-muted-foreground tracking-wide">
-            NEXUS is more than a symposium—it's a celebration of technology, creativity, and 
-            collaboration. For three days, immerse yourself in a world where ideas transform into reality.
+            JARVIS is more than a symposium—it's a celebration of technology, creativity, and 
+            collaboration. Immerse yourself in a world where ideas transform into reality.
           </p>
         </motion.div>
 

@@ -51,7 +51,12 @@ const CountdownTimer = () => {
   const formatNumber = (num: number) => num.toString().padStart(2, "0");
 
   return (
-    <div className="flex items-center justify-center gap-2 sm:gap-4">
+    <div className="flex flex-col items-center gap-4">
+      {/* JARVIS 2026 Branding */}
+      <div className="text-xs sm:text-sm text-primary font-mono tracking-[0.3em] uppercase">
+        JARVIS 2026 LAUNCH IN
+      </div>
+      <div className="flex items-center justify-center gap-2 sm:gap-4">
       {timeLeft.map((unit, index) => (
         <div key={unit.label} className="flex items-center gap-2 sm:gap-4">
           <motion.div
@@ -119,6 +124,7 @@ const CountdownTimer = () => {
           )}
         </div>
       ))}
+      </div>
     </div>
   );
 };
