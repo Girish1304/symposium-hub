@@ -7,6 +7,7 @@ import Workshops from "@/components/Workshops";
 import Schedule from "@/components/Schedule";
 import Register from "@/components/Register";
 import Sponsors from "@/components/Sponsors";
+import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import ScanLineOverlay from "@/components/ScanLineOverlay";
@@ -34,6 +35,7 @@ const Index = () => {
           <Schedule />
           <Register />
           <Sponsors />
+          <FAQ />
           <Contact />
         </main>
         <Footer />
