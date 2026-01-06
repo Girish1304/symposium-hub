@@ -81,7 +81,7 @@ export default {
           "50%": { transform: "translateY(-10px)" },
         },
         "pulse-glow": {
-          "0%, 100%": { opacity: "0.3" },
+          "0%, 100%": { opacity: "0.4" },
           "50%": { opacity: "1" },
         },
         "slide-up": {
@@ -94,12 +94,24 @@ export default {
         },
         "flicker": {
           "0%, 100%": { opacity: "1" },
-          "50%": { opacity: "0.8" },
-          "75%": { opacity: "0.9" },
+          "50%": { opacity: "0.85" },
+          "75%": { opacity: "0.95" },
         },
         "cyber-pulse": {
-          "0%, 100%": { boxShadow: "0 0 20px hsl(195 100% 50% / 0.3)" },
-          "50%": { boxShadow: "0 0 40px hsl(195 100% 50% / 0.6)" },
+          "0%, 100%": { boxShadow: "0 0 15px hsl(190 100% 55% / 0.4), inset 0 0 10px hsl(190 100% 55% / 0.1)" },
+          "50%": { boxShadow: "0 0 30px hsl(190 100% 55% / 0.6), inset 0 0 20px hsl(190 100% 55% / 0.15)" },
+        },
+        "hud-rotate": {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
+        },
+        "data-flow": {
+          "0%": { backgroundPosition: "0% 0%" },
+          "100%": { backgroundPosition: "0% 100%" },
+        },
+        "border-trace": {
+          "0%, 100%": { backgroundPosition: "0% 0%" },
+          "50%": { backgroundPosition: "100% 100%" },
         },
       },
       animation: {
@@ -111,6 +123,9 @@ export default {
         "scan-line": "scan-line 3s linear infinite",
         "flicker": "flicker 0.5s ease-in-out infinite",
         "cyber-pulse": "cyber-pulse 2s ease-in-out infinite",
+        "hud-rotate": "hud-rotate 20s linear infinite",
+        "data-flow": "data-flow 2s linear infinite",
+        "border-trace": "border-trace 3s ease-in-out infinite",
       },
     },
   },

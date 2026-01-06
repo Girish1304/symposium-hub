@@ -1,7 +1,8 @@
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Bot, Car, Route, FileText, Presentation, Brain, Swords, Link2, Grid3X3, ChevronDown, Users, Clock, Award } from "lucide-react";
+import { ArrowRight, Bot, Car, Route, FileText, Presentation, Brain, Swords, Link2, Grid3X3, ChevronDown, Users, Clock, Award, Target } from "lucide-react";
+import { Link } from "react-router-dom";
 
 // Import event images
 import roboWarImg from "@/assets/events/robo-war.png";
@@ -189,10 +190,15 @@ const TechnicalEvents = () => {
   };
 
   return (
-    <section id="events" className="py-24 relative overflow-hidden">
+    <section id="events" className="py-28 relative overflow-hidden">
       {/* Background effects */}
-      <div className="absolute inset-0 bg-circuit-pattern opacity-20" />
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+      <div className="absolute inset-0 bg-hex-pattern opacity-15" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/3 to-background" />
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+      
+      {/* Animated vertical lines */}
+      <div className="absolute left-[10%] top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-primary/10 to-transparent hidden lg:block" />
+      <div className="absolute right-[10%] top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-primary/10 to-transparent hidden lg:block" />
       
       <div className="container px-6 relative" ref={ref}>
         <motion.div
@@ -201,15 +207,26 @@ const TechnicalEvents = () => {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-card/40 border border-primary/30 mb-6">
-            <div className="w-2 h-2 bg-primary animate-pulse" />
-            <span className="text-primary font-semibold text-sm uppercase tracking-widest">Technical Events</span>
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6 tracking-tight">
+          <motion.div 
+            className="inline-flex items-center gap-3 px-5 py-2 bg-card/60 border border-primary/30 backdrop-blur-sm mb-6"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ delay: 0.2 }}
+          >
+            <motion.div 
+              className="w-2 h-2 bg-primary"
+              animate={{ scale: [1, 1.3, 1] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+            />
+            <span className="text-primary font-mono text-sm uppercase tracking-[0.2em]">Technical Events</span>
+            <Target className="w-4 h-4 text-primary/60" />
+          </motion.div>
+          
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-4 mb-6 tracking-tight">
             COMPETE & <span className="text-gradient">CONQUER</span>
           </h2>
           <p className="text-lg text-muted-foreground tracking-wide">
-            9 challenging technical events to test your skills, creativity, and innovation.
+            <span className="text-primary font-mono">&gt;</span> 9 challenging technical events to test your skills, creativity, and innovation.
           </p>
         </motion.div>
 
@@ -220,28 +237,28 @@ const TechnicalEvents = () => {
               key={event.id}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.1 * index }}
+              transition={{ duration: 0.5, delay: 0.05 * index }}
               className="group relative"
             >
               {/* Holographic border on hover */}
-              <div className="absolute -inset-px bg-gradient-to-r from-primary via-secondary to-accent opacity-0 group-hover:opacity-50 transition-opacity duration-300 blur-sm" />
+              <div className="absolute -inset-px bg-gradient-to-r from-primary via-secondary to-primary opacity-0 group-hover:opacity-30 transition-opacity duration-300 blur-sm" />
               
-              <div className="relative bg-card/50 border border-border/50 backdrop-blur-sm overflow-hidden">
+              <div className="relative bg-card/50 border border-primary/20 backdrop-blur-sm overflow-hidden group-hover:border-primary/40 transition-all duration-300">
                 {/* Corner accents */}
-                <div className="absolute top-0 left-0 w-4 h-4 border-l-2 border-t-2 border-primary z-10" />
-                <div className="absolute top-0 right-0 w-4 h-4 border-r-2 border-t-2 border-primary z-10" />
-                <div className="absolute bottom-0 left-0 w-4 h-4 border-l-2 border-b-2 border-primary z-10" />
-                <div className="absolute bottom-0 right-0 w-4 h-4 border-r-2 border-b-2 border-primary z-10" />
+                <div className="absolute top-0 left-0 w-5 h-5 border-l-2 border-t-2 border-primary z-10" />
+                <div className="absolute top-0 right-0 w-5 h-5 border-r-2 border-t-2 border-primary z-10" />
+                <div className="absolute bottom-0 left-0 w-5 h-5 border-l-2 border-b-2 border-primary z-10" />
+                <div className="absolute bottom-0 right-0 w-5 h-5 border-r-2 border-b-2 border-primary z-10" />
 
                 <div className="flex flex-col md:flex-row">
                   {/* Event Image */}
-                  <div className="relative w-full md:w-56 h-56 md:h-auto flex-shrink-0 overflow-hidden">
+                  <div className="relative w-full md:w-60 h-56 md:h-auto flex-shrink-0 overflow-hidden">
                     <img 
                       src={event.image} 
                       alt={event.name}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
                     {/* Scan line effect */}
                     <motion.div
                       className="absolute left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary/60 to-transparent"
@@ -249,7 +266,7 @@ const TechnicalEvents = () => {
                       transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
                     />
                     {/* Event number badge */}
-                    <div className="absolute top-3 left-3 px-2 py-1 bg-primary text-primary-foreground text-xs font-bold">
+                    <div className="absolute top-3 left-3 px-3 py-1.5 bg-primary text-primary-foreground text-xs font-bold font-mono tracking-wider">
                       #{String(event.id).padStart(2, '0')}
                     </div>
                   </div>
@@ -260,7 +277,7 @@ const TechnicalEvents = () => {
                       <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                         <div className="flex-1">
                           <div className="flex items-center gap-3 mb-3">
-                            <div className="w-10 h-10 border border-primary/50 flex items-center justify-center">
+                            <div className="w-11 h-11 border border-primary/40 flex items-center justify-center bg-primary/5 group-hover:bg-primary/10 transition-colors">
                               <event.icon className="w-5 h-5 text-primary" />
                             </div>
                             <h3 className="text-xl md:text-2xl font-bold tracking-wide group-hover:text-primary transition-colors">
@@ -272,38 +289,40 @@ const TechnicalEvents = () => {
                           </p>
                           
                           {/* Event meta info */}
-                          <div className="flex flex-wrap gap-4 text-sm">
-                            <div className="flex items-center gap-2 text-muted-foreground">
+                          <div className="flex flex-wrap gap-3 text-sm">
+                            <div className="flex items-center gap-2 text-muted-foreground px-3 py-1.5 bg-muted/30 border border-border/50">
                               <Users className="w-4 h-4 text-primary" />
-                              <span>{event.teamSize}</span>
+                              <span className="font-mono text-xs">{event.teamSize}</span>
                             </div>
-                            <div className="flex items-center gap-2 text-muted-foreground">
+                            <div className="flex items-center gap-2 text-muted-foreground px-3 py-1.5 bg-muted/30 border border-border/50">
                               <Clock className="w-4 h-4 text-primary" />
-                              <span>{event.duration}</span>
+                              <span className="font-mono text-xs">{event.duration}</span>
                             </div>
-                            <div className="flex items-center gap-2 text-muted-foreground">
-                              <Award className="w-4 h-4 text-accent" />
-                              <span className="text-accent font-semibold">{event.prize}</span>
+                            <div className="flex items-center gap-2 px-3 py-1.5 bg-secondary/10 border border-secondary/30">
+                              <Award className="w-4 h-4 text-secondary" />
+                              <span className="text-secondary font-bold font-mono text-xs">{event.prize}</span>
                             </div>
                           </div>
                         </div>
 
                         {/* Registration Button */}
                         <div className="flex-shrink-0">
-                          <Button variant="hero" size="default" className="w-full md:w-auto">
-                            REGISTER
-                            <ArrowRight className="w-4 h-4" />
-                          </Button>
+                          <Link to="/register">
+                            <Button variant="hero" size="default" className="w-full md:w-auto group/btn">
+                              REGISTER
+                              <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                            </Button>
+                          </Link>
                         </div>
                       </div>
 
                       {/* Rules Toggle */}
                       <button
                         onClick={() => toggleExpand(event.id)}
-                        className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors self-start"
+                        className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors self-start group/toggle"
                       >
-                        <span className="font-semibold uppercase tracking-wider">
-                          {expandedId === event.id ? "Hide Rules" : "View Rules & Guidelines"}
+                        <span className="font-mono uppercase tracking-wider text-xs">
+                          {expandedId === event.id ? "[-] Hide Rules" : "[+] View Rules & Guidelines"}
                         </span>
                         <motion.div
                           animate={{ rotate: expandedId === event.id ? 180 : 0 }}
@@ -323,8 +342,8 @@ const TechnicalEvents = () => {
                             transition={{ duration: 0.3 }}
                             className="overflow-hidden"
                           >
-                            <div className="pt-4 border-t border-border/50">
-                              <h4 className="text-sm font-bold uppercase tracking-wider text-primary mb-3">
+                            <div className="pt-4 border-t border-primary/20">
+                              <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-3 font-mono">
                                 Rules & Guidelines
                               </h4>
                               <ul className="space-y-2">

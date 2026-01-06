@@ -1,7 +1,8 @@
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Cpu, Factory, Code, Car, Bot, BarChart3, ChevronDown, Users, Clock, GraduationCap } from "lucide-react";
+import { ArrowRight, Cpu, Factory, Code, Car, Bot, BarChart3, ChevronDown, Users, Clock, GraduationCap, Wrench } from "lucide-react";
+import { Link } from "react-router-dom";
 
 // Import workshop images
 import iotImg from "@/assets/workshops/iot.png";
@@ -132,11 +133,11 @@ const Workshops = () => {
   };
 
   return (
-    <section id="workshops" className="py-24 relative overflow-hidden">
+    <section id="workshops" className="py-28 relative overflow-hidden">
       {/* Background effects */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background" />
-      <div className="absolute inset-0 bg-circuit-pattern opacity-15" />
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-secondary/50 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/3 to-background" />
+      <div className="absolute inset-0 bg-hex-pattern opacity-15" />
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-secondary/40 to-transparent" />
       
       <div className="container px-6 relative" ref={ref}>
         <motion.div
@@ -145,15 +146,26 @@ const Workshops = () => {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-card/40 border border-secondary/30 mb-6">
-            <div className="w-2 h-2 bg-secondary animate-pulse" />
-            <span className="text-secondary font-semibold text-sm uppercase tracking-widest">Workshops</span>
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6 tracking-tight">
-            LEARN & <span className="text-gradient">MASTER</span>
+          <motion.div 
+            className="inline-flex items-center gap-3 px-5 py-2 bg-card/60 border border-secondary/30 backdrop-blur-sm mb-6"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ delay: 0.2 }}
+          >
+            <motion.div 
+              className="w-2 h-2 bg-secondary"
+              animate={{ scale: [1, 1.3, 1] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+            />
+            <span className="text-secondary font-mono text-sm uppercase tracking-[0.2em]">Workshops</span>
+            <Wrench className="w-4 h-4 text-secondary/60" />
+          </motion.div>
+          
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-4 mb-6 tracking-tight">
+            LEARN & <span className="text-gold">MASTER</span>
           </h2>
           <p className="text-lg text-muted-foreground tracking-wide">
-            6 intensive hands-on workshops to upgrade your skills with industry experts.
+            <span className="text-secondary font-mono">&gt;</span> 6 intensive hands-on workshops to upgrade your skills with industry experts.
           </p>
         </motion.div>
 
@@ -164,13 +176,13 @@ const Workshops = () => {
               key={workshop.id}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.1 * index }}
+              transition={{ duration: 0.5, delay: 0.08 * index }}
               className="group relative"
             >
               {/* Holographic border on hover */}
-              <div className="absolute -inset-px bg-gradient-to-r from-secondary via-primary to-accent opacity-0 group-hover:opacity-50 transition-opacity duration-300 blur-sm" />
+              <div className="absolute -inset-px bg-gradient-to-r from-secondary via-primary to-secondary opacity-0 group-hover:opacity-30 transition-opacity duration-300 blur-sm" />
               
-              <div className="relative bg-card/50 border border-border/50 backdrop-blur-sm overflow-hidden h-full">
+              <div className="relative bg-card/50 border border-secondary/20 backdrop-blur-sm overflow-hidden h-full group-hover:border-secondary/40 transition-all duration-300">
                 {/* Corner accents */}
                 <div className="absolute top-0 left-0 w-4 h-4 border-l-2 border-t-2 border-secondary z-10" />
                 <div className="absolute top-0 right-0 w-4 h-4 border-r-2 border-t-2 border-secondary z-10" />
@@ -182,9 +194,9 @@ const Workshops = () => {
                   <img 
                     src={workshop.image} 
                     alt={workshop.name}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
                   {/* Scan line effect */}
                   <motion.div
                     className="absolute left-0 right-0 h-1 bg-gradient-to-r from-transparent via-secondary/60 to-transparent"
@@ -192,7 +204,7 @@ const Workshops = () => {
                     transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
                   />
                   {/* Workshop number badge */}
-                  <div className="absolute top-3 left-3 px-2 py-1 bg-secondary text-secondary-foreground text-xs font-bold">
+                  <div className="absolute top-3 left-3 px-3 py-1.5 bg-secondary text-secondary-foreground text-xs font-bold font-mono tracking-wider">
                     W{String(workshop.id).padStart(2, '0')}
                   </div>
                 </div>
@@ -200,7 +212,7 @@ const Workshops = () => {
                 {/* Workshop Content */}
                 <div className="p-6">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 border border-secondary/50 flex items-center justify-center">
+                    <div className="w-10 h-10 border border-secondary/40 flex items-center justify-center bg-secondary/5 group-hover:bg-secondary/10 transition-colors">
                       <workshop.icon className="w-5 h-5 text-secondary" />
                     </div>
                     <h3 className="text-lg md:text-xl font-bold tracking-wide group-hover:text-secondary transition-colors">
@@ -212,18 +224,18 @@ const Workshops = () => {
                   </p>
                   
                   {/* Workshop meta info */}
-                  <div className="flex flex-wrap gap-3 text-xs mb-4">
-                    <div className="flex items-center gap-1.5 text-muted-foreground px-2 py-1 bg-muted/30 rounded-sm">
+                  <div className="flex flex-wrap gap-2 text-xs mb-4">
+                    <div className="flex items-center gap-1.5 text-muted-foreground px-2.5 py-1.5 bg-muted/30 border border-border/50">
                       <Clock className="w-3 h-3 text-secondary" />
-                      <span>{workshop.duration}</span>
+                      <span className="font-mono">{workshop.duration}</span>
                     </div>
-                    <div className="flex items-center gap-1.5 text-muted-foreground px-2 py-1 bg-muted/30 rounded-sm">
+                    <div className="flex items-center gap-1.5 text-muted-foreground px-2.5 py-1.5 bg-muted/30 border border-border/50">
                       <Users className="w-3 h-3 text-secondary" />
-                      <span>{workshop.capacity}</span>
+                      <span className="font-mono">{workshop.capacity}</span>
                     </div>
-                    <div className="flex items-center gap-1.5 text-muted-foreground px-2 py-1 bg-muted/30 rounded-sm">
+                    <div className="flex items-center gap-1.5 text-muted-foreground px-2.5 py-1.5 bg-muted/30 border border-border/50">
                       <GraduationCap className="w-3 h-3 text-secondary" />
-                      <span>{workshop.instructor}</span>
+                      <span className="font-mono">{workshop.instructor}</span>
                     </div>
                   </div>
 
@@ -232,8 +244,8 @@ const Workshops = () => {
                     onClick={() => toggleExpand(workshop.id)}
                     className="flex items-center gap-2 text-sm text-secondary hover:text-secondary/80 transition-colors mb-4"
                   >
-                    <span className="font-semibold uppercase tracking-wider">
-                      {expandedId === workshop.id ? "Hide Topics" : "View Topics"}
+                    <span className="font-mono uppercase tracking-wider text-xs">
+                      {expandedId === workshop.id ? "[-] Hide Topics" : "[+] View Topics"}
                     </span>
                     <motion.div
                       animate={{ rotate: expandedId === workshop.id ? 180 : 0 }}
@@ -253,8 +265,8 @@ const Workshops = () => {
                         transition={{ duration: 0.3 }}
                         className="overflow-hidden"
                       >
-                        <div className="pb-4 border-b border-border/50 mb-4">
-                          <h4 className="text-xs font-bold uppercase tracking-wider text-secondary mb-2">
+                        <div className="pb-4 border-b border-secondary/20 mb-4">
+                          <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-secondary mb-2 font-mono">
                             Topics Covered
                           </h4>
                           <ul className="space-y-1.5">
@@ -277,10 +289,12 @@ const Workshops = () => {
                   </AnimatePresence>
 
                   {/* Registration Button */}
-                  <Button variant="glass" size="default" className="w-full border-secondary/30 hover:border-secondary">
-                    REGISTER FOR WORKSHOP
-                    <ArrowRight className="w-4 h-4" />
-                  </Button>
+                  <Link to="/register">
+                    <Button variant="glass" size="default" className="w-full border-secondary/30 hover:border-secondary hover:bg-secondary/10 group/btn">
+                      REGISTER FOR WORKSHOP
+                      <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </motion.div>
