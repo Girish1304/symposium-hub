@@ -22,7 +22,7 @@ const technicalEvents = [
     description: "Battle your robots in an intense combat arena. Design and build combat-ready bots to dominate the battlefield.",
     image: roboWarImg,
     teamSize: "2-4 members",
-    duration: "10 mins per match",
+    duration: "1 - 1.5 hrs",
     prize: "₹15,000",
     rules: [
       "Robot weight must not exceed 8 kg",
@@ -40,7 +40,7 @@ const technicalEvents = [
     description: "Navigate your RC vehicle through challenging terrains and obstacles in this thrilling adventure race.",
     image: rcAdventureImg,
     teamSize: "1-2 members",
-    duration: "15 mins",
+    duration: "1 - 1.5 hrs",
     prize: "₹10,000",
     rules: [
       "Only ground-based RC vehicles allowed",
@@ -58,7 +58,7 @@ const technicalEvents = [
     description: "Program your robot to autonomously follow a complex path. Precision and speed determine the winner.",
     image: lineFollowingImg,
     teamSize: "2-3 members",
-    duration: "5 mins per run",
+    duration: "1 - 1.5 hrs",
     prize: "₹12,000",
     rules: [
       "Robot must be fully autonomous",
@@ -76,7 +76,7 @@ const technicalEvents = [
     description: "Present your innovative research papers on cutting-edge technology topics to a panel of expert judges.",
     image: paperPresentationImg,
     teamSize: "1-2 members",
-    duration: "10+3 mins (presentation + Q&A)",
+    duration: "1 - 1.5 hrs",
     prize: "₹8,000",
     rules: [
       "Paper must be original and unpublished",
@@ -94,7 +94,7 @@ const technicalEvents = [
     description: "Showcase your technical projects and prototypes. Demonstrate innovation and practical application.",
     image: projectPresentationImg,
     teamSize: "2-4 members",
-    duration: "15+5 mins",
+    duration: "1 - 1.5 hrs",
     prize: "₹15,000",
     rules: [
       "Working prototype must be demonstrated",
@@ -112,7 +112,7 @@ const technicalEvents = [
     description: "Test your technical knowledge across various domains in this fast-paced quiz competition.",
     image: techQuizImg,
     teamSize: "2 members",
-    duration: "Multiple rounds",
+    duration: "1 - 1.5 hrs",
     prize: "₹6,000",
     rules: [
       "Prelims: Written round (30 questions, 20 mins)",
@@ -130,7 +130,7 @@ const technicalEvents = [
     description: "Build the strongest robot to pull your opponent across the line in this ultimate test of power.",
     image: roboTugImg,
     teamSize: "2-3 members",
-    duration: "5 mins per match",
+    duration: "1 - 1.5 hrs",
     prize: "₹10,000",
     rules: [
       "Robot weight limit: 5 kg",
@@ -148,7 +148,7 @@ const technicalEvents = [
     description: "Connect the dots between technical concepts in this unique puzzle-solving challenge.",
     image: techConnexionsImg,
     teamSize: "2 members",
-    duration: "45 mins",
+    duration: "1 - 1.5 hrs",
     prize: "₹5,000",
     rules: [
       "Written puzzle-based competition",
@@ -166,7 +166,7 @@ const technicalEvents = [
     description: "Program your bot to solve complex mazes in the shortest time using advanced algorithms.",
     image: mazeSimulationImg,
     teamSize: "1-2 members",
-    duration: "10 mins per attempt",
+    duration: "1 - 1.5 hrs",
     prize: "₹8,000",
     rules: [
       "Can use simulation software or physical robot",

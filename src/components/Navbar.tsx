@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Zap } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import jarvisLogo from "@/assets/jarvis-logo.png";
 
 const navLinks = [
   { name: "ABOUT", href: "#about" },
@@ -42,13 +43,11 @@ const Navbar = () => {
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
             <a href="#" className="flex items-center gap-2">
-              <div className="w-8 h-8 border border-primary flex items-center justify-center">
-                <Zap className="w-4 h-4 text-primary" />
-              </div>
-              <span className="text-xl font-bold tracking-wider">
-                <span className="text-chrome">JARVIS</span>
-                <span className="text-gradient"> '26</span>
-              </span>
+              <img 
+                src={jarvisLogo} 
+                alt="JARVIS 2026" 
+                className="h-10 md:h-12 w-auto"
+              />
             </a>
 
             {/* Desktop Navigation */}

@@ -18,7 +18,7 @@ const workshops = [
     icon: Cpu,
     description: "Learn to build smart connected devices using sensors, microcontrollers, and cloud platforms. Hands-on experience with Arduino and ESP32.",
     image: iotImg,
-    duration: "3 hours",
+    duration: "1 - 1.5 hrs",
     capacity: "30 participants",
     instructor: "Industry Expert",
     topics: [
@@ -36,7 +36,7 @@ const workshops = [
     icon: Factory,
     description: "Explore PLC programming, SCADA systems, and modern automation technologies used in manufacturing industries.",
     image: industrialAutomationImg,
-    duration: "3 hours",
+    duration: "1 - 1.5 hrs",
     capacity: "25 participants",
     instructor: "Automation Specialist",
     topics: [
@@ -54,7 +54,7 @@ const workshops = [
     icon: Code,
     description: "Master Robot Operating System 2 for building advanced autonomous robots with real-time capabilities.",
     image: ros2Img,
-    duration: "4 hours",
+    duration: "1 - 1.5 hrs",
     capacity: "20 participants",
     instructor: "Robotics Engineer",
     topics: [
@@ -72,7 +72,7 @@ const workshops = [
     icon: Car,
     description: "Design and build all-terrain vehicles from scratch. Learn vehicle dynamics, chassis design, and fabrication techniques.",
     image: bajaImg,
-    duration: "4 hours",
+    duration: "1 - 1.5 hrs",
     capacity: "35 participants",
     instructor: "BAJA Team Lead",
     topics: [
@@ -90,7 +90,7 @@ const workshops = [
     icon: Bot,
     description: "Get hands-on experience with KUKA industrial robots. Learn programming, path planning, and industrial applications.",
     image: kukaImg,
-    duration: "3 hours",
+    duration: "1 - 1.5 hrs",
     capacity: "20 participants",
     instructor: "KUKA Certified Trainer",
     topics: [
@@ -108,7 +108,7 @@ const workshops = [
     icon: BarChart3,
     description: "Introduction to SAP ERP systems and business process management. Essential skills for enterprise software careers.",
     image: sapImg,
-    duration: "3 hours",
+    duration: "1 - 1.5 hrs",
     capacity: "40 participants",
     instructor: "SAP Consultant",
     topics: [
