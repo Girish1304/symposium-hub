@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
   { name: "ABOUT", href: "#about" },
-  { name: "SPEAKERS", href: "#speakers" },
+  { name: "EVENTS", href: "#events" },
   { name: "SCHEDULE", href: "#schedule" },
   { name: "REGISTER", href: "#register" },
 ];
