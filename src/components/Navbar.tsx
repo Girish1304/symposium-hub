@@ -1,20 +1,23 @@
 import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import jarvisLogo from "@/assets/jarvis-logo.png";
 
 const navLinks = [
-  { name: "ABOUT", href: "#about" },
-  { name: "EVENTS", href: "#events" },
-  { name: "WORKSHOPS", href: "#workshops" },
-  { name: "SCHEDULE", href: "#schedule" },
-  { name: "REGISTER", href: "#register" },
+  { name: "ABOUT", href: "/#about", isHash: true },
+  { name: "EVENTS", href: "/events", isHash: false },
+  { name: "WORKSHOPS", href: "/workshops", isHash: false },
+  { name: "SCHEDULE", href: "/schedule", isHash: false },
+  { name: "FAQ", href: "/faq", isHash: false },
+  { name: "CONTACT", href: "/contact", isHash: false },
 ];
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,6 +26,11 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const isActive = (href: string, isHash: boolean) => {
+    if (isHash) return false;
+    return location.pathname === href;
+  };
 
   return (
     <>
@@ -42,29 +50,46 @@ const Navbar = () => {
         <div className="container px-6">
           <div className="flex items-center justify-between h-20 md:h-24">
             {/* Logo */}
-            <a href="#" className="flex items-center gap-2">
+            <Link to="/" className="flex items-center gap-2">
               <img 
                 src={jarvisLogo} 
                 alt="JARVIS 2026" 
                 className="h-14 md:h-16 w-auto"
               />
-            </a>
+            </Link>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-8">
               {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className="relative text-sm text-muted-foreground hover:text-primary transition-colors font-semibold tracking-wider group"
-                >
-                  {link.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary group-hover:w-full transition-all duration-300" />
-                </a>
+                link.isHash ? (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    className="relative text-sm text-muted-foreground hover:text-primary transition-colors font-semibold tracking-wider group"
+                  >
+                    {link.name}
+                    <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary group-hover:w-full transition-all duration-300" />
+                  </a>
+                ) : (
+                  <Link
+                    key={link.name}
+                    to={link.href}
+                    className={`relative text-sm hover:text-primary transition-colors font-semibold tracking-wider group ${
+                      isActive(link.href, link.isHash) ? "text-primary" : "text-muted-foreground"
+                    }`}
+                  >
+                    {link.name}
+                    <span className={`absolute -bottom-1 left-0 h-px bg-primary transition-all duration-300 ${
+                      isActive(link.href, link.isHash) ? "w-full" : "w-0 group-hover:w-full"
+                    }`} />
+                  </Link>
+                )
               ))}
-              <Button variant="hero" size="sm" className="font-bold tracking-wider">
-                REGISTER
-              </Button>
+              <Link to="/register">
+                <Button variant="hero" size="sm" className="font-bold tracking-wider">
+                  REGISTER
+                </Button>
+              </Link>
             </div>
 
             {/* Mobile Menu Button */}
@@ -86,7 +111,7 @@ const Navbar = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-background/98 backdrop-blur-lg md:hidden pt-20"
+            className="fixed inset-0 z-40 bg-background/98 backdrop-blur-lg md:hidden pt-24"
           >
             {/* Scan lines overlay */}
             <div 
@@ -97,29 +122,50 @@ const Navbar = () => {
             />
             
             {/* Corner brackets */}
-            <div className="absolute top-24 left-6 w-8 h-8 border-l-2 border-t-2 border-primary" />
-            <div className="absolute top-24 right-6 w-8 h-8 border-r-2 border-t-2 border-primary" />
+            <div className="absolute top-28 left-6 w-8 h-8 border-l-2 border-t-2 border-primary" />
+            <div className="absolute top-28 right-6 w-8 h-8 border-r-2 border-t-2 border-primary" />
             <div className="absolute bottom-6 left-6 w-8 h-8 border-l-2 border-b-2 border-primary" />
             <div className="absolute bottom-6 right-6 w-8 h-8 border-r-2 border-b-2 border-primary" />
             
             <div className="container px-6 py-8 relative">
               <div className="flex flex-col gap-6">
                 {navLinks.map((link, index) => (
-                  <motion.a
-                    key={link.name}
-                    href={link.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    className="text-2xl font-bold text-foreground hover:text-primary transition-colors tracking-wider"
-                  >
-                    {link.name}
-                  </motion.a>
+                  link.isHash ? (
+                    <motion.a
+                      key={link.name}
+                      href={link.href}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                      className="text-2xl font-bold text-foreground hover:text-primary transition-colors tracking-wider"
+                    >
+                      {link.name}
+                    </motion.a>
+                  ) : (
+                    <motion.div
+                      key={link.name}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                    >
+                      <Link
+                        to={link.href}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className={`text-2xl font-bold hover:text-primary transition-colors tracking-wider ${
+                          isActive(link.href, link.isHash) ? "text-primary" : "text-foreground"
+                        }`}
+                      >
+                        {link.name}
+                      </Link>
+                    </motion.div>
+                  )
                 ))}
-                <Button variant="hero" size="lg" className="mt-4 font-bold tracking-wider">
-                  INITIATE REGISTRATION
-                </Button>
+                <Link to="/register" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Button variant="hero" size="lg" className="mt-4 font-bold tracking-wider w-full">
+                    INITIATE REGISTRATION
+                  </Button>
+                </Link>
               </div>
             </div>
           </motion.div>
