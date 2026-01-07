@@ -45,7 +45,7 @@ const ArcReactorSplash = ({ onComplete }: ArcReactorSplashProps) => {
       speakLine(newCount);
     }
 
-    if (newCount >= 5) {
+    if (newCount >= 3) {
       setIsBooting(true);
       playBootSound();
       setTimeout(() => {
@@ -54,9 +54,9 @@ const ArcReactorSplash = ({ onComplete }: ArcReactorSplashProps) => {
     }
   }, [clickCount, isBooting, onComplete, playClickSound, playBootSound, getLineForClick, speakLine, preloadAll]);
 
-  const powerLevel = (clickCount / 5) * 100;
-  const glowIntensity = 0.15 + (clickCount * 0.17);
-  const coreOpacity = 0.2 + (clickCount * 0.16);
+  const powerLevel = (clickCount / 3) * 100;
+  const glowIntensity = 0.15 + (clickCount * 0.28);
+  const coreOpacity = 0.2 + (clickCount * 0.27);
 
   return (
     <AnimatePresence>
@@ -288,7 +288,7 @@ const ArcReactorSplash = ({ onComplete }: ArcReactorSplashProps) => {
               const x4 = 170 + innerR * Math.cos(startAngle);
               const y4 = 170 + innerR * Math.sin(startAngle);
 
-              const isLit = i < clickCount * 2;
+              const isLit = i < clickCount * 3.33;
 
               return (
                 <motion.path
@@ -483,16 +483,19 @@ const ArcReactorSplash = ({ onComplete }: ArcReactorSplashProps) => {
           </motion.h2>
           
           <motion.p
-            className="text-sm md:text-base tracking-[0.2em] uppercase font-mono"
-            style={{ color: 'rgba(100, 180, 220, 0.7)' }}
-            animate={{
-              opacity: [0.5, 1, 0.5],
+            className="text-lg md:text-xl tracking-[0.15em] uppercase font-mono font-bold"
+            style={{ 
+              color: 'rgba(150, 220, 255, 0.95)',
+              textShadow: '0 0 20px rgba(100, 200, 255, 0.6), 0 0 40px rgba(60, 150, 200, 0.4)'
             }}
-            transition={{ duration: 2, repeat: Infinity }}
+            animate={{
+              opacity: [0.7, 1, 0.7],
+            }}
+            transition={{ duration: 1.5, repeat: Infinity }}
           >
             {isBooting 
               ? "Initializing Systems..." 
-              : `Tap Arc Reactor to Initialize [${clickCount}/5]`
+              : `Tap Arc Reactor to Initialize [${clickCount}/3]`
             }
           </motion.p>
 

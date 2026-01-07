@@ -3,8 +3,6 @@ import { useCallback, useState } from 'react';
 const JARVIS_LINES = [
   "Systems initializing",
   "Power core activated",
-  "Running diagnostics",
-  "Arc reactor online",
   "All systems online, sir",
 ];
 
@@ -23,7 +21,7 @@ export const useJarvisVoice = () => {
   }, []);
 
   const getLineForClick = useCallback((clickNumber: number): string => {
-    if (clickNumber >= 1 && clickNumber <= 5) {
+    if (clickNumber >= 1 && clickNumber <= 3) {
       return JARVIS_LINES[clickNumber - 1];
     }
     return "";
