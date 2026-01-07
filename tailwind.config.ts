@@ -98,8 +98,8 @@ export default {
           "75%": { opacity: "0.95" },
         },
         "cyber-pulse": {
-          "0%, 100%": { boxShadow: "0 0 15px hsl(190 100% 55% / 0.4), inset 0 0 10px hsl(190 100% 55% / 0.1)" },
-          "50%": { boxShadow: "0 0 30px hsl(190 100% 55% / 0.6), inset 0 0 20px hsl(190 100% 55% / 0.15)" },
+          "0%, 100%": { boxShadow: "0 0 15px hsl(270 100% 65% / 0.4), inset 0 0 10px hsl(270 100% 65% / 0.1)" },
+          "50%": { boxShadow: "0 0 30px hsl(270 100% 65% / 0.6), inset 0 0 20px hsl(270 100% 65% / 0.15)" },
         },
         "hud-rotate": {
           "0%": { transform: "rotate(0deg)" },
