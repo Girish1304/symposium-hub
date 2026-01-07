@@ -109,8 +109,8 @@ const Navbar = () => {
                 transition={{ delay: 0.5 }}
               >
                 <Link to="/register">
-                  <Button variant="outline" size="default" className="font-body">
-                    GET FUNDED
+                  <Button variant="premium" size="default" className="font-body">
+                    REGISTER
                   </Button>
                 </Link>
               </motion.div>
@@ -186,8 +186,8 @@ const Navbar = () => {
                   className="flex flex-col gap-3 mt-6"
                 >
                   <Link to="/register" onClick={() => setIsMobileMenuOpen(false)}>
-                    <Button variant="hero" size="lg" className="font-body w-full">
-                      GET FUNDED
+                    <Button variant="premium" size="lg" className="font-body w-full">
+                      REGISTER
                     </Button>
                   </Link>
                   <Link to="/auth" onClick={() => setIsMobileMenuOpen(false)}>

@@ -10,21 +10,22 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90 rounded-full",
-        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90 rounded-full",
-        outline: "border-2 border-border bg-transparent text-foreground hover:bg-muted hover:border-primary/50 rounded-full",
-        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80 rounded-full",
-        ghost: "hover:bg-muted hover:text-foreground rounded-lg",
+        default: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_0_20px_hsl(var(--primary)/0.3)] hover:shadow-[0_0_35px_hsl(var(--primary)/0.5)] hover:scale-[1.02]",
+        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+        outline: "border-2 border-primary/40 bg-transparent text-foreground hover:bg-primary/10 hover:border-primary/70",
+        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+        ghost: "hover:bg-muted hover:text-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        hero: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_0_30px_hsl(42_100%_50%/0.4)] hover:shadow-[0_0_50px_hsl(42_100%_50%/0.5)] hover:scale-[1.02] rounded-full",
-        glass: "bg-card/60 backdrop-blur-xl border-2 border-border/50 text-foreground hover:bg-card/80 hover:border-primary/40 rounded-full",
+        hero: "bg-gradient-to-r from-primary via-secondary to-primary bg-[length:200%_100%] text-primary-foreground shadow-[0_0_40px_hsl(var(--primary)/0.5)] hover:shadow-[0_0_60px_hsl(var(--primary)/0.6)] hover:scale-[1.03]",
+        glass: "bg-card/60 backdrop-blur-xl border-2 border-primary/30 text-foreground hover:bg-card/80 hover:border-primary/60",
+        premium: "relative bg-primary text-primary-foreground overflow-hidden shadow-[0_0_30px_hsl(var(--primary)/0.4)] hover:shadow-[0_0_50px_hsl(var(--primary)/0.6)] hover:scale-[1.02] before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:-translate-x-full hover:before:translate-x-full before:transition-transform before:duration-700",
       },
       size: {
         default: "h-11 px-7 py-2",
         sm: "h-9 px-5",
-        lg: "h-12 px-9 text-base",
+        lg: "h-13 px-10 text-base",
         xl: "h-14 px-12 text-base",
-        icon: "h-10 w-10 rounded-full",
+        icon: "h-10 w-10",
       },
     },
     defaultVariants: {
