@@ -10,65 +10,65 @@ html {
 
 @layer base {
   :root {
-    /* GoatFundedTrader Style - Deep Black & Premium Gold */
-    --background: 0 0% 3%;
-    --foreground: 0 0% 98%;
+    /* Cyberpunk Neon Theme - Deep Black & Electric Cyan/Magenta */
+    --background: 220 20% 4%;
+    --foreground: 210 40% 98%;
 
-    --card: 0 0% 6%;
-    --card-foreground: 0 0% 98%;
+    --card: 220 20% 7%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 0 0% 6%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 220 20% 7%;
+    --popover-foreground: 210 40% 98%;
 
-    /* Primary Gold - Rich & Luxurious */
-    --primary: 42 100% 50%;
-    --primary-foreground: 0 0% 3%;
+    /* Primary Cyan - Electric & Futuristic */
+    --primary: 185 100% 55%;
+    --primary-foreground: 220 20% 4%;
 
-    /* Secondary Gold (lighter) */
-    --secondary: 45 85% 55%;
-    --secondary-foreground: 0 0% 3%;
+    /* Secondary Magenta */
+    --secondary: 320 100% 60%;
+    --secondary-foreground: 220 20% 4%;
 
     /* Muted Dark */
-    --muted: 0 0% 12%;
-    --muted-foreground: 0 0% 50%;
+    --muted: 220 15% 15%;
+    --muted-foreground: 215 20% 55%;
 
-    /* Accent Gold */
-    --accent: 42 100% 50%;
-    --accent-foreground: 0 0% 3%;
+    /* Accent Magenta/Pink */
+    --accent: 320 100% 60%;
+    --accent-foreground: 220 20% 4%;
 
     --destructive: 0 85% 55%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 0 0% 15%;
-    --input: 0 0% 15%;
-    --ring: 42 100% 50%;
+    --border: 220 15% 18%;
+    --input: 220 15% 18%;
+    --ring: 185 100% 55%;
 
     --radius: 0.5rem;
 
-    /* Premium gradients */
-    --gradient-hero: linear-gradient(180deg, hsl(0 0% 0%) 0%, hsl(0 0% 3%) 50%, hsl(0 0% 5%) 100%);
-    --gradient-card: linear-gradient(135deg, hsl(0 0% 8%) 0%, hsl(0 0% 4%) 100%);
-    --gradient-text: linear-gradient(90deg, hsl(42 100% 50%) 0%, hsl(45 100% 65%) 100%);
-    --gradient-gold: linear-gradient(135deg, hsl(42 100% 55%) 0%, hsl(38 100% 45%) 50%, hsl(48 100% 60%) 100%);
-    --gradient-hud: linear-gradient(180deg, hsl(42 100% 50% / 0.06) 0%, transparent 50%, hsl(42 100% 50% / 0.02) 100%);
-    --gradient-glass: linear-gradient(135deg, hsl(0 0% 100% / 0.05) 0%, hsl(0 0% 100% / 0.02) 100%);
-    --glow-primary: 0 0 40px hsl(42 100% 50% / 0.35), 0 0 80px hsl(42 100% 50% / 0.15);
-    --glow-accent: 0 0 50px hsl(42 100% 50% / 0.25);
-    --glow-gold: 0 0 40px hsl(42 100% 50% / 0.35);
+    /* Cyberpunk gradients */
+    --gradient-hero: linear-gradient(180deg, hsl(220 25% 2%) 0%, hsl(220 20% 4%) 50%, hsl(240 20% 6%) 100%);
+    --gradient-card: linear-gradient(135deg, hsl(220 20% 10%) 0%, hsl(240 20% 6%) 100%);
+    --gradient-text: linear-gradient(90deg, hsl(185 100% 55%) 0%, hsl(320 100% 60%) 100%);
+    --gradient-neon: linear-gradient(135deg, hsl(185 100% 55%) 0%, hsl(280 100% 60%) 50%, hsl(320 100% 60%) 100%);
+    --gradient-hud: linear-gradient(180deg, hsl(185 100% 55% / 0.08) 0%, transparent 50%, hsl(320 100% 60% / 0.04) 100%);
+    --gradient-glass: linear-gradient(135deg, hsl(0 0% 100% / 0.08) 0%, hsl(0 0% 100% / 0.02) 100%);
+    --glow-primary: 0 0 40px hsl(185 100% 55% / 0.4), 0 0 80px hsl(185 100% 55% / 0.2);
+    --glow-accent: 0 0 50px hsl(320 100% 60% / 0.3);
+    --glow-neon: 0 0 30px hsl(185 100% 55% / 0.5), 0 0 60px hsl(320 100% 60% / 0.3);
 
-    /* GoatFundedTrader fonts */
-    --font-display: 'Bebas Neue', sans-serif;
+    /* Cyberpunk fonts */
+    --font-display: 'Orbitron', 'Space Grotesk', sans-serif;
     --font-body: 'Space Grotesk', sans-serif;
-    --font-mono: 'Space Grotesk', monospace;
+    --font-mono: 'JetBrains Mono', 'Space Grotesk', monospace;
 
-    --sidebar-background: 0 0% 5%;
-    --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: 42 100% 50%;
-    --sidebar-primary-foreground: 0 0% 3%;
-    --sidebar-accent: 0 0% 12%;
-    --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 0 0% 15%;
-    --sidebar-ring: 42 100% 50%;
+    --sidebar-background: 220 20% 5%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 185 100% 55%;
+    --sidebar-primary-foreground: 220 20% 4%;
+    --sidebar-accent: 220 15% 15%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 220 15% 18%;
+    --sidebar-ring: 185 100% 55%;
   }
 }
 
@@ -97,8 +97,8 @@ html {
     background-clip: text;
   }
 
-  .text-gold {
-    background: var(--gradient-gold);
+  .text-neon {
+    background: var(--gradient-neon);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -120,8 +120,8 @@ html {
     box-shadow: var(--glow-accent);
   }
 
-  .glow-gold {
-    box-shadow: var(--glow-gold);
+  .glow-neon {
+    box-shadow: var(--glow-neon);
   }
 
   .bg-grid-pattern {
