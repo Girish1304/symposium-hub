@@ -17,7 +17,7 @@ const workshops = [
     id: 1,
     name: "INTERNET OF THINGS",
     icon: Cpu,
-    description: "Learn to build smart connected devices using sensors, microcontrollers, and cloud platforms. Hands-on experience with Arduino and ESP32.",
+    description: "Learn to build smart connected devices using sensors, microcontrollers, and cloud platforms.",
     image: iotImg,
     duration: "1 - 1.5 hrs",
     capacity: "30 participants",
@@ -35,7 +35,7 @@ const workshops = [
     id: 2,
     name: "INDUSTRIAL AUTOMATION",
     icon: Factory,
-    description: "Explore PLC programming, SCADA systems, and modern automation technologies used in manufacturing industries.",
+    description: "Explore PLC programming, SCADA systems, and modern automation technologies.",
     image: industrialAutomationImg,
     duration: "1 - 1.5 hrs",
     capacity: "25 participants",
@@ -53,7 +53,7 @@ const workshops = [
     id: 3,
     name: "ROS2 WORKSHOP",
     icon: Code,
-    description: "Master Robot Operating System 2 for building advanced autonomous robots with real-time capabilities.",
+    description: "Master Robot Operating System 2 for building advanced autonomous robots.",
     image: ros2Img,
     duration: "1 - 1.5 hrs",
     capacity: "20 participants",
@@ -71,7 +71,7 @@ const workshops = [
     id: 4,
     name: "VEHICLE BUILDING - BAJA",
     icon: Car,
-    description: "Design and build all-terrain vehicles from scratch. Learn vehicle dynamics, chassis design, and fabrication techniques.",
+    description: "Design and build all-terrain vehicles. Learn vehicle dynamics and fabrication.",
     image: bajaImg,
     duration: "1 - 1.5 hrs",
     capacity: "35 participants",
@@ -89,7 +89,7 @@ const workshops = [
     id: 5,
     name: "KUKA ROBOTICS",
     icon: Bot,
-    description: "Get hands-on experience with KUKA industrial robots. Learn programming, path planning, and industrial applications.",
+    description: "Hands-on experience with KUKA industrial robots and programming.",
     image: kukaImg,
     duration: "1 - 1.5 hrs",
     capacity: "20 participants",
@@ -107,7 +107,7 @@ const workshops = [
     id: 6,
     name: "SAP WORKSHOP",
     icon: BarChart3,
-    description: "Introduction to SAP ERP systems and business process management. Essential skills for enterprise software careers.",
+    description: "Introduction to SAP ERP systems and business process management.",
     image: sapImg,
     duration: "1 - 1.5 hrs",
     capacity: "40 participants",
@@ -134,10 +134,8 @@ const Workshops = () => {
 
   return (
     <section id="workshops" className="py-28 relative overflow-hidden">
-      {/* Background effects */}
+      {/* Simplified background */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/3 to-background" />
-      <div className="absolute inset-0 bg-hex-pattern opacity-15" />
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-secondary/40 to-transparent" />
       
       <div className="container px-6 relative" ref={ref}>
         <motion.div
@@ -152,11 +150,7 @@ const Workshops = () => {
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ delay: 0.2 }}
           >
-            <motion.div 
-              className="w-2 h-2 bg-secondary"
-              animate={{ scale: [1, 1.3, 1] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-            />
+            <div className="w-2 h-2 bg-secondary" />
             <span className="text-secondary font-mono text-sm uppercase tracking-[0.2em]">Workshops</span>
             <Wrench className="w-4 h-4 text-secondary/60" />
           </motion.div>
@@ -165,12 +159,12 @@ const Workshops = () => {
             LEARN & <span className="text-gold">MASTER</span>
           </h2>
           <p className="text-lg text-muted-foreground tracking-wide">
-            <span className="text-secondary font-mono">&gt;</span> 6 intensive hands-on workshops to upgrade your skills with industry experts.
+            6 intensive hands-on workshops to upgrade your skills with industry experts.
           </p>
         </motion.div>
 
-        {/* Workshops Grid */}
-        <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+        {/* Workshops Grid - increased gap */}
+        <div className="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto">
           {workshops.map((workshop, index) => (
             <motion.div
               key={workshop.id}
@@ -179,17 +173,8 @@ const Workshops = () => {
               transition={{ duration: 0.5, delay: 0.08 * index }}
               className="group relative"
             >
-              {/* Holographic border on hover */}
-              <div className="absolute -inset-px bg-gradient-to-r from-secondary via-primary to-secondary opacity-0 group-hover:opacity-30 transition-opacity duration-300 blur-sm" />
-              
               <div className="relative bg-card/50 border border-secondary/20 backdrop-blur-sm overflow-hidden h-full group-hover:border-secondary/40 transition-all duration-300">
-                {/* Corner accents */}
-                <div className="absolute top-0 left-0 w-4 h-4 border-l-2 border-t-2 border-secondary z-10" />
-                <div className="absolute top-0 right-0 w-4 h-4 border-r-2 border-t-2 border-secondary z-10" />
-                <div className="absolute bottom-0 left-0 w-4 h-4 border-l-2 border-b-2 border-secondary z-10" />
-                <div className="absolute bottom-0 right-0 w-4 h-4 border-r-2 border-b-2 border-secondary z-10" />
-
-                {/* Workshop Image */}
+                {/* Workshop Image - simplified */}
                 <div className="relative w-full h-48 overflow-hidden">
                   <img 
                     src={workshop.image} 
@@ -197,12 +182,6 @@ const Workshops = () => {
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
-                  {/* Scan line effect */}
-                  <motion.div
-                    className="absolute left-0 right-0 h-1 bg-gradient-to-r from-transparent via-secondary/60 to-transparent"
-                    animate={{ top: ["0%", "100%", "0%"] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                  />
                   {/* Workshop number badge */}
                   <div className="absolute top-3 left-3 px-3 py-1.5 bg-secondary text-secondary-foreground text-xs font-bold font-mono tracking-wider">
                     W{String(workshop.id).padStart(2, '0')}
@@ -223,7 +202,7 @@ const Workshops = () => {
                     {workshop.description}
                   </p>
                   
-                  {/* Workshop meta info */}
+                  {/* Workshop meta info - simplified */}
                   <div className="flex flex-wrap gap-2 text-xs mb-4">
                     <div className="flex items-center gap-1.5 text-muted-foreground px-2.5 py-1.5 bg-muted/30 border border-border/50">
                       <Clock className="w-3 h-3 text-secondary" />
@@ -233,10 +212,6 @@ const Workshops = () => {
                       <Users className="w-3 h-3 text-secondary" />
                       <span className="font-mono">{workshop.capacity}</span>
                     </div>
-                    <div className="flex items-center gap-1.5 text-muted-foreground px-2.5 py-1.5 bg-muted/30 border border-border/50">
-                      <GraduationCap className="w-3 h-3 text-secondary" />
-                      <span className="font-mono">{workshop.instructor}</span>
-                    </div>
                   </div>
 
                   {/* Topics Toggle */}
@@ -245,7 +220,7 @@ const Workshops = () => {
                     className="flex items-center gap-2 text-sm text-secondary hover:text-secondary/80 transition-colors mb-4"
                   >
                     <span className="font-mono uppercase tracking-wider text-xs">
-                      {expandedId === workshop.id ? "[-] Hide Topics" : "[+] View Topics"}
+                      {expandedId === workshop.id ? "Hide Topics" : "View Topics"}
                     </span>
                     <motion.div
                       animate={{ rotate: expandedId === workshop.id ? 180 : 0 }}

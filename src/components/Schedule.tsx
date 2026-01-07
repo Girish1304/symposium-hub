@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Clock, MapPin, ChevronRight } from "lucide-react";
+import { Clock, MapPin } from "lucide-react";
 
 const scheduleData = {
   "MORNING": [
@@ -45,8 +45,8 @@ const Schedule = () => {
 
   return (
     <section id="schedule" className="py-24 relative overflow-hidden">
-      {/* Background circuit pattern */}
-      <div className="absolute inset-0 bg-circuit-pattern opacity-20" />
+      {/* Simplified background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/3 to-background" />
       
       <div className="container px-6 relative" ref={ref}>
         <motion.div
@@ -56,18 +56,18 @@ const Schedule = () => {
           className="text-center max-w-3xl mx-auto mb-16"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-card/40 border border-primary/30 mb-6">
-            <div className="w-2 h-2 bg-primary animate-pulse" />
-            <span className="text-primary font-semibold text-sm uppercase tracking-widest">Event Protocol</span>
+            <div className="w-2 h-2 bg-primary" />
+            <span className="text-primary font-semibold text-sm uppercase tracking-widest">Event Schedule</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6 tracking-tight">
             ONE DAY OF <span className="text-gradient">INNOVATION</span>
           </h2>
           <p className="text-lg text-muted-foreground tracking-wide">
-            From morning workshops to evening celebrations, every moment is designed to inspire and challenge you.
+            From morning workshops to evening celebrations, every moment is designed to inspire.
           </p>
         </motion.div>
 
-        {/* Session Tabs - Holographic Style */}
+        {/* Session Tabs - Simplified */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -80,23 +80,16 @@ const Schedule = () => {
               onClick={() => setActiveSession(session)}
               className={`relative px-6 py-3 font-bold uppercase tracking-wider transition-all duration-300 ${
                 activeSession === session
-                  ? "text-primary-foreground"
+                  ? "text-primary-foreground bg-primary"
                   : "text-muted-foreground hover:text-foreground bg-card/30 border border-border/50"
               }`}
             >
-              {activeSession === session && (
-                <motion.div
-                  layoutId="activeSession"
-                  className="absolute inset-0 bg-primary animate-cyber-pulse"
-                  transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                />
-              )}
-              <span className="relative z-10">{session}</span>
+              {session}
             </button>
           ))}
         </motion.div>
 
-        {/* Schedule Items */}
+        {/* Schedule Items - increased spacing */}
         <motion.div
           key={activeSession}
           initial={{ opacity: 0, x: 20 }}
@@ -109,22 +102,13 @@ const Schedule = () => {
               key={item.title}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.1 * index }}
+              transition={{ duration: 0.4, delay: 0.05 * index }}
               className="group relative"
             >
-              {/* Holographic border on hover */}
-              <div className="absolute -inset-px bg-gradient-to-r from-primary via-secondary to-accent opacity-0 group-hover:opacity-50 transition-opacity duration-300 blur-sm" />
-              
-              <div className="relative p-6 bg-card/50 border border-border/50 backdrop-blur-sm">
-                {/* Corner accents */}
-                <div className="absolute top-0 left-0 w-3 h-3 border-l border-t border-primary" />
-                <div className="absolute top-0 right-0 w-3 h-3 border-r border-t border-primary" />
-                <div className="absolute bottom-0 left-0 w-3 h-3 border-l border-b border-primary" />
-                <div className="absolute bottom-0 right-0 w-3 h-3 border-r border-b border-primary" />
-                
+              <div className="relative p-5 bg-card/50 border border-border/50 backdrop-blur-sm hover:border-primary/40 transition-colors">
                 <div className="flex flex-col md:flex-row md:items-center gap-4">
                   {/* Time */}
-                  <div className="flex items-center gap-3 md:w-32">
+                  <div className="flex items-center gap-3 md:w-28">
                     <Clock className="w-4 h-4 text-primary" />
                     <span className="font-mono font-bold text-lg">{item.time}</span>
                   </div>
@@ -144,9 +128,6 @@ const Schedule = () => {
                   <div className={`px-3 py-1 border text-xs font-bold uppercase tracking-wider ${typeColors[item.type]}`}>
                     {item.type}
                   </div>
-                  
-                  {/* Arrow */}
-                  <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
                 </div>
               </div>
             </motion.div>
