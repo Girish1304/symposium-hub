@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import ScanLineOverlay from "@/components/ScanLineOverlay";
 import ArcReactorSplash from "@/components/ArcReactorSplash";
 import CountdownTimer from "@/components/CountdownTimer";
+import GoatBackground from "@/components/GoatBackground";
 import { Button } from "@/components/ui/button";
 
 const navButtons = [
@@ -48,6 +49,7 @@ const Index = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
+            <GoatBackground />
             <ScanLineOverlay />
             <Navbar />
             <main className="min-h-screen flex flex-col items-center justify-center px-6 py-20">
