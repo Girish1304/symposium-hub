@@ -3,7 +3,6 @@ import { AnimatePresence } from "framer-motion";
 import Index from "@/pages/Index";
 import Events from "@/pages/Events";
 import WorkshopsPage from "@/pages/WorkshopsPage";
-import SchedulePage from "@/pages/SchedulePage";
 import AuthPage from "@/pages/AuthPage";
 import FAQPage from "@/pages/FAQPage";
 import ContactPage from "@/pages/ContactPage";
@@ -37,14 +36,6 @@ const AnimatedRoutes = () => {
           element={
             <PageTransition>
               <WorkshopsPage />
-            </PageTransition>
-          }
-        />
-        <Route
-          path="/schedule"
-          element={
-            <PageTransition>
-              <SchedulePage />
             </PageTransition>
           }
         />

@@ -9,7 +9,6 @@ const navLinks = [
   { name: "ABOUT", href: "/#about", isHash: true },
   { name: "EVENTS", href: "/events", isHash: false },
   { name: "WORKSHOPS", href: "/workshops", isHash: false },
-  { name: "SCHEDULE", href: "/schedule", isHash: false },
   { name: "FAQ", href: "/faq", isHash: false },
   { name: "CONTACT", href: "/contact", isHash: false },
 ];
