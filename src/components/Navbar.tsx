@@ -39,21 +39,42 @@ const Navbar = () => {
         transition={{ duration: 0.6 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? "bg-background/95 backdrop-blur-xl border-b border-primary/20 shadow-lg shadow-primary/5"
+            ? "bg-background/95 backdrop-blur-xl shadow-lg shadow-primary/5"
             : "bg-transparent"
         }`}
       >
-        {/* Top accent line with animation */}
+        {/* Gold accent line on scroll */}
         <motion.div 
-          className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent"
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ duration: 1, delay: 0.3 }}
+          className="absolute bottom-0 left-0 right-0 h-[2px]"
+          style={{
+            background: 'linear-gradient(90deg, transparent, hsl(45 100% 50%), transparent)',
+          }}
+          initial={{ scaleX: 0, opacity: 0 }}
+          animate={{ 
+            scaleX: isScrolled ? 1 : 0, 
+            opacity: isScrolled ? 1 : 0 
+          }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
+        />
+        
+        {/* Subtle top glow when scrolled */}
+        <motion.div 
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: 'linear-gradient(180deg, hsl(45 100% 50% / 0.05) 0%, transparent 100%)',
+          }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isScrolled ? 1 : 0 }}
+          transition={{ duration: 0.3 }}
         />
         
         {/* HUD corner elements */}
-        <div className="absolute top-2 left-4 w-6 h-6 border-l border-t border-primary/30 hidden lg:block" />
-        <div className="absolute top-2 right-4 w-6 h-6 border-r border-t border-primary/30 hidden lg:block" />
+        <div className={`absolute top-2 left-4 w-6 h-6 border-l border-t transition-colors duration-300 hidden lg:block ${
+          isScrolled ? 'border-primary/50' : 'border-primary/30'
+        }`} />
+        <div className={`absolute top-2 right-4 w-6 h-6 border-r border-t transition-colors duration-300 hidden lg:block ${
+          isScrolled ? 'border-primary/50' : 'border-primary/30'
+        }`} />
         
         <div className="container px-6">
           <div className="flex items-center justify-between h-20 md:h-24">
