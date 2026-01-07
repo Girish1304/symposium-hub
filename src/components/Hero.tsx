@@ -1,16 +1,36 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Calendar, MapPin, ArrowRight } from "lucide-react";
 import CountdownTimer from "./CountdownTimer";
 import { Link } from "react-router-dom";
 import ArcReactorBackground from "./ArcReactorBackground";
 import GoldParticles from "./GoldParticles";
+import { useRef } from "react";
 
 const Hero = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+
+  // Parallax transforms for different elements
+  const titleY = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const taglineY = useTransform(scrollYProgress, [0, 1], [0, -80]);
+  const detailsY = useTransform(scrollYProgress, [0, 1], [0, -60]);
+  const countdownY = useTransform(scrollYProgress, [0, 1], [0, -40]);
+  const ctaY = useTransform(scrollYProgress, [0, 1], [0, -20]);
+  const statsY = useTransform(scrollYProgress, [0, 1], [0, 50]);
+  const backgroundY = useTransform(scrollYProgress, [0, 1], [0, 150]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero">
-      {/* Arc Reactor Breathing Background */}
-      <ArcReactorBackground />
+    <section ref={sectionRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero">
+      {/* Arc Reactor Breathing Background - with parallax */}
+      <motion.div style={{ y: backgroundY }} className="absolute inset-0">
+        <ArcReactorBackground />
+      </motion.div>
       
       {/* Floating Gold Particles */}
       <GoldParticles />
@@ -25,32 +45,35 @@ const Hero = () => {
           transition={{ duration: 0.8 }}
           className="text-center max-w-5xl mx-auto"
         >
-          {/* Main heading */}
+          {/* Main heading - with parallax */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
+            style={{ y: titleY, opacity }}
             className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6"
           >
             <span className="text-foreground">JARVIS</span>
             <span className="text-gradient"> 2026</span>
           </motion.h1>
 
-          {/* Tagline */}
+          {/* Tagline - with parallax */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
+            style={{ y: taglineY, opacity }}
             className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto mb-8 font-light tracking-wide"
           >
             The premier technical symposium where <span className="text-primary">machines</span> meet <span className="text-secondary">innovation</span>
           </motion.p>
 
-          {/* Event details */}
+          {/* Event details - with parallax */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.6 }}
+            style={{ y: detailsY, opacity }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10"
           >
             <div className="flex items-center gap-3 px-5 py-3 bg-card/60 border border-primary/30 backdrop-blur-sm">
@@ -69,21 +92,23 @@ const Hero = () => {
             </div>
           </motion.div>
 
-          {/* Countdown Timer */}
+          {/* Countdown Timer - with parallax */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.55, duration: 0.6 }}
+            style={{ y: countdownY, opacity }}
             className="mb-10"
           >
             <CountdownTimer />
           </motion.div>
 
-          {/* CTA Buttons */}
+          {/* CTA Buttons - with parallax */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.6 }}
+            style={{ y: ctaY, opacity }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <Link to="/register">
@@ -101,11 +126,12 @@ const Hero = () => {
             </Link>
           </motion.div>
 
-          {/* Stats - simplified */}
+          {/* Stats - with reverse parallax */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.6 }}
+            style={{ y: statsY }}
             className="grid grid-cols-2 lg:grid-cols-4 gap-6 mt-20 max-w-3xl mx-auto"
           >
             {[
@@ -136,6 +162,7 @@ const Hero = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 0.6 }}
+        style={{ opacity }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
       >
         <div className="flex flex-col items-center gap-2">
