@@ -10,7 +10,7 @@ import ArcReactorSplash from "@/components/ArcReactorSplash";
 import CountdownTimer from "@/components/CountdownTimer";
 import PremiumBackground from "@/components/PremiumBackground";
 import { Button } from "@/components/ui/button";
-import megatronImage from "@/assets/megatron-hero.png";
+
 
 const navButtons = [
   { label: "Events", path: "/events", icon: Calendar, desc: "Epic Competitions" },
@@ -62,84 +62,8 @@ const Index = () => {
             <Navbar />
             
             <main className="relative z-10">
-              {/* Hero Section with Megatron */}
+              {/* Hero Section */}
               <section className="min-h-screen flex flex-col items-center justify-center px-6 pt-20 pb-12 relative">
-                {/* Megatron Hero Image with Cyberpunk Glow */}
-                <div className="absolute inset-0 flex items-start justify-center overflow-hidden">
-                  <motion.div
-                    className="relative w-full max-w-5xl mt-16"
-                    initial={{ opacity: 0, scale: 1.1 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 1.5, ease: "easeOut" }}
-                  >
-                    {/* Cyan glow behind Megatron */}
-                    <motion.div 
-                      className="absolute inset-0 -inset-x-20"
-                      style={{
-                        background: "radial-gradient(ellipse 60% 50% at 50% 30%, hsl(185 100% 55% / 0.25) 0%, transparent 60%)",
-                        filter: "blur(40px)",
-                      }}
-                      animate={{
-                        opacity: [0.4, 0.7, 0.4],
-                        scale: [1, 1.05, 1],
-                      }}
-                      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                    />
-                    
-                    {/* Magenta accent glow */}
-                    <motion.div 
-                      className="absolute inset-0 -inset-x-10"
-                      style={{
-                        background: "radial-gradient(ellipse 40% 40% at 60% 40%, hsl(320 100% 60% / 0.15) 0%, transparent 50%)",
-                        filter: "blur(30px)",
-                      }}
-                      animate={{
-                        opacity: [0.3, 0.5, 0.3],
-                      }}
-                      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                    />
-                    
-                    <img 
-                      src={megatronImage} 
-                      alt="Megatron - JARVIS 2026" 
-                      className="w-full h-auto object-contain relative z-10"
-                      style={{
-                        opacity: 0.85,
-                        maskImage: "linear-gradient(to bottom, black 0%, black 60%, transparent 100%)",
-                        WebkitMaskImage: "linear-gradient(to bottom, black 0%, black 60%, transparent 100%)",
-                        filter: "drop-shadow(0 0 30px hsl(185 100% 55% / 0.3)) drop-shadow(0 0 60px hsl(320 100% 60% / 0.2))",
-                      }}
-                    />
-                    
-                    {/* Neon eye glow effect - Cyan */}
-                    <motion.div 
-                      className="absolute top-[18%] left-[48%] w-10 h-4"
-                      style={{
-                        background: "radial-gradient(ellipse, hsl(185 100% 60% / 1) 0%, hsl(185 100% 55% / 0.5) 40%, transparent 70%)",
-                        filter: "blur(3px)",
-                        boxShadow: "0 0 30px hsl(185 100% 55% / 0.8)",
-                      }}
-                      animate={{
-                        opacity: [0.7, 1, 0.7],
-                        scale: [1, 1.3, 1],
-                      }}
-                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                    />
-                    <motion.div 
-                      className="absolute top-[18%] left-[52%] w-10 h-4"
-                      style={{
-                        background: "radial-gradient(ellipse, hsl(185 100% 60% / 1) 0%, hsl(185 100% 55% / 0.5) 40%, transparent 70%)",
-                        filter: "blur(3px)",
-                        boxShadow: "0 0 30px hsl(185 100% 55% / 0.8)",
-                      }}
-                      animate={{
-                        opacity: [0.7, 1, 0.7],
-                        scale: [1, 1.3, 1],
-                      }}
-                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.1 }}
-                    />
-                  </motion.div>
-                </div>
 
                 <motion.div
                   className="text-center max-w-6xl mx-auto relative z-10"
