@@ -145,12 +145,21 @@ const Hero = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.9 + index * 0.1, duration: 0.5 }}
-                className="p-5 bg-card/40 border border-border/50 backdrop-blur-sm hover:border-primary/40 transition-colors"
+                whileHover={{ 
+                  rotateX: -5, 
+                  rotateY: 5, 
+                  scale: 1.05,
+                  boxShadow: "0 20px 40px -10px hsl(45 100% 50% / 0.3)"
+                }}
+                style={{ transformStyle: "preserve-3d", perspective: 1000 }}
+                className="p-5 bg-card/40 border border-border/50 backdrop-blur-sm hover:border-primary/60 transition-colors cursor-pointer"
               >
-                <div className="text-3xl md:text-4xl font-bold text-gradient mb-1">
-                  {stat.value}
-                </div>
-                <div className="text-[10px] text-muted-foreground tracking-[0.2em] font-mono">{stat.label}</div>
+                <motion.div style={{ transform: "translateZ(20px)" }}>
+                  <div className="text-3xl md:text-4xl font-bold text-gradient mb-1">
+                    {stat.value}
+                  </div>
+                  <div className="text-[10px] text-muted-foreground tracking-[0.2em] font-mono">{stat.label}</div>
+                </motion.div>
               </motion.div>
             ))}
           </motion.div>
