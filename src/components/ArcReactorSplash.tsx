@@ -115,12 +115,13 @@ const ArcReactorSplash = ({ onComplete }: ArcReactorSplashProps) => {
             }}
           />
 
-          {/* Main reactor SVG */}
+          {/* Main reactor SVG - flipped upside down */}
           <svg
             width="340"
             height="340"
             viewBox="0 0 340 340"
             className="relative z-10"
+            style={{ transform: 'rotate(180deg)' }}
           >
             <defs>
               {/* Metallic gradients */}
