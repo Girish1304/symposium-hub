@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Calendar, MapPin, ArrowRight, Zap } from "lucide-react";
+import { Calendar, MapPin, ArrowRight } from "lucide-react";
 import CountdownTimer from "./CountdownTimer";
 import { Link } from "react-router-dom";
 
@@ -21,18 +21,6 @@ const Hero = () => {
           transition={{ duration: 0.8 }}
           className="text-center max-w-5xl mx-auto"
         >
-          {/* Status indicator */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            className="inline-flex items-center gap-3 px-5 py-2 mb-8 border border-primary/30 bg-card/40 backdrop-blur-sm"
-          >
-            <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            <span className="text-primary font-mono text-sm tracking-[0.2em] uppercase">System Initialized</span>
-            <Zap className="w-4 h-4 text-secondary" />
-          </motion.div>
-
           {/* Main heading */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}

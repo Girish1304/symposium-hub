@@ -1,7 +1,7 @@
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Bot, Car, Route, FileText, Presentation, Brain, Swords, Link2, Grid3X3, ChevronDown, Users, Clock, Award } from "lucide-react";
+import { ArrowRight, Bot, Car, Route, FileText, Presentation, Brain, Swords, Link2, Grid3X3, ChevronDown, Users, Clock, Award, IndianRupee } from "lucide-react";
 import { Link } from "react-router-dom";
 
 // Import event images
@@ -25,6 +25,7 @@ const technicalEvents = [
     teamSize: "2-4 members",
     duration: "1 - 1.5 hrs",
     prize: "₹15,000",
+    regFee: "₹450/team",
     rules: [
       "Robot weight must not exceed 8 kg",
       "Maximum dimensions: 50cm x 50cm x 50cm",
@@ -43,6 +44,7 @@ const technicalEvents = [
     teamSize: "1-2 members",
     duration: "1 - 1.5 hrs",
     prize: "₹10,000",
+    regFee: "₹250",
     rules: [
       "Only ground-based RC vehicles allowed",
       "Vehicle must be remote controlled (no autonomous)",
@@ -61,6 +63,7 @@ const technicalEvents = [
     teamSize: "2-3 members",
     duration: "1 - 1.5 hrs",
     prize: "₹12,000",
+    regFee: "₹250",
     rules: [
       "Robot must be fully autonomous",
       "Maximum robot size: 25cm x 25cm x 20cm",
@@ -79,6 +82,7 @@ const technicalEvents = [
     teamSize: "1-2 members",
     duration: "1 - 1.5 hrs",
     prize: "₹8,000",
+    regFee: "₹100",
     rules: [
       "Paper must be original and unpublished",
       "Topics must be technology-related",
@@ -97,6 +101,7 @@ const technicalEvents = [
     teamSize: "2-4 members",
     duration: "1 - 1.5 hrs",
     prize: "₹15,000",
+    regFee: "₹100",
     rules: [
       "Working prototype must be demonstrated",
       "Project documentation required",
@@ -115,6 +120,7 @@ const technicalEvents = [
     teamSize: "2 members",
     duration: "1 - 1.5 hrs",
     prize: "₹6,000",
+    regFee: "Free",
     rules: [
       "Prelims: Written round (30 questions, 20 mins)",
       "Finals: Buzzer round for top 6 teams",
@@ -133,6 +139,7 @@ const technicalEvents = [
     teamSize: "2-3 members",
     duration: "1 - 1.5 hrs",
     prize: "₹10,000",
+    regFee: "₹50",
     rules: [
       "Robot weight limit: 5 kg",
       "Must use provided rope attachment point",
@@ -151,6 +158,7 @@ const technicalEvents = [
     teamSize: "2 members",
     duration: "1 - 1.5 hrs",
     prize: "₹5,000",
+    regFee: "Free",
     rules: [
       "Written puzzle-based competition",
       "Connect related technical concepts",
@@ -169,6 +177,7 @@ const technicalEvents = [
     teamSize: "1-2 members",
     duration: "1 - 1.5 hrs",
     prize: "₹8,000",
+    regFee: "Free",
     rules: [
       "Can use simulation software or physical robot",
       "Maze dimensions will be revealed on spot",
@@ -267,8 +276,10 @@ const TechnicalEvents = () => {
                               {event.teamSize}
                             </span>
                             <span className="flex items-center gap-1.5">
-                              <Clock className="w-3.5 h-3.5 text-primary/70" />
-                              {event.duration}
+                              <IndianRupee className="w-3.5 h-3.5 text-primary/70" />
+                              <span className={event.regFee === "Free" ? "text-green-400 font-semibold" : ""}>
+                                {event.regFee}
+                              </span>
                             </span>
                             <span className="flex items-center gap-1.5 text-secondary font-semibold">
                               <Award className="w-3.5 h-3.5" />

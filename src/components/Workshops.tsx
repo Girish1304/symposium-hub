@@ -1,7 +1,7 @@
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Cpu, Factory, Code, Car, Bot, BarChart3, ChevronDown, Users, Clock, GraduationCap, Wrench } from "lucide-react";
+import { ArrowRight, Cpu, Factory, Code, Car, Bot, BarChart3, ChevronDown, Users, Clock, Wrench, IndianRupee } from "lucide-react";
 import { Link } from "react-router-dom";
 
 // Import workshop images
@@ -21,7 +21,7 @@ const workshops = [
     image: iotImg,
     duration: "1 - 1.5 hrs",
     capacity: "30 participants",
-    instructor: "Industry Expert",
+    price: "₹150",
     topics: [
       "Introduction to IoT architecture",
       "Sensor integration and data collection",
@@ -39,7 +39,7 @@ const workshops = [
     image: industrialAutomationImg,
     duration: "1 - 1.5 hrs",
     capacity: "25 participants",
-    instructor: "Automation Specialist",
+    price: "₹150",
     topics: [
       "Introduction to industrial automation",
       "PLC basics and ladder logic programming",
@@ -57,7 +57,7 @@ const workshops = [
     image: ros2Img,
     duration: "1 - 1.5 hrs",
     capacity: "20 participants",
-    instructor: "Robotics Engineer",
+    price: "₹150",
     topics: [
       "ROS2 architecture and concepts",
       "Setting up ROS2 environment",
@@ -75,7 +75,7 @@ const workshops = [
     image: bajaImg,
     duration: "1 - 1.5 hrs",
     capacity: "35 participants",
-    instructor: "BAJA Team Lead",
+    price: "₹150",
     topics: [
       "Introduction to BAJA SAE competition",
       "Vehicle design fundamentals",
@@ -93,7 +93,7 @@ const workshops = [
     image: kukaImg,
     duration: "1 - 1.5 hrs",
     capacity: "20 participants",
-    instructor: "KUKA Certified Trainer",
+    price: "₹150",
     topics: [
       "Introduction to industrial robotics",
       "KUKA robot specifications and capabilities",
@@ -111,7 +111,7 @@ const workshops = [
     image: sapImg,
     duration: "1 - 1.5 hrs",
     capacity: "40 participants",
-    instructor: "SAP Consultant",
+    price: "₹150",
     topics: [
       "Introduction to ERP systems",
       "SAP modules overview",
@@ -202,7 +202,7 @@ const Workshops = () => {
                     {workshop.description}
                   </p>
                   
-                  {/* Workshop meta info - simplified */}
+                  {/* Workshop meta info */}
                   <div className="flex flex-wrap gap-2 text-xs mb-4">
                     <div className="flex items-center gap-1.5 text-muted-foreground px-2.5 py-1.5 bg-muted/30 border border-border/50">
                       <Clock className="w-3 h-3 text-secondary" />
@@ -211,6 +211,10 @@ const Workshops = () => {
                     <div className="flex items-center gap-1.5 text-muted-foreground px-2.5 py-1.5 bg-muted/30 border border-border/50">
                       <Users className="w-3 h-3 text-secondary" />
                       <span className="font-mono">{workshop.capacity}</span>
+                    </div>
+                    <div className="flex items-center gap-1.5 text-secondary font-semibold px-2.5 py-1.5 bg-secondary/10 border border-secondary/30">
+                      <IndianRupee className="w-3 h-3" />
+                      <span className="font-mono">{workshop.price}</span>
                     </div>
                   </div>
 
