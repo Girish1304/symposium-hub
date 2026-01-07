@@ -10,6 +10,7 @@ import ArcReactorSplash from "@/components/ArcReactorSplash";
 import CountdownTimer from "@/components/CountdownTimer";
 import PremiumBackground from "@/components/PremiumBackground";
 import { Button } from "@/components/ui/button";
+import megatronImage from "@/assets/megatron-hero.png";
 
 const navButtons = [
   { label: "Events", path: "/events", icon: Calendar, desc: "Epic Competitions" },
@@ -61,15 +62,55 @@ const Index = () => {
             <Navbar />
             
             <main className="relative z-10">
-              {/* Hero Section */}
-              <section className="min-h-screen flex flex-col items-center justify-center px-6 pt-20 pb-12">
+              {/* Hero Section with Megatron */}
+              <section className="min-h-screen flex flex-col items-center justify-center px-6 pt-20 pb-12 relative">
+                {/* Megatron Background */}
+                <div className="absolute inset-0 flex items-start justify-center overflow-hidden">
+                  <motion.div
+                    className="relative w-full max-w-6xl"
+                    initial={{ opacity: 0, scale: 1.1 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 1.5, ease: "easeOut" }}
+                  >
+                    <img 
+                      src={megatronImage} 
+                      alt="Megatron" 
+                      className="w-full h-auto object-contain opacity-60"
+                      style={{
+                        maskImage: "linear-gradient(to bottom, black 0%, black 50%, transparent 100%)",
+                        WebkitMaskImage: "linear-gradient(to bottom, black 0%, black 50%, transparent 100%)",
+                      }}
+                    />
+                    {/* Glow overlay on Megatron */}
+                    <div 
+                      className="absolute inset-0"
+                      style={{
+                        background: "radial-gradient(ellipse 40% 30% at 50% 25%, hsl(280 100% 50% / 0.2) 0%, transparent 70%)"
+                      }}
+                    />
+                    {/* Red eye glow effect */}
+                    <motion.div 
+                      className="absolute top-[18%] left-1/2 -translate-x-1/2 w-16 h-6"
+                      style={{
+                        background: "radial-gradient(ellipse, hsl(0 100% 55% / 0.8) 0%, transparent 70%)",
+                        filter: "blur(4px)"
+                      }}
+                      animate={{
+                        opacity: [0.5, 1, 0.5],
+                        scale: [1, 1.2, 1],
+                      }}
+                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                    />
+                  </motion.div>
+                </div>
+
                 <motion.div
-                  className="text-center max-w-6xl mx-auto"
+                  className="text-center max-w-6xl mx-auto relative z-10"
                   initial={{ opacity: 0, y: 40 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, ease: "easeOut" }}
                 >
-                  {/* Glitch Badge */}
+                  {/* Badge */}
                   <motion.div 
                     className="inline-flex items-center gap-3 px-8 py-4 mb-10 relative"
                     initial={{ opacity: 0, scale: 0.9 }}
@@ -78,11 +119,10 @@ const Index = () => {
                   >
                     <div className="absolute inset-0 bg-gradient-to-r from-primary/30 via-secondary/20 to-primary/30 rounded-full blur-2xl" />
                     <div className="relative flex items-center gap-4 px-8 py-3 bg-card/60 border border-primary/50 rounded-full backdrop-blur-xl overflow-hidden">
-                      {/* Animated border */}
                       <motion.div 
                         className="absolute inset-0 rounded-full"
                         style={{
-                          background: "linear-gradient(90deg, transparent, hsl(185 100% 55% / 0.3), transparent)",
+                          background: "linear-gradient(90deg, transparent, hsl(280 100% 65% / 0.3), transparent)",
                         }}
                         animate={{ x: ["-100%", "100%"] }}
                         transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
@@ -95,17 +135,16 @@ const Index = () => {
                     </div>
                   </motion.div>
 
-                  {/* Main Title with Neon Effect */}
+                  {/* Main Title */}
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3, duration: 0.6 }}
                     className="relative"
                   >
-                    <h1 className="text-7xl sm:text-8xl md:text-9xl lg:text-[12rem] font-display font-bold tracking-tight mb-2 leading-none relative">
+                    <h1 className="text-7xl sm:text-8xl md:text-9xl lg:text-[11rem] font-display font-bold tracking-wider mb-2 leading-none relative">
                       <span className="relative inline-block">
-                        <span className="text-gradient drop-shadow-[0_0_60px_hsl(185,100%,55%,0.5)]">JARVIS</span>
-                        {/* Glow layers */}
+                        <span className="text-gradient drop-shadow-[0_0_60px_hsl(280,100%,60%,0.6)]">JARVIS</span>
                         <motion.span 
                           className="absolute inset-0 text-gradient blur-xl opacity-50"
                           animate={{ opacity: [0.3, 0.6, 0.3] }}
@@ -116,7 +155,7 @@ const Index = () => {
                       </span>
                     </h1>
                     <motion.h2 
-                      className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-display text-foreground/90 tracking-[0.3em] mb-8"
+                      className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-display text-foreground/90 tracking-[0.4em] mb-8"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ delay: 0.5 }}
@@ -127,7 +166,7 @@ const Index = () => {
 
                   {/* Tagline */}
                   <motion.p 
-                    className="text-xl sm:text-2xl md:text-3xl text-muted-foreground max-w-3xl mx-auto mb-14 font-body leading-relaxed"
+                    className="text-xl sm:text-2xl md:text-3xl text-muted-foreground max-w-3xl mx-auto mb-14 font-body leading-relaxed font-medium"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.6 }}
@@ -148,7 +187,7 @@ const Index = () => {
                     <CountdownTimer />
                   </motion.div>
 
-                  {/* CTA Button with Neon Effect */}
+                  {/* CTA Button */}
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -160,19 +199,16 @@ const Index = () => {
                         size="lg" 
                         className="group relative px-12 py-8 text-xl font-display tracking-wider overflow-hidden bg-transparent border-2 border-primary/80 hover:bg-primary/10 transition-all duration-300"
                       >
-                        {/* Animated background */}
                         <motion.div 
                           className="absolute inset-0 bg-gradient-to-r from-primary/20 via-secondary/20 to-primary/20"
                           animate={{ x: ["-100%", "100%"] }}
                           transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
                         />
-                        {/* Glow effect */}
                         <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-primary/20 blur-xl" />
                         <span className="relative z-10 flex items-center gap-4 text-primary group-hover:text-foreground transition-colors">
                           REGISTER NOW
                           <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-2" />
                         </span>
-                        {/* Corner brackets */}
                         <div className="absolute top-2 left-2 w-4 h-4 border-l-2 border-t-2 border-primary" />
                         <div className="absolute top-2 right-2 w-4 h-4 border-r-2 border-t-2 border-primary" />
                         <div className="absolute bottom-2 left-2 w-4 h-4 border-l-2 border-b-2 border-secondary" />
@@ -181,7 +217,7 @@ const Index = () => {
                     </Link>
                   </motion.div>
 
-                  {/* Stats Grid - Cyberpunk Style */}
+                  {/* Stats Grid */}
                   <motion.div
                     className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 max-w-5xl mx-auto"
                     initial={{ opacity: 0 }}
@@ -198,7 +234,6 @@ const Index = () => {
                         whileHover={{ y: -8, scale: 1.02 }}
                       >
                         <div className="relative p-8 bg-card/40 border border-border/50 backdrop-blur-xl overflow-hidden transition-all duration-500 group-hover:border-primary/70 group-hover:bg-card/60">
-                          {/* Animated top border */}
                           <motion.div 
                             className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary to-transparent"
                             initial={{ scaleX: 0 }}
@@ -206,13 +241,11 @@ const Index = () => {
                             transition={{ delay: 1.2 + index * 0.1, duration: 0.8 }}
                           />
                           
-                          {/* Corner accents */}
                           <div className="absolute top-0 left-0 w-4 h-4 border-l-2 border-t-2 border-primary/70 transition-colors group-hover:border-primary" />
                           <div className="absolute top-0 right-0 w-4 h-4 border-r-2 border-t-2 border-primary/70 transition-colors group-hover:border-primary" />
                           <div className="absolute bottom-0 left-0 w-4 h-4 border-l-2 border-b-2 border-secondary/50 transition-colors group-hover:border-secondary" />
                           <div className="absolute bottom-0 right-0 w-4 h-4 border-r-2 border-b-2 border-secondary/50 transition-colors group-hover:border-secondary" />
                           
-                          {/* Hover glow */}
                           <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity bg-gradient-to-t from-primary/10 via-transparent to-secondary/5" />
                           
                           <div className="relative flex flex-col items-center">
@@ -259,7 +292,6 @@ const Index = () => {
                       >
                         <Link to={btn.path} className="block group">
                           <div className="relative p-10 bg-card/30 border border-border/30 backdrop-blur-lg overflow-hidden transition-all duration-500 group-hover:border-primary/60 group-hover:bg-card/50">
-                            {/* Animated border glow */}
                             <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                               <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
                               <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-secondary to-transparent" />
@@ -267,7 +299,6 @@ const Index = () => {
                               <div className="absolute inset-y-0 right-0 w-px bg-gradient-to-b from-primary via-transparent to-secondary" />
                             </div>
 
-                            {/* Scan line effect on hover */}
                             <motion.div
                               className="absolute inset-0 opacity-0 group-hover:opacity-100"
                               initial={false}
@@ -279,22 +310,19 @@ const Index = () => {
                               />
                             </motion.div>
                             
-                            {/* Icon */}
                             <div className="mb-8 relative">
-                              <div className="w-16 h-16 flex items-center justify-center bg-gradient-to-br from-primary/20 to-secondary/10 border border-primary/40 transition-all duration-300 group-hover:border-primary group-hover:scale-110 group-hover:shadow-[0_0_30px_hsl(185,100%,55%,0.3)]">
+                              <div className="w-16 h-16 flex items-center justify-center bg-gradient-to-br from-primary/20 to-secondary/10 border border-primary/40 transition-all duration-300 group-hover:border-primary group-hover:scale-110 group-hover:shadow-[0_0_30px_hsl(280,100%,65%,0.3)]">
                                 <btn.icon className="w-8 h-8 text-primary" />
                               </div>
                             </div>
                             
-                            {/* Content */}
-                            <h4 className="font-display text-2xl text-foreground mb-3 group-hover:text-gradient transition-all">
+                            <h4 className="font-display text-2xl text-foreground mb-3 group-hover:text-gradient transition-all tracking-wide">
                               {btn.label}
                             </h4>
-                            <p className="text-sm text-muted-foreground font-body">
+                            <p className="text-sm text-muted-foreground font-body font-medium">
                               {btn.desc}
                             </p>
                             
-                            {/* Arrow indicator */}
                             <div className="mt-8 flex items-center gap-3 text-primary/50 group-hover:text-primary transition-colors">
                               <span className="text-xs font-mono uppercase tracking-widest">Explore</span>
                               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-3" />
