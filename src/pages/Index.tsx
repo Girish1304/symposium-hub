@@ -8,7 +8,7 @@ import Footer from "@/components/Footer";
 import ScanLineOverlay from "@/components/ScanLineOverlay";
 import ArcReactorSplash from "@/components/ArcReactorSplash";
 import CountdownTimer from "@/components/CountdownTimer";
-import ArcReactorBackground from "@/components/ArcReactorBackground";
+import PremiumBackground from "@/components/PremiumBackground";
 import { Button } from "@/components/ui/button";
 
 const navButtons = [
@@ -49,7 +49,7 @@ const Index = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <ArcReactorBackground />
+            <PremiumBackground />
             <ScanLineOverlay />
             <Navbar />
             <main className="min-h-screen flex flex-col items-center justify-center px-6 py-20">
