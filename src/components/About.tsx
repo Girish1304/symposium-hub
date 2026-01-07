@@ -58,7 +58,7 @@ const About = () => {
             <span className="text-primary font-mono text-sm uppercase tracking-[0.2em]">About JARVIS</span>
           </motion.div>
           
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-4 mb-6 tracking-tight font-[Orbitron]">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-4 mb-6 tracking-tight">
             THE ULTIMATE <span className="text-gradient">TECH EXPERIENCE</span>
           </h2>
           <p className="text-lg text-muted-foreground tracking-wide leading-relaxed">
@@ -77,7 +77,7 @@ const About = () => {
                   <feature.icon className={`w-6 h-6 ${feature.variant === 'primary' ? 'text-primary' : 'text-secondary'}`} />
                 </div>
                 
-                <h3 className="text-xl font-bold mb-3 tracking-wide font-[Orbitron]">
+                <h3 className="text-xl font-bold mb-3 tracking-wide">
                   {feature.title}
                 </h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">{feature.description}</p>

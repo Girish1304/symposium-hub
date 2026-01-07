@@ -3,16 +3,16 @@ import { Button } from "@/components/ui/button";
 import { Calendar, MapPin, ArrowRight } from "lucide-react";
 import CountdownTimer from "./CountdownTimer";
 import { Link } from "react-router-dom";
+import ArcReactorBackground from "./ArcReactorBackground";
 
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero">
-      {/* Simplified background */}
-      <div className="absolute inset-0 bg-hex-pattern opacity-40" />
+      {/* Arc Reactor Breathing Background */}
+      <ArcReactorBackground />
       
-      {/* Subtle gradient orbs */}
-      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px]" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/8 rounded-full blur-[80px]" />
+      {/* Subtle grid pattern */}
+      <div className="absolute inset-0 bg-grid-pattern opacity-30" />
 
       <div className="container relative z-10 px-6">
         <motion.div
@@ -26,7 +26,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-6 font-[Orbitron]"
+            className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6"
           >
             <span className="text-foreground">JARVIS</span>
             <span className="text-gradient"> 2026</span>

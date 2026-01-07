@@ -155,7 +155,7 @@ const Workshops = () => {
             <Wrench className="w-4 h-4 text-secondary/60" />
           </motion.div>
           
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-4 mb-6 tracking-tight font-[Orbitron]">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-4 mb-6 tracking-tight">
             LEARN & <span className="text-gold">MASTER</span>
           </h2>
           <p className="text-lg text-muted-foreground tracking-wide">
@@ -194,7 +194,7 @@ const Workshops = () => {
                     <div className="w-10 h-10 border border-secondary/40 flex items-center justify-center bg-secondary/5 group-hover:bg-secondary/10 transition-colors">
                       <workshop.icon className="w-5 h-5 text-secondary" />
                     </div>
-                    <h3 className="text-lg md:text-xl font-bold tracking-wide group-hover:text-secondary transition-colors font-[Orbitron]">
+                    <h3 className="text-lg md:text-xl font-bold tracking-wide group-hover:text-secondary transition-colors">
                       {workshop.name}
                     </h3>
                   </div>

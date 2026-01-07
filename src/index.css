@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
 html {
   scroll-behavior: smooth;
@@ -10,63 +10,63 @@ html {
 
 @layer base {
   :root {
-    /* Purple HUD Theme */
-    --background: 270 30% 3%;
-    --foreground: 270 20% 92%;
+    /* Black & Gold Theme - Inspired by GoatFundedTrader */
+    --background: 0 0% 2%;
+    --foreground: 0 0% 98%;
 
-    --card: 270 25% 6%;
-    --card-foreground: 270 20% 95%;
+    --card: 0 0% 5%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 270 25% 6%;
-    --popover-foreground: 270 20% 95%;
+    --popover: 0 0% 5%;
+    --popover-foreground: 0 0% 98%;
 
-    /* Primary Purple */
-    --primary: 270 100% 65%;
-    --primary-foreground: 270 30% 3%;
+    /* Primary Gold */
+    --primary: 45 100% 50%;
+    --primary-foreground: 0 0% 2%;
 
-    /* Pink/Magenta Accent */
-    --secondary: 300 100% 60%;
-    --secondary-foreground: 270 30% 3%;
+    /* Secondary Gold (lighter) */
+    --secondary: 40 90% 60%;
+    --secondary-foreground: 0 0% 2%;
 
-    /* Dark Purple */
-    --muted: 270 20% 12%;
-    --muted-foreground: 270 15% 50%;
+    /* Muted Dark */
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 55%;
 
-    /* Danger/Warning Red */
-    --accent: 0 90% 50%;
-    --accent-foreground: 270 20% 98%;
+    /* Accent Gold */
+    --accent: 45 100% 50%;
+    --accent-foreground: 0 0% 2%;
 
-    --destructive: 0 90% 50%;
-    --destructive-foreground: 270 20% 98%;
+    --destructive: 0 85% 55%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 270 20% 15%;
-    --input: 270 20% 15%;
-    --ring: 270 100% 65%;
+    --border: 0 0% 12%;
+    --input: 0 0% 12%;
+    --ring: 45 100% 50%;
 
-    --radius: 0.125rem;
+    --radius: 0.25rem;
 
-    /* Purple HUD gradients */
-    --gradient-hero: linear-gradient(180deg, hsl(270 30% 5%) 0%, hsl(270 30% 3%) 50%, hsl(270 100% 8%) 100%);
-    --gradient-card: linear-gradient(135deg, hsl(270 25% 8%) 0%, hsl(270 25% 4%) 100%);
-    --gradient-text: linear-gradient(90deg, hsl(270 100% 65%) 0%, hsl(300 100% 70%) 100%);
-    --gradient-gold: linear-gradient(135deg, hsl(300 100% 60%) 0%, hsl(280 100% 50%) 50%, hsl(300 100% 55%) 100%);
-    --gradient-hud: linear-gradient(180deg, hsl(270 100% 65% / 0.1) 0%, transparent 50%, hsl(270 100% 65% / 0.05) 100%);
-    --glow-primary: 0 0 30px hsl(270 100% 65% / 0.5), 0 0 60px hsl(270 100% 65% / 0.2);
-    --glow-accent: 0 0 40px hsl(0 90% 50% / 0.4);
-    --glow-gold: 0 0 30px hsl(300 100% 60% / 0.4);
+    /* Gold gradients */
+    --gradient-hero: linear-gradient(180deg, hsl(0 0% 0%) 0%, hsl(0 0% 2%) 50%, hsl(0 0% 3%) 100%);
+    --gradient-card: linear-gradient(135deg, hsl(0 0% 6%) 0%, hsl(0 0% 3%) 100%);
+    --gradient-text: linear-gradient(90deg, hsl(45 100% 50%) 0%, hsl(40 100% 65%) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(45 100% 50%) 0%, hsl(35 100% 45%) 50%, hsl(50 100% 55%) 100%);
+    --gradient-hud: linear-gradient(180deg, hsl(45 100% 50% / 0.08) 0%, transparent 50%, hsl(45 100% 50% / 0.03) 100%);
+    --glow-primary: 0 0 30px hsl(45 100% 50% / 0.4), 0 0 60px hsl(45 100% 50% / 0.15);
+    --glow-accent: 0 0 40px hsl(45 100% 50% / 0.3);
+    --glow-gold: 0 0 30px hsl(45 100% 50% / 0.4);
 
-    --font-display: 'Orbitron', sans-serif;
-    --font-body: 'Rajdhani', sans-serif;
-    --font-mono: 'Share Tech Mono', monospace;
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'Space Grotesk', monospace;
 
-    --sidebar-background: 270 25% 6%;
-    --sidebar-foreground: 270 20% 95%;
-    --sidebar-primary: 270 100% 65%;
-    --sidebar-primary-foreground: 270 30% 3%;
-    --sidebar-accent: 270 20% 12%;
-    --sidebar-accent-foreground: 270 20% 95%;
-    --sidebar-border: 270 20% 15%;
-    --sidebar-ring: 270 100% 65%;
+    --sidebar-background: 0 0% 5%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 45 100% 50%;
+    --sidebar-primary-foreground: 0 0% 2%;
+    --sidebar-accent: 0 0% 10%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 0 0% 12%;
+    --sidebar-ring: 45 100% 50%;
   }
 }
 
@@ -122,21 +122,21 @@ html {
 
   .bg-grid-pattern {
     background-image: 
-      linear-gradient(hsl(var(--primary) / 0.08) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(var(--primary) / 0.08) 1px, transparent 1px);
-    background-size: 50px 50px;
+      linear-gradient(hsl(var(--primary) / 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--primary) / 0.05) 1px, transparent 1px);
+    background-size: 60px 60px;
   }
 
   .bg-hex-pattern {
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l25.98 15v30L30 60 4.02 45V15z' fill='none' stroke='%238b5cf6' stroke-opacity='0.06' stroke-width='1'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l25.98 15v30L30 60 4.02 45V15z' fill='none' stroke='%23d4a00a' stroke-opacity='0.04' stroke-width='1'/%3E%3C/svg%3E");
     background-size: 60px 60px;
   }
 
   .bg-circuit-pattern {
     background-image: 
-      linear-gradient(90deg, hsl(var(--primary) / 0.06) 1px, transparent 1px),
-      linear-gradient(hsl(var(--primary) / 0.06) 1px, transparent 1px),
-      radial-gradient(circle at 50% 50%, hsl(var(--primary) / 0.03) 1px, transparent 1px);
+      linear-gradient(90deg, hsl(var(--primary) / 0.04) 1px, transparent 1px),
+      linear-gradient(hsl(var(--primary) / 0.04) 1px, transparent 1px),
+      radial-gradient(circle at 50% 50%, hsl(var(--primary) / 0.02) 1px, transparent 1px);
     background-size: 60px 60px, 60px 60px, 30px 30px;
   }
 

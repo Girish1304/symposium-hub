@@ -220,7 +220,7 @@ const TechnicalEvents = () => {
             <span className="text-primary font-mono text-sm uppercase tracking-[0.2em]">Technical Events</span>
           </motion.div>
           
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-4 mb-6 tracking-tight font-[Orbitron]">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-4 mb-6 tracking-tight">
             COMPETE & <span className="text-gradient">CONQUER</span>
           </h2>
           <p className="text-lg text-muted-foreground">
@@ -261,7 +261,7 @@ const TechnicalEvents = () => {
                         <div className="flex-1">
                           <div className="flex items-center gap-3 mb-3">
                             <event.icon className="w-5 h-5 text-primary" />
-                            <h3 className="text-xl font-bold tracking-wide group-hover:text-primary transition-colors font-[Orbitron]">
+                            <h3 className="text-xl font-bold tracking-wide group-hover:text-primary transition-colors">
                               {event.name}
                             </h3>
                           </div>

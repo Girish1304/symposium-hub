@@ -70,7 +70,7 @@ const ArcReactorSplash = ({ onComplete }: ArcReactorSplashProps) => {
         <div 
           className="absolute inset-0"
           style={{
-            background: `radial-gradient(ellipse at center, rgba(80, 40, 120, ${0.1 + clickCount * 0.05}) 0%, transparent 60%)`
+            background: `radial-gradient(ellipse at center, rgba(212, 160, 10, ${0.08 + clickCount * 0.04}) 0%, transparent 60%)`
           }}
         />
 
@@ -95,7 +95,7 @@ const ArcReactorSplash = ({ onComplete }: ArcReactorSplashProps) => {
               left: '50%',
               top: '50%',
               transform: 'translate(-50%, -50%)',
-              background: `radial-gradient(circle, rgba(180, 120, 255, ${glowIntensity}) 0%, rgba(140, 80, 200, ${glowIntensity * 0.5}) 40%, transparent 70%)`
+              background: `radial-gradient(circle, rgba(255, 200, 50, ${glowIntensity}) 0%, rgba(212, 160, 10, ${glowIntensity * 0.5}) 40%, transparent 70%)`
             }}
           />
           
@@ -110,8 +110,8 @@ const ArcReactorSplash = ({ onComplete }: ArcReactorSplashProps) => {
             }}
             animate={{
               boxShadow: `
-                0 0 ${40 + clickCount * 30}px ${20 + clickCount * 15}px rgba(160, 100, 255, ${glowIntensity}),
-                0 0 ${80 + clickCount * 40}px ${40 + clickCount * 20}px rgba(120, 80, 200, ${glowIntensity * 0.5})
+                0 0 ${40 + clickCount * 30}px ${20 + clickCount * 15}px rgba(255, 200, 50, ${glowIntensity}),
+                0 0 ${80 + clickCount * 40}px ${40 + clickCount * 20}px rgba(212, 160, 10, ${glowIntensity * 0.5})
               `
             }}
           />
@@ -143,15 +143,15 @@ const ArcReactorSplash = ({ onComplete }: ArcReactorSplashProps) => {
 
               <radialGradient id="coreGlow" cx="50%" cy="50%" r="50%">
                 <stop offset="0%" stopColor="rgba(255, 255, 255, 1)" />
-                <stop offset="20%" stopColor="rgba(230, 200, 255, 0.95)" />
-                <stop offset="50%" stopColor="rgba(180, 120, 255, 0.85)" />
-                <stop offset="80%" stopColor="rgba(140, 80, 200, 0.7)" />
-                <stop offset="100%" stopColor="rgba(100, 60, 160, 0.5)" />
+                <stop offset="20%" stopColor="rgba(255, 230, 150, 0.95)" />
+                <stop offset="50%" stopColor="rgba(255, 200, 50, 0.85)" />
+                <stop offset="80%" stopColor="rgba(212, 160, 10, 0.7)" />
+                <stop offset="100%" stopColor="rgba(180, 130, 10, 0.5)" />
               </radialGradient>
 
               <radialGradient id="segmentGlow" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stopColor="rgba(220, 180, 255, 0.9)" />
-                <stop offset="100%" stopColor="rgba(160, 100, 240, 0.6)" />
+                <stop offset="0%" stopColor="rgba(255, 220, 100, 0.9)" />
+                <stop offset="100%" stopColor="rgba(255, 180, 50, 0.6)" />
               </radialGradient>
 
               {/* Filters */}
@@ -248,7 +248,7 @@ const ArcReactorSplash = ({ onComplete }: ArcReactorSplashProps) => {
               cy="170"
               r="115"
               fill="none"
-              stroke="rgba(160, 100, 255, 0.5)"
+              stroke="rgba(255, 200, 50, 0.5)"
               strokeWidth="3"
               filter="url(#glow)"
               animate={{ opacity: coreOpacity + 0.2 }}
@@ -321,7 +321,7 @@ const ArcReactorSplash = ({ onComplete }: ArcReactorSplashProps) => {
               <motion.path
                 d="M 170 75 L 265 220 L 75 220 Z"
                 fill="none"
-                stroke="rgba(160, 100, 220, 0.6)"
+                stroke="rgba(255, 200, 80, 0.6)"
                 strokeWidth="2"
                 filter="url(#glow)"
                 animate={{ opacity: coreOpacity }}
@@ -330,9 +330,9 @@ const ArcReactorSplash = ({ onComplete }: ArcReactorSplashProps) => {
               {/* Triangle fill - glowing */}
               <motion.path
                 d="M 170 80 L 260 215 L 80 215 Z"
-                fill={`rgba(200, 160, 255, ${coreOpacity * 0.8})`}
+                fill={`rgba(255, 210, 100, ${coreOpacity * 0.8})`}
                 animate={{ 
-                  fill: `rgba(200, 160, 255, ${coreOpacity * 0.8})`,
+                  fill: `rgba(255, 210, 100, ${coreOpacity * 0.8})`,
                 }}
               />
 
@@ -360,7 +360,7 @@ const ArcReactorSplash = ({ onComplete }: ArcReactorSplashProps) => {
                 cx="170"
                 cy="175"
                 r="15"
-                fill="rgba(240, 220, 255, 0.95)"
+                fill="rgba(255, 240, 180, 0.95)"
                 filter="url(#glow)"
                 animate={{ 
                   opacity: coreOpacity + 0.4,
@@ -381,7 +381,7 @@ const ArcReactorSplash = ({ onComplete }: ArcReactorSplashProps) => {
               cx="170"
               cy="170"
               r="105"
-              fill="rgba(200, 150, 255, 0.1)"
+              fill="rgba(255, 200, 100, 0.1)"
               animate={{
                 opacity: [0.05, 0.15, 0.05],
                 r: [103, 107, 103]
@@ -404,7 +404,7 @@ const ArcReactorSplash = ({ onComplete }: ArcReactorSplashProps) => {
                 cy="70"
                 rx="8"
                 ry="3"
-                fill={`rgba(220, 200, 255, ${0.3 + clickCount * 0.1})`}
+                fill={`rgba(255, 230, 150, ${0.3 + clickCount * 0.1})`}
                 filter="url(#glow)"
               />
             </motion.g>
@@ -420,8 +420,8 @@ const ArcReactorSplash = ({ onComplete }: ArcReactorSplashProps) => {
                   style={{
                     left: '50%',
                     top: '50%',
-                    background: 'rgba(200, 150, 255, 0.8)',
-                    boxShadow: '0 0 6px 2px rgba(160, 100, 255, 0.6)'
+                    background: 'rgba(255, 200, 100, 0.8)',
+                    boxShadow: '0 0 6px 2px rgba(255, 180, 50, 0.6)'
                   }}
                   animate={{
                     x: [0, Math.cos(i * 30 * Math.PI / 180) * (120 + clickCount * 20)],
@@ -455,8 +455,8 @@ const ArcReactorSplash = ({ onComplete }: ArcReactorSplashProps) => {
               <p 
                 className="text-lg md:text-xl font-mono tracking-wider italic"
                 style={{ 
-                  color: 'rgba(200, 150, 255, 0.9)',
-                  textShadow: '0 0 20px rgba(160, 100, 255, 0.5)'
+                  color: 'rgba(255, 200, 100, 0.9)',
+                  textShadow: '0 0 20px rgba(255, 180, 50, 0.5)'
                 }}
               >
                 "{currentLine}"
@@ -475,8 +475,8 @@ const ArcReactorSplash = ({ onComplete }: ArcReactorSplashProps) => {
           <motion.h2
             className="text-3xl md:text-4xl font-bold tracking-[0.3em] mb-4 font-mono"
             style={{ 
-              color: `rgba(${180 + clickCount * 15}, ${120 + clickCount * 20}, 255, ${0.7 + clickCount * 0.06})`,
-              textShadow: `0 0 ${15 + clickCount * 8}px rgba(160, 100, 255, 0.7), 0 0 ${30 + clickCount * 10}px rgba(120, 80, 200, 0.4)`
+              color: `rgba(${255}, ${200 + clickCount * 15}, ${50 + clickCount * 20}, ${0.7 + clickCount * 0.06})`,
+              textShadow: `0 0 ${15 + clickCount * 8}px rgba(255, 180, 50, 0.7), 0 0 ${30 + clickCount * 10}px rgba(212, 160, 10, 0.4)`
             }}
           >
             {isBooting ? "ONLINE" : "J.A.R.V.I.S"}
@@ -485,8 +485,8 @@ const ArcReactorSplash = ({ onComplete }: ArcReactorSplashProps) => {
           <motion.p
             className="text-lg md:text-xl tracking-[0.15em] uppercase font-mono font-bold"
             style={{ 
-              color: 'rgba(200, 150, 255, 0.95)',
-              textShadow: '0 0 20px rgba(160, 100, 255, 0.6), 0 0 40px rgba(120, 80, 200, 0.4)'
+              color: 'rgba(255, 200, 100, 0.95)',
+              textShadow: '0 0 20px rgba(255, 180, 50, 0.6), 0 0 40px rgba(212, 160, 10, 0.4)'
             }}
             animate={{
               opacity: [0.7, 1, 0.7],
@@ -501,7 +501,7 @@ const ArcReactorSplash = ({ onComplete }: ArcReactorSplashProps) => {
 
           {/* Power indicator bar */}
           <div className="mt-8 w-72 mx-auto">
-            <div className="flex justify-between text-xs text-purple-400/50 mb-1 font-mono tracking-wider">
+            <div className="flex justify-between text-xs text-amber-400/50 mb-1 font-mono tracking-wider">
               <span>POWER</span>
               <span>{Math.round(powerLevel)}%</span>
             </div>
@@ -509,8 +509,8 @@ const ArcReactorSplash = ({ onComplete }: ArcReactorSplashProps) => {
               <motion.div
                 className="h-full rounded"
                 style={{
-                  background: 'linear-gradient(90deg, rgba(120, 80, 200, 0.8), rgba(180, 120, 255, 0.9), rgba(120, 80, 200, 0.8))',
-                  boxShadow: 'inset 0 0 10px rgba(200, 150, 255, 0.5), 0 0 15px rgba(160, 100, 255, 0.6)'
+                  background: 'linear-gradient(90deg, rgba(212, 160, 10, 0.8), rgba(255, 200, 50, 0.9), rgba(212, 160, 10, 0.8))',
+                  boxShadow: 'inset 0 0 10px rgba(255, 200, 100, 0.5), 0 0 15px rgba(255, 180, 50, 0.6)'
                 }}
                 initial={{ width: 0 }}
                 animate={{ width: `${powerLevel}%` }}
@@ -521,13 +521,13 @@ const ArcReactorSplash = ({ onComplete }: ArcReactorSplashProps) => {
         </motion.div>
 
         {/* Corner HUD elements */}
-        <div className="absolute top-6 left-6 text-purple-400/25 text-xs font-mono tracking-widest">
+        <div className="absolute top-6 left-6 text-amber-400/25 text-xs font-mono tracking-widest">
           JARVIS 2026
         </div>
-        <div className="absolute top-6 right-6 text-purple-400/25 text-xs font-mono tracking-widest">
+        <div className="absolute top-6 right-6 text-amber-400/25 text-xs font-mono tracking-widest">
           MK X
         </div>
-        <div className="absolute bottom-6 left-6 text-purple-400/25 text-xs font-mono tracking-widest">
+        <div className="absolute bottom-6 left-6 text-amber-400/25 text-xs font-mono tracking-widest">
           NEW ELEMENT CORE
         </div>
         
@@ -535,7 +535,7 @@ const ArcReactorSplash = ({ onComplete }: ArcReactorSplashProps) => {
         {!isBooting && (
           <motion.button
             onClick={onComplete}
-            className="absolute bottom-6 left-1/2 -translate-x-1/2 px-6 py-2 text-sm font-mono tracking-wider uppercase border border-purple-400/30 bg-purple-400/5 text-purple-400/70 hover:text-purple-400 hover:border-purple-400/60 hover:bg-purple-400/10 transition-all duration-300"
+            className="absolute bottom-6 left-1/2 -translate-x-1/2 px-6 py-2 text-sm font-mono tracking-wider uppercase border border-amber-400/30 bg-amber-400/5 text-amber-400/70 hover:text-amber-400 hover:border-amber-400/60 hover:bg-amber-400/10 transition-all duration-300"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.5 }}
@@ -546,12 +546,12 @@ const ArcReactorSplash = ({ onComplete }: ArcReactorSplashProps) => {
           </motion.button>
         )}
         
-        <div className="absolute bottom-6 right-6 text-purple-400/25 text-xs font-mono flex items-center gap-2 tracking-widest">
+        <div className="absolute bottom-6 right-6 text-amber-400/25 text-xs font-mono flex items-center gap-2 tracking-widest">
           <motion.span
             className="w-2 h-2 rounded-full"
             style={{ 
-              background: isBooting ? 'rgba(100, 255, 150, 0.9)' : 'rgba(160, 100, 255, 0.6)',
-              boxShadow: isBooting ? '0 0 8px rgba(100, 255, 150, 0.8)' : '0 0 8px rgba(160, 100, 255, 0.5)'
+              background: isBooting ? 'rgba(100, 255, 150, 0.9)' : 'rgba(255, 180, 50, 0.6)',
+              boxShadow: isBooting ? '0 0 8px rgba(100, 255, 150, 0.8)' : '0 0 8px rgba(255, 180, 50, 0.5)'
             }}
             animate={!isBooting ? { opacity: [0.4, 1, 0.4] } : {}}
             transition={{ duration: 1.5, repeat: Infinity }}
