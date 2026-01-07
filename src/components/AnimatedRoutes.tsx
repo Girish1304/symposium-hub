@@ -4,7 +4,7 @@ import Index from "@/pages/Index";
 import Events from "@/pages/Events";
 import WorkshopsPage from "@/pages/WorkshopsPage";
 import SchedulePage from "@/pages/SchedulePage";
-import RegisterPage from "@/pages/RegisterPage";
+import AuthPage from "@/pages/AuthPage";
 import FAQPage from "@/pages/FAQPage";
 import ContactPage from "@/pages/ContactPage";
 import NotFound from "@/pages/NotFound";
@@ -52,7 +52,7 @@ const AnimatedRoutes = () => {
           path="/register"
           element={
             <PageTransition>
-              <RegisterPage />
+              <AuthPage />
             </PageTransition>
           }
         />
