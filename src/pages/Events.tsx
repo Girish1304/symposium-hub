@@ -3,7 +3,7 @@ import Navbar from "@/components/Navbar";
 import TechnicalEvents from "@/components/TechnicalEvents";
 import Footer from "@/components/Footer";
 import ScanLineOverlay from "@/components/ScanLineOverlay";
-import GoatBackground from "@/components/GoatBackground";
+import ArcReactorBackground from "@/components/ArcReactorBackground";
 
 const Events = () => {
   return (
@@ -17,7 +17,7 @@ const Events = () => {
       </Helmet>
       
       <div className="min-h-screen bg-background relative">
-        <GoatBackground />
+        <ArcReactorBackground />
         <ScanLineOverlay />
         <Navbar />
         <main className="pt-24">
