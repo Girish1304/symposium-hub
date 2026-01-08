@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import jarvisLogo from "@/assets/jarvis-logo.png";
+import arcReactorLogo from "@/assets/arc-reactor-logo.png";
 
 const navLinks = [
   { name: "Home", href: "/", isHash: false },
@@ -46,9 +46,9 @@ const Navbar = () => {
             {/* Logo */}
             <Link to="/" className="flex items-center gap-3 group">
               <img 
-                src={jarvisLogo} 
+                src={arcReactorLogo} 
                 alt="JARVIS 2026" 
-                className="h-8 lg:h-10 w-auto transition-transform group-hover:scale-105"
+                className="h-12 lg:h-16 w-auto transition-transform group-hover:scale-105"
               />
             </Link>
 
