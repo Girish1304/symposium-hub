@@ -1,7 +1,8 @@
+import { forwardRef } from "react";
 import { Link } from "react-router-dom";
 import { Instagram, Twitter, Linkedin, Youtube, Mail, MapPin } from "lucide-react";
 
-const Footer = () => {
+const Footer = forwardRef<HTMLElement>((_, ref) => {
   const socialLinks = [
     { icon: Instagram, href: "#", label: "Instagram" },
     { icon: Twitter, href: "#", label: "Twitter" },
@@ -24,7 +25,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative pt-16 pb-8 border-t border-border bg-card/30">
+    <footer ref={ref} className="relative pt-16 pb-8 border-t border-border bg-card/30">
       <div className="container px-4 md:px-6">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
@@ -131,6 +132,8 @@ const Footer = () => {
       </div>
     </footer>
   );
-};
+});
+
+Footer.displayName = "Footer";
 
 export default Footer;
