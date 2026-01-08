@@ -1,144 +1,178 @@
-import { useRef } from "react";
+import { useRef, useMemo } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Float } from "@react-three/drei";
 import * as THREE from "three";
 
 const ArcReactorMesh = () => {
-  const outerRingRef = useRef<THREE.Mesh>(null);
-  const middleRingRef = useRef<THREE.Mesh>(null);
-  const innerRingRef = useRef<THREE.Mesh>(null);
-  const coreRef = useRef<THREE.Mesh>(null);
-  const particlesRef = useRef<THREE.Points>(null);
+  const outerRingRef = useRef<THREE.Group>(null);
+  const middleRingRef = useRef<THREE.Group>(null);
+  const innerRingRef = useRef<THREE.Group>(null);
 
   useFrame((state) => {
     const time = state.clock.elapsedTime;
     
     if (outerRingRef.current) {
-      outerRingRef.current.rotation.z = time * 0.3;
+      outerRingRef.current.rotation.z = time * 0.15;
     }
     if (middleRingRef.current) {
-      middleRingRef.current.rotation.z = -time * 0.5;
+      middleRingRef.current.rotation.z = -time * 0.1;
     }
     if (innerRingRef.current) {
-      innerRingRef.current.rotation.z = time * 0.8;
-    }
-    if (coreRef.current) {
-      coreRef.current.scale.setScalar(1 + Math.sin(time * 3) * 0.1);
-    }
-    if (particlesRef.current) {
-      particlesRef.current.rotation.z = time * 0.2;
+      innerRingRef.current.rotation.z = time * 0.2;
     }
   });
 
-  // Create particles for energy effect
-  const particleCount = 50;
-  const particlePositions = new Float32Array(particleCount * 3);
-  for (let i = 0; i < particleCount; i++) {
-    const angle = (i / particleCount) * Math.PI * 2;
-    const radius = 0.8 + Math.random() * 0.4;
-    particlePositions[i * 3] = Math.cos(angle) * radius;
-    particlePositions[i * 3 + 1] = Math.sin(angle) * radius;
-    particlePositions[i * 3 + 2] = (Math.random() - 0.5) * 0.2;
-  }
+  // Create segment geometry for rings
+  const createRingSegments = (
+    innerRadius: number,
+    outerRadius: number,
+    segmentCount: number,
+    gapAngle: number,
+    color: string,
+    opacity: number
+  ) => {
+    const segments = [];
+    const segmentAngle = (Math.PI * 2) / segmentCount - gapAngle;
+    
+    for (let i = 0; i < segmentCount; i++) {
+      const startAngle = (i / segmentCount) * Math.PI * 2;
+      const shape = new THREE.Shape();
+      
+      // Create arc segment
+      const innerArc = new THREE.EllipseCurve(0, 0, innerRadius, innerRadius, startAngle, startAngle + segmentAngle, false, 0);
+      const outerArc = new THREE.EllipseCurve(0, 0, outerRadius, outerRadius, startAngle + segmentAngle, startAngle, true, 0);
+      
+      const innerPoints = innerArc.getPoints(20);
+      const outerPoints = outerArc.getPoints(20);
+      
+      shape.moveTo(innerPoints[0].x, innerPoints[0].y);
+      innerPoints.forEach(p => shape.lineTo(p.x, p.y));
+      outerPoints.forEach(p => shape.lineTo(p.x, p.y));
+      shape.closePath();
+      
+      segments.push(
+        <mesh key={i} position={[0, 0, 0]}>
+          <shapeGeometry args={[shape]} />
+          <meshBasicMaterial color={color} transparent opacity={opacity} side={THREE.DoubleSide} />
+        </mesh>
+      );
+    }
+    return segments;
+  };
+
+  // Dark ring (background/structural)
+  const darkRingSegments = useMemo(() => 
+    createRingSegments(1.0, 1.25, 12, 0.08, "#1a3a3a", 1), []
+  );
+  
+  // Outer cyan ring segments
+  const outerCyanSegments = useMemo(() => 
+    createRingSegments(1.28, 1.45, 12, 0.12, "#7fdfdf", 0.95), []
+  );
+
+  // Middle dark ring
+  const middleDarkSegments = useMemo(() => 
+    createRingSegments(0.7, 0.95, 10, 0.1, "#1a3a3a", 1), []
+  );
+
+  // Inner cyan ring
+  const innerCyanSegments = useMemo(() => 
+    createRingSegments(0.75, 0.88, 8, 0.15, "#7fdfdf", 0.9), []
+  );
 
   return (
-    <Float speed={1.5} rotationIntensity={0.3} floatIntensity={0.5}>
-      <group rotation={[0.2, 0, 0]}>
-        {/* Outer ring with segments */}
-        <mesh ref={outerRingRef}>
-          <torusGeometry args={[1.4, 0.08, 16, 32]} />
-          <meshBasicMaterial color="#00ffff" transparent opacity={0.9} />
-        </mesh>
-
-        {/* Outer ring glow */}
-        <mesh>
-          <torusGeometry args={[1.4, 0.15, 16, 32]} />
-          <meshBasicMaterial color="#00ffff" transparent opacity={0.2} />
-        </mesh>
-
-        {/* Middle decorative ring */}
-        <mesh ref={middleRingRef}>
-          <torusGeometry args={[1.1, 0.05, 16, 24]} />
-          <meshBasicMaterial color="#00ffff" transparent opacity={0.7} />
-        </mesh>
-
-        {/* Inner ring */}
-        <mesh ref={innerRingRef}>
-          <torusGeometry args={[0.8, 0.04, 16, 20]} />
-          <meshBasicMaterial color="#00ffff" transparent opacity={0.8} />
-        </mesh>
-
-        {/* Arc segments - triangular pieces */}
-        {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((i) => (
-          <mesh
-            key={i}
-            position={[
-              Math.cos((i / 12) * Math.PI * 2) * 1.2,
-              Math.sin((i / 12) * Math.PI * 2) * 1.2,
-              0,
-            ]}
-            rotation={[0, 0, (i / 12) * Math.PI * 2 + Math.PI / 2]}
-          >
-            <boxGeometry args={[0.15, 0.08, 0.05]} />
-            <meshBasicMaterial color="#00ffff" transparent opacity={0.9} />
-          </mesh>
-        ))}
-
-        {/* Core glow - multiple layers */}
-        <mesh ref={coreRef} scale={0.5}>
-          <sphereGeometry args={[1, 32, 32]} />
-          <meshBasicMaterial color="#00ffff" transparent opacity={0.95} />
-        </mesh>
-
-        <mesh scale={0.6}>
-          <sphereGeometry args={[1, 32, 32]} />
-          <meshBasicMaterial color="#00ddff" transparent opacity={0.5} />
-        </mesh>
-
-        <mesh scale={0.8}>
-          <sphereGeometry args={[1, 32, 32]} />
-          <meshBasicMaterial color="#00ffff" transparent opacity={0.15} />
-        </mesh>
-
-        {/* Energy particles */}
-        <points ref={particlesRef}>
-          <bufferGeometry>
-            <bufferAttribute
-              attach="attributes-position"
-              count={particleCount}
-              array={particlePositions}
-              itemSize={3}
-            />
-          </bufferGeometry>
-          <pointsMaterial
-            color="#00ffff"
-            size={0.05}
-            transparent
-            opacity={0.8}
-            sizeAttenuation
-          />
-        </points>
-
+    <Float speed={1} rotationIntensity={0.2} floatIntensity={0.3}>
+      <group rotation={[0, 0, 0]}>
         {/* Outer glow effect */}
-        <mesh scale={2}>
-          <circleGeometry args={[1, 64]} />
-          <meshBasicMaterial
-            color="#00ffff"
-            transparent
-            opacity={0.08}
-            side={THREE.DoubleSide}
-          />
+        <mesh>
+          <circleGeometry args={[1.8, 64]} />
+          <meshBasicMaterial color="#00ffff" transparent opacity={0.08} side={THREE.DoubleSide} />
+        </mesh>
+        
+        {/* Background dark plate */}
+        <mesh position={[0, 0, -0.05]}>
+          <circleGeometry args={[1.6, 64]} />
+          <meshBasicMaterial color="#0a1a1a" transparent opacity={0.95} side={THREE.DoubleSide} />
         </mesh>
 
-        {/* Second outer glow */}
-        <mesh scale={2.5}>
-          <circleGeometry args={[1, 64]} />
-          <meshBasicMaterial
-            color="#00ffff"
-            transparent
-            opacity={0.03}
-            side={THREE.DoubleSide}
-          />
+        {/* Outer ring group - rotates slowly */}
+        <group ref={outerRingRef}>
+          {darkRingSegments}
+          {outerCyanSegments}
+          
+          {/* Outer ring rectangular segments */}
+          {[...Array(12)].map((_, i) => {
+            const angle = (i / 12) * Math.PI * 2;
+            return (
+              <mesh 
+                key={`outer-rect-${i}`} 
+                position={[Math.cos(angle) * 1.36, Math.sin(angle) * 1.36, 0.01]}
+                rotation={[0, 0, angle + Math.PI / 2]}
+              >
+                <planeGeometry args={[0.12, 0.06]} />
+                <meshBasicMaterial color="#b0f0f0" transparent opacity={0.9} side={THREE.DoubleSide} />
+              </mesh>
+            );
+          })}
+        </group>
+
+        {/* Middle ring group */}
+        <group ref={middleRingRef}>
+          {middleDarkSegments}
+          
+          {/* Middle ring small rectangles */}
+          {[...Array(10)].map((_, i) => {
+            const angle = (i / 10) * Math.PI * 2 + 0.15;
+            return (
+              <mesh 
+                key={`mid-rect-${i}`} 
+                position={[Math.cos(angle) * 0.82, Math.sin(angle) * 0.82, 0.01]}
+                rotation={[0, 0, angle + Math.PI / 2]}
+              >
+                <planeGeometry args={[0.08, 0.04]} />
+                <meshBasicMaterial color="#90e0e0" transparent opacity={0.85} side={THREE.DoubleSide} />
+              </mesh>
+            );
+          })}
+        </group>
+
+        {/* Inner ring group */}
+        <group ref={innerRingRef}>
+          {/* Inner dark structural ring */}
+          <mesh>
+            <ringGeometry args={[0.5, 0.68, 64]} />
+            <meshBasicMaterial color="#1a3a3a" transparent opacity={1} side={THREE.DoubleSide} />
+          </mesh>
+          
+          {innerCyanSegments}
+        </group>
+
+        {/* Core glow layers */}
+        <mesh position={[0, 0, 0.02]}>
+          <circleGeometry args={[0.48, 64]} />
+          <meshBasicMaterial color="#a0f0f0" transparent opacity={0.95} side={THREE.DoubleSide} />
+        </mesh>
+        
+        <mesh position={[0, 0, 0.03]}>
+          <circleGeometry args={[0.35, 64]} />
+          <meshBasicMaterial color="#c0ffff" transparent opacity={1} side={THREE.DoubleSide} />
+        </mesh>
+        
+        {/* Bright center */}
+        <mesh position={[0, 0, 0.04]}>
+          <circleGeometry args={[0.2, 64]} />
+          <meshBasicMaterial color="#e0ffff" transparent opacity={1} side={THREE.DoubleSide} />
+        </mesh>
+
+        {/* Additional outer glow rings */}
+        <mesh position={[0, 0, -0.02]}>
+          <ringGeometry args={[1.5, 1.65, 64]} />
+          <meshBasicMaterial color="#40a0a0" transparent opacity={0.3} side={THREE.DoubleSide} />
+        </mesh>
+        
+        <mesh position={[0, 0, -0.03]}>
+          <ringGeometry args={[1.65, 1.75, 64]} />
+          <meshBasicMaterial color="#00ffff" transparent opacity={0.15} side={THREE.DoubleSide} />
         </mesh>
       </group>
     </Float>
@@ -147,14 +181,13 @@ const ArcReactorMesh = () => {
 
 const ArcReactor3D = () => {
   return (
-    <div className="w-40 h-40 md:w-56 md:h-56 lg:w-64 lg:h-64 mx-auto">
+    <div className="w-48 h-48 md:w-64 md:h-64 lg:w-72 lg:h-72 mx-auto">
       <Canvas
         camera={{ position: [0, 0, 4], fov: 45 }}
         style={{ background: "transparent" }}
       >
-        <ambientLight intensity={0.3} />
-        <pointLight position={[0, 0, 5]} intensity={2} color="#00ffff" />
-        <pointLight position={[5, 5, 5]} intensity={0.5} color="#0088ff" />
+        <ambientLight intensity={0.5} />
+        <pointLight position={[0, 0, 3]} intensity={1.5} color="#00ffff" />
         <ArcReactorMesh />
       </Canvas>
     </div>
