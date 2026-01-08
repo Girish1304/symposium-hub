@@ -1,7 +1,7 @@
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Bot, Car, Route, FileText, Presentation, Brain, Swords, Link2, Grid3X3, ChevronDown, Users, Clock, Award, IndianRupee } from "lucide-react";
+import { ArrowRight, Bot, Car, Route, FileText, Presentation, Brain, Swords, Link2, Grid3X3, ChevronDown, Users, Award, IndianRupee } from "lucide-react";
 import { Link } from "react-router-dom";
 
 // Import event images
@@ -18,7 +18,7 @@ import mazeSimulationImg from "@/assets/events/maze-simulation.png";
 const technicalEvents = [
   {
     id: 1,
-    name: "ROBO WAR",
+    name: "Robo War",
     icon: Swords,
     description: "Battle your robots in an intense combat arena. Design and build combat-ready bots to dominate the battlefield.",
     image: roboWarImg,
@@ -37,7 +37,7 @@ const technicalEvents = [
   },
   {
     id: 2,
-    name: "RC ADVENTURE",
+    name: "RC Adventure",
     icon: Car,
     description: "Navigate your RC vehicle through challenging terrains and obstacles in this thrilling adventure race.",
     image: rcAdventureImg,
@@ -56,7 +56,7 @@ const technicalEvents = [
   },
   {
     id: 3,
-    name: "LINE FOLLOWING ROBOT",
+    name: "Line Following Robot",
     icon: Route,
     description: "Program your robot to autonomously follow a complex path. Precision and speed determine the winner.",
     image: lineFollowingImg,
@@ -75,7 +75,7 @@ const technicalEvents = [
   },
   {
     id: 4,
-    name: "PAPER PRESENTATION",
+    name: "Paper Presentation",
     icon: FileText,
     description: "Present your innovative research papers on cutting-edge technology topics to a panel of expert judges.",
     image: paperPresentationImg,
@@ -94,7 +94,7 @@ const technicalEvents = [
   },
   {
     id: 5,
-    name: "PROJECT PRESENTATION",
+    name: "Project Presentation",
     icon: Presentation,
     description: "Showcase your technical projects and prototypes. Demonstrate innovation and practical application.",
     image: projectPresentationImg,
@@ -113,7 +113,7 @@ const technicalEvents = [
   },
   {
     id: 6,
-    name: "TECH QUIZ",
+    name: "Tech Quiz",
     icon: Brain,
     description: "Test your technical knowledge across various domains in this fast-paced quiz competition.",
     image: techQuizImg,
@@ -132,7 +132,7 @@ const technicalEvents = [
   },
   {
     id: 7,
-    name: "ROBO TUG OF WAR",
+    name: "Robo Tug of War",
     icon: Bot,
     description: "Build the strongest robot to pull your opponent across the line in this ultimate test of power.",
     image: roboTugImg,
@@ -151,7 +151,7 @@ const technicalEvents = [
   },
   {
     id: 8,
-    name: "TECH CONNEXIONS",
+    name: "Tech Connexions",
     icon: Link2,
     description: "Connect the dots between technical concepts in this unique puzzle-solving challenge.",
     image: techConnexionsImg,
@@ -170,7 +170,7 @@ const technicalEvents = [
   },
   {
     id: 9,
-    name: "MAZE SIMULATION",
+    name: "Maze Simulation",
     icon: Grid3X3,
     description: "Program your bot to solve complex mazes in the shortest time using advanced algorithms.",
     image: mazeSimulationImg,
@@ -199,69 +199,70 @@ const TechnicalEvents = () => {
   };
 
   return (
-    <section id="events" className="py-32 relative overflow-hidden">
-      {/* Simplified background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/2 to-background" />
-      
+    <section id="events" className="py-24 lg:py-32 relative overflow-hidden">
       <div className="container px-6 relative" ref={ref}>
+        {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-20"
+          className="text-center max-w-2xl mx-auto mb-16"
         >
           <motion.div 
-            className="inline-flex items-center gap-3 px-5 py-2 bg-card/60 border border-primary/30 backdrop-blur-sm mb-6"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-white/[0.05] border border-white/[0.08] rounded-full mb-6"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ delay: 0.2 }}
+            transition={{ delay: 0.1 }}
           >
-            <div className="w-2 h-2 bg-primary" />
-            <span className="text-primary font-mono text-sm uppercase tracking-[0.2em]">Technical Events</span>
+            <span className="w-2 h-2 bg-primary rounded-full" />
+            <span className="text-sm font-medium text-foreground/70">Technical Events</span>
           </motion.div>
           
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-4 mb-6 tracking-tight">
-            COMPETE & <span className="text-gradient">CONQUER</span>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight mb-4">
+            Compete & <span className="text-gradient">Conquer</span>
           </h2>
-          <p className="text-lg text-muted-foreground">
-            9 challenging technical events to test your skills, creativity, and innovation.
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            9 challenging events designed to test your skills, creativity, and innovation.
           </p>
         </motion.div>
 
-        {/* Events Grid - increased spacing */}
-        <div className="grid gap-10 max-w-4xl mx-auto">
+        {/* Events Grid */}
+        <div className="grid gap-6 max-w-5xl mx-auto">
           {technicalEvents.map((event, index) => (
             <motion.div
               key={event.id}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.05 * index }}
+              transition={{ duration: 0.4, delay: 0.05 * index }}
               className="group"
             >
-              <div className="relative bg-card/40 border border-primary/15 backdrop-blur-sm overflow-hidden hover:border-primary/30 transition-all duration-300">
+              <div className="relative bg-white/[0.03] backdrop-blur-sm border border-white/[0.06] rounded-2xl overflow-hidden hover:border-white/[0.12] hover:bg-white/[0.05] transition-all duration-300">
                 <div className="flex flex-col md:flex-row">
-                  {/* Event Image - cleaner */}
-                  <div className="relative w-full md:w-52 h-48 md:h-auto flex-shrink-0 overflow-hidden">
+                  {/* Event Image */}
+                  <div className="relative w-full md:w-56 h-48 md:h-auto flex-shrink-0 overflow-hidden">
                     <img 
                       src={event.image} 
                       alt={event.name}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent to-background/80 hidden md:block" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent md:hidden" />
                     {/* Event number badge */}
-                    <div className="absolute top-3 left-3 px-2.5 py-1 bg-primary text-primary-foreground text-xs font-bold font-mono">
+                    <div className="absolute top-4 left-4 px-3 py-1.5 bg-white/10 backdrop-blur-md rounded-full text-xs font-semibold font-mono">
                       #{String(event.id).padStart(2, '0')}
                     </div>
                   </div>
 
-                  {/* Event Content - simplified */}
+                  {/* Event Content */}
                   <div className="flex-1 p-6 md:p-8">
                     <div className="flex flex-col gap-4">
-                      <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+                      <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
                         <div className="flex-1">
                           <div className="flex items-center gap-3 mb-3">
-                            <event.icon className="w-5 h-5 text-primary" />
-                            <h3 className="text-xl font-bold tracking-wide group-hover:text-primary transition-colors">
+                            <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+                              <event.icon className="w-5 h-5 text-primary" />
+                            </div>
+                            <h3 className="text-xl font-display font-bold tracking-tight group-hover:text-primary transition-colors">
                               {event.name}
                             </h3>
                           </div>
@@ -269,31 +270,31 @@ const TechnicalEvents = () => {
                             {event.description}
                           </p>
                           
-                          {/* Simplified meta info */}
-                          <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
-                            <span className="flex items-center gap-1.5">
-                              <Users className="w-3.5 h-3.5 text-primary/70" />
-                              {event.teamSize}
-                            </span>
-                            <span className="flex items-center gap-1.5">
-                              <IndianRupee className="w-3.5 h-3.5 text-primary/70" />
-                              <span className={event.regFee === "Free" ? "text-green-400 font-semibold" : ""}>
+                          {/* Meta info */}
+                          <div className="flex flex-wrap gap-3">
+                            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-white/[0.04] rounded-full text-xs">
+                              <Users className="w-3.5 h-3.5 text-muted-foreground" />
+                              <span className="text-foreground/80">{event.teamSize}</span>
+                            </div>
+                            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-white/[0.04] rounded-full text-xs">
+                              <IndianRupee className="w-3.5 h-3.5 text-muted-foreground" />
+                              <span className={event.regFee === "Free" ? "text-accent font-semibold" : "text-foreground/80"}>
                                 {event.regFee}
                               </span>
-                            </span>
-                            <span className="flex items-center gap-1.5 text-secondary font-semibold">
-                              <Award className="w-3.5 h-3.5" />
-                              {event.prize}
-                            </span>
+                            </div>
+                            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-secondary/10 rounded-full text-xs">
+                              <Award className="w-3.5 h-3.5 text-secondary" />
+                              <span className="text-secondary font-semibold">{event.prize}</span>
+                            </div>
                           </div>
                         </div>
 
                         {/* Registration Button */}
                         <div className="flex-shrink-0">
                           <Link to="/register">
-                            <Button variant="hero" size="sm" className="w-full md:w-auto">
-                              REGISTER
-                              <ArrowRight className="w-3.5 h-3.5" />
+                            <Button className="rounded-full px-6 bg-primary/10 hover:bg-primary/20 text-primary border border-primary/20 hover:border-primary/40 transition-all">
+                              Register
+                              <ArrowRight className="w-4 h-4 ml-2" />
                             </Button>
                           </Link>
                         </div>
@@ -302,16 +303,16 @@ const TechnicalEvents = () => {
                       {/* Rules Toggle */}
                       <button
                         onClick={() => toggleExpand(event.id)}
-                        className="flex items-center gap-2 text-xs text-primary/70 hover:text-primary transition-colors self-start"
+                        className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors self-start mt-2"
                       >
-                        <span className="font-mono uppercase tracking-wider">
-                          {expandedId === event.id ? "Hide Rules" : "View Rules"}
+                        <span className="font-medium">
+                          {expandedId === event.id ? "Hide rules" : "View rules"}
                         </span>
                         <motion.div
                           animate={{ rotate: expandedId === event.id ? 180 : 0 }}
-                          transition={{ duration: 0.3 }}
+                          transition={{ duration: 0.2 }}
                         >
-                          <ChevronDown className="w-3.5 h-3.5" />
+                          <ChevronDown className="w-4 h-4" />
                         </motion.div>
                       </button>
 
@@ -325,17 +326,17 @@ const TechnicalEvents = () => {
                             transition={{ duration: 0.3 }}
                             className="overflow-hidden"
                           >
-                            <div className="pt-4 border-t border-primary/10">
-                              <ul className="grid gap-2 text-sm text-muted-foreground">
+                            <div className="pt-4 border-t border-white/[0.06]">
+                              <ul className="grid sm:grid-cols-2 gap-3 text-sm">
                                 {event.rules.map((rule, ruleIndex) => (
                                   <motion.li
                                     key={ruleIndex}
                                     initial={{ opacity: 0, x: -10 }}
                                     animate={{ opacity: 1, x: 0 }}
-                                    transition={{ delay: ruleIndex * 0.03 }}
-                                    className="flex items-start gap-2"
+                                    transition={{ delay: ruleIndex * 0.05 }}
+                                    className="flex items-start gap-2 text-muted-foreground"
                                   >
-                                    <span className="text-primary/50 mt-0.5">•</span>
+                                    <span className="text-primary mt-1.5">•</span>
                                     <span>{rule}</span>
                                   </motion.li>
                                 ))}

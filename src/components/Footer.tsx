@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import { Instagram, Twitter, Linkedin, Youtube, Mail, MapPin, Zap } from "lucide-react";
-import { motion } from "framer-motion";
+import { Instagram, Twitter, Linkedin, Youtube, Mail, MapPin, ArrowUpRight } from "lucide-react";
 
 const Footer = () => {
   const socialLinks = [
@@ -13,6 +12,7 @@ const Footer = () => {
   const quickLinks = [
     { name: "About", href: "/#about" },
     { name: "Events", href: "/events" },
+    { name: "Workshops", href: "/workshops" },
     { name: "Register", href: "/register" },
   ];
 
@@ -24,45 +24,27 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative pt-24 pb-8 border-t border-primary/20 overflow-hidden">
-      {/* Background effects */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background to-card/50" />
-      <div className="absolute inset-0 bg-hex-pattern opacity-10" />
-      
-      {/* Top accent line */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
-      
-      {/* Animated scan line */}
-      <motion.div 
-        className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent pointer-events-none"
-        animate={{ top: ["0%", "100%"] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-      />
-      
-      <div className="container px-6 relative">
+    <footer className="relative pt-20 pb-8 border-t border-white/[0.06]">
+      <div className="container px-6">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Brand */}
-          <div>
-            <div className="flex items-center gap-2 mb-4">
-              <Zap className="w-6 h-6 text-primary" />
-              <h3 className="text-2xl font-bold">
-                <span className="text-foreground">JARVIS</span>
-                <span className="text-gradient"> 2026</span>
-              </h3>
-            </div>
-            <p className="text-muted-foreground text-sm mb-6 leading-relaxed">
+          <div className="lg:col-span-1">
+            <h3 className="text-xl font-display font-bold mb-4">
+              JARVIS <span className="text-primary">2026</span>
+            </h3>
+            <p className="text-muted-foreground text-sm mb-6 leading-relaxed max-w-xs">
               The premier technical symposium bringing together innovators, 
               creators, and future tech leaders.
             </p>
-            <div className="flex gap-3">
+            <div className="flex gap-2">
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
-                  className="w-10 h-10 border border-primary/30 flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300 group"
+                  className="w-10 h-10 rounded-full bg-white/[0.05] border border-white/[0.08] flex items-center justify-center text-muted-foreground hover:bg-white/[0.1] hover:text-foreground hover:border-white/[0.15] transition-all duration-200"
                   aria-label={social.label}
                 >
-                  <social.icon className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                  <social.icon className="w-4 h-4" />
                 </a>
               ))}
             </div>
@@ -70,8 +52,7 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-semibold mb-4 text-foreground flex items-center gap-2">
-              <span className="w-2 h-2 bg-primary" />
+            <h4 className="font-semibold mb-4 text-foreground text-sm tracking-wide uppercase">
               Quick Links
             </h4>
             <ul className="space-y-3">
@@ -80,18 +61,18 @@ const Footer = () => {
                   {link.href.startsWith("/#") ? (
                     <a
                       href={link.href}
-                      className="text-muted-foreground hover:text-primary transition-colors text-sm flex items-center gap-2 group"
+                      className="text-muted-foreground hover:text-foreground transition-colors text-sm flex items-center gap-1 group"
                     >
-                      <span className="w-0 h-px bg-primary group-hover:w-3 transition-all" />
                       {link.name}
+                      <ArrowUpRight className="w-3 h-3 opacity-0 -translate-y-0.5 translate-x-0.5 group-hover:opacity-100 transition-all" />
                     </a>
                   ) : (
                     <Link
                       to={link.href}
-                      className="text-muted-foreground hover:text-primary transition-colors text-sm flex items-center gap-2 group"
+                      className="text-muted-foreground hover:text-foreground transition-colors text-sm flex items-center gap-1 group"
                     >
-                      <span className="w-0 h-px bg-primary group-hover:w-3 transition-all" />
                       {link.name}
+                      <ArrowUpRight className="w-3 h-3 opacity-0 -translate-y-0.5 translate-x-0.5 group-hover:opacity-100 transition-all" />
                     </Link>
                   )}
                 </li>
@@ -101,19 +82,18 @@ const Footer = () => {
 
           {/* Events */}
           <div>
-            <h4 className="font-semibold mb-4 text-foreground flex items-center gap-2">
-              <span className="w-2 h-2 bg-secondary" />
-              Events
+            <h4 className="font-semibold mb-4 text-foreground text-sm tracking-wide uppercase">
+              Featured Events
             </h4>
             <ul className="space-y-3">
               {events.map((event) => (
                 <li key={event.name}>
                   <Link
                     to={event.href}
-                    className="text-muted-foreground hover:text-secondary transition-colors text-sm flex items-center gap-2 group"
+                    className="text-muted-foreground hover:text-foreground transition-colors text-sm flex items-center gap-1 group"
                   >
-                    <span className="w-0 h-px bg-secondary group-hover:w-3 transition-all" />
                     {event.name}
+                    <ArrowUpRight className="w-3 h-3 opacity-0 -translate-y-0.5 translate-x-0.5 group-hover:opacity-100 transition-all" />
                   </Link>
                 </li>
               ))}
@@ -122,29 +102,28 @@ const Footer = () => {
 
           {/* Contact */}
           <div>
-            <h4 className="font-semibold mb-4 text-foreground flex items-center gap-2">
-              <span className="w-2 h-2 bg-primary" />
-              Contact Us
+            <h4 className="font-semibold mb-4 text-foreground text-sm tracking-wide uppercase">
+              Contact
             </h4>
             <ul className="space-y-4">
               <li>
                 <a
                   href="mailto:jarvis@citchennai.edu"
-                  className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors text-sm group"
+                  className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors text-sm group"
                 >
-                  <div className="w-8 h-8 border border-primary/30 flex items-center justify-center group-hover:border-primary transition-colors">
+                  <div className="w-9 h-9 rounded-full bg-white/[0.05] border border-white/[0.08] flex items-center justify-center group-hover:bg-white/[0.1] transition-colors">
                     <Mail className="w-4 h-4" />
                   </div>
                   jarvis@citchennai.edu
                 </a>
               </li>
               <li className="flex items-start gap-3 text-muted-foreground text-sm">
-                <div className="w-8 h-8 border border-primary/30 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <div className="w-9 h-9 rounded-full bg-white/[0.05] border border-white/[0.08] flex items-center justify-center flex-shrink-0">
                   <MapPin className="w-4 h-4" />
                 </div>
-                <span>
+                <span className="pt-2">
                   Chennai Institute of Technology<br />
-                  Sarathy Nagar, Kundrathur - 600069
+                  Kundrathur, Chennai - 600069
                 </span>
               </li>
             </ul>
@@ -152,16 +131,13 @@ const Footer = () => {
         </div>
 
         {/* Bottom bar */}
-        <div className="pt-8 border-t border-primary/20 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <div className="w-2 h-2 bg-primary animate-pulse" />
-            <p className="text-sm text-muted-foreground font-mono">
-              © 2026 JARVIS. All systems operational.
-            </p>
-          </div>
-          <div className="flex gap-6 text-sm text-muted-foreground font-mono">
-            <a href="#" className="hover:text-primary transition-colors">Privacy.Protocol</a>
-            <a href="#" className="hover:text-primary transition-colors">Terms.Service</a>
+        <div className="pt-8 border-t border-white/[0.06] flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-sm text-muted-foreground">
+            © 2026 JARVIS. All rights reserved.
+          </p>
+          <div className="flex gap-6 text-sm text-muted-foreground">
+            <a href="#" className="hover:text-foreground transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-foreground transition-colors">Terms of Service</a>
           </div>
         </div>
       </div>
