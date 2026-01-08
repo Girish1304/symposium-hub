@@ -133,118 +133,99 @@ const Workshops = () => {
   };
 
   return (
-    <section id="workshops" className="py-32 relative overflow-hidden bg-background">
-      {/* Premium grid background */}
-      <div className="absolute inset-0">
-        <div 
-          className="absolute inset-0 opacity-40"
-          style={{
-            backgroundImage: `linear-gradient(to right, hsl(var(--primary) / 0.08) 1px, transparent 1px)`,
-            backgroundSize: '80px 100%',
-          }}
-        />
-        <div 
-          className="absolute inset-0"
-          style={{
-            background: "radial-gradient(ellipse at center top, hsl(var(--primary) / 0.06) 0%, transparent 60%)",
-          }}
-        />
-      </div>
-      
-      <div className="container px-6 relative" ref={ref}>
+    <section id="workshops" className="py-20 md:py-28 relative overflow-hidden bg-[#0a0a0a]">
+      <div className="container px-4 md:px-6 relative" ref={ref}>
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-4xl mx-auto mb-20"
+          className="text-center max-w-3xl mx-auto mb-12 md:mb-16"
         >
-          <motion.span 
-            className="inline-block text-primary font-mono text-sm uppercase tracking-[0.3em] mb-6"
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : {}}
+          {/* Badge */}
+          <motion.div 
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#1a1a1a] rounded-full border border-[#2a2a2a] mb-8"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ delay: 0.2 }}
           >
-            [ HANDS-ON TRAINING ]
-          </motion.span>
+            <div className="w-2 h-2 bg-[#f59e0b] rounded-full animate-pulse" />
+            <span className="text-[#f59e0b] text-sm font-medium tracking-wide">HANDS-ON WORKSHOPS</span>
+          </motion.div>
           
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
-            <span className="text-foreground">MASTER THE</span>
-            <br />
-            <span className="text-gradient">FUTURE</span>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 text-white">
+            LEARN &{" "}
+            <span className="text-[#f59e0b]">MASTER</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            6 intensive workshops designed to give you practical skills with industry-standard tools and technologies.
+          <p className="text-base md:text-lg text-[#888] max-w-xl mx-auto leading-relaxed">
+            6 intensive hands-on workshops designed to give you practical skills with industry experts.
           </p>
         </motion.div>
 
         {/* Workshops Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto">
           {workshops.map((workshop, index) => (
             <motion.div
               key={workshop.id}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.08 * index }}
-              className="group relative"
+              transition={{ duration: 0.4, delay: 0.06 * index }}
+              className="group"
             >
-              <div className="relative bg-card border border-border hover:border-primary/50 transition-all duration-500 overflow-hidden h-full">
-                {/* Gold accent line */}
-                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                
+              <div className="relative bg-[#141414] rounded-2xl border border-[#222] hover:border-[#f59e0b]/40 transition-all duration-300 overflow-hidden h-full">
                 {/* Workshop Image */}
-                <div className="relative w-full h-44 overflow-hidden">
+                <div className="relative w-full h-40 overflow-hidden">
                   <img 
                     src={workshop.image} 
                     alt={workshop.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-card via-card/80 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-[#141414]/60 to-transparent" />
                   
                   {/* Workshop number badge */}
-                  <div className="absolute top-4 left-4 px-3 py-1 bg-primary text-primary-foreground text-xs font-bold font-mono">
+                  <div className="absolute top-3 left-3 px-2.5 py-1 bg-[#f59e0b] text-black text-xs font-bold rounded-full">
                     W{String(workshop.id).padStart(2, '0')}
                   </div>
                   
                   {/* Price badge */}
-                  <div className="absolute top-4 right-4 px-3 py-1 bg-background/90 backdrop-blur-sm border border-primary/30 text-primary text-sm font-bold font-mono">
+                  <div className="absolute top-3 right-3 px-3 py-1 bg-[#1a1a1a]/90 backdrop-blur-sm border border-[#333] text-[#f59e0b] text-sm font-semibold rounded-full">
                     {workshop.price}
                   </div>
                 </div>
 
                 {/* Workshop Content */}
-                <div className="p-6">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 border border-primary/30 flex items-center justify-center bg-primary/5 group-hover:bg-primary/10 group-hover:border-primary/50 transition-all duration-300">
-                      <workshop.icon className="w-5 h-5 text-primary" />
+                <div className="p-5">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-9 h-9 rounded-xl bg-[#f59e0b]/10 flex items-center justify-center">
+                      <workshop.icon className="w-4 h-4 text-[#f59e0b]" />
                     </div>
-                    <h3 className="text-base font-bold tracking-wide text-foreground group-hover:text-primary transition-colors duration-300">
+                    <h3 className="text-sm font-bold tracking-wide text-white group-hover:text-[#f59e0b] transition-colors duration-300">
                       {workshop.name}
                     </h3>
                   </div>
                   
-                  <p className="text-muted-foreground text-sm leading-relaxed mb-5">
+                  <p className="text-[#777] text-sm leading-relaxed mb-4">
                     {workshop.description}
                   </p>
                   
                   {/* Workshop meta info */}
-                  <div className="flex flex-wrap gap-3 mb-5">
-                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                      <Clock className="w-3.5 h-3.5 text-primary/70" />
-                      <span className="font-mono">{workshop.duration}</span>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    <div className="flex items-center gap-1.5 text-xs text-[#888] px-2.5 py-1.5 bg-[#1a1a1a] rounded-full">
+                      <Clock className="w-3 h-3 text-[#f59e0b]/70" />
+                      <span>{workshop.duration}</span>
                     </div>
-                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                      <Users className="w-3.5 h-3.5 text-primary/70" />
-                      <span className="font-mono">{workshop.capacity}</span>
+                    <div className="flex items-center gap-1.5 text-xs text-[#888] px-2.5 py-1.5 bg-[#1a1a1a] rounded-full">
+                      <Users className="w-3 h-3 text-[#f59e0b]/70" />
+                      <span>{workshop.capacity}</span>
                     </div>
                   </div>
 
                   {/* Topics Toggle */}
                   <button
                     onClick={() => toggleExpand(workshop.id)}
-                    className="flex items-center gap-2 text-primary hover:text-primary/80 transition-colors mb-4 w-full"
+                    className="flex items-center gap-2 text-[#f59e0b] hover:text-[#fbbf24] transition-colors mb-4 w-full"
                   >
-                    <span className="font-mono uppercase tracking-wider text-xs">
+                    <span className="text-xs font-medium">
                       {expandedId === workshop.id ? "Hide Topics" : "View Topics"}
                     </span>
                     <motion.div
@@ -265,7 +246,7 @@ const Workshops = () => {
                         transition={{ duration: 0.3 }}
                         className="overflow-hidden"
                       >
-                        <div className="pb-4 border-t border-border pt-4 mb-4">
+                        <div className="pb-4 border-t border-[#222] pt-4 mb-4">
                           <ul className="space-y-2">
                             {workshop.topics.map((topic, topicIndex) => (
                               <motion.li
@@ -273,9 +254,9 @@ const Workshops = () => {
                                 initial={{ opacity: 0, x: -10 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: topicIndex * 0.05 }}
-                                className="flex items-start gap-3 text-sm text-muted-foreground"
+                                className="flex items-start gap-2 text-sm text-[#888]"
                               >
-                                <div className="w-1.5 h-1.5 bg-primary mt-2 flex-shrink-0" />
+                                <div className="w-1.5 h-1.5 bg-[#f59e0b] rounded-full mt-1.5 flex-shrink-0" />
                                 <span>{topic}</span>
                               </motion.li>
                             ))}
@@ -287,7 +268,7 @@ const Workshops = () => {
 
                   {/* Registration Button */}
                   <Link to="/register" className="block">
-                    <button className="w-full py-3 bg-transparent border border-primary/50 text-primary font-bold text-sm uppercase tracking-wider hover:bg-primary hover:text-primary-foreground transition-all duration-300 flex items-center justify-center gap-2 group/btn">
+                    <button className="w-full py-3 bg-[#f59e0b] hover:bg-[#fbbf24] text-black font-bold text-sm rounded-full transition-all duration-300 flex items-center justify-center gap-2 group/btn">
                       <span>Register Now</span>
                       <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                     </button>
