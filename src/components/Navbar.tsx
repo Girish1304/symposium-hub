@@ -39,7 +39,7 @@ const Navbar = () => {
         transition={{ duration: 0.5, ease: "easeOut" }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? "bg-background/80 backdrop-blur-2xl border-b border-white/[0.06]"
+            ? "bg-background/95 backdrop-blur-xl border-b border-border"
             : "bg-transparent"
         }`}
       >
@@ -61,7 +61,7 @@ const Navbar = () => {
                   <a
                     key={link.name}
                     href={link.href}
-                    className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-full hover:bg-white/[0.05]"
+                    className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
                   >
                     {link.name}
                   </a>
@@ -69,9 +69,9 @@ const Navbar = () => {
                   <Link
                     key={link.name}
                     to={link.href}
-                    className={`px-4 py-2 text-sm font-medium transition-colors rounded-full hover:bg-white/[0.05] ${
+                    className={`px-4 py-2 text-sm font-medium transition-colors ${
                       isActive(link.href, link.isHash) 
-                        ? "text-foreground bg-white/[0.05]" 
+                        ? "text-primary" 
                         : "text-muted-foreground hover:text-foreground"
                     }`}
                   >
@@ -87,27 +87,27 @@ const Navbar = () => {
                 <Button 
                   variant="ghost" 
                   size="sm"
-                  className="text-muted-foreground hover:text-foreground hover:bg-white/[0.05] rounded-full px-4"
+                  className="text-muted-foreground hover:text-foreground font-medium"
                 >
-                  Log in
+                  Login
                 </Button>
               </Link>
               <Link to="/register">
                 <Button 
                   size="sm"
-                  className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-5 shadow-lg shadow-primary/20"
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold uppercase tracking-wide rounded-full px-6"
                 >
-                  Register
+                  Get Funded
                 </Button>
               </Link>
             </div>
 
             {/* Mobile Menu Button */}
             <button
-              className="md:hidden p-2 text-foreground rounded-full hover:bg-white/[0.05] transition-colors"
+              className="md:hidden p-2 text-foreground"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
-              {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
         </div>
@@ -121,10 +121,10 @@ const Navbar = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 bg-background/98 backdrop-blur-2xl md:hidden"
+            className="fixed inset-0 z-40 bg-background md:hidden"
           >
             <div className="container px-6 pt-24 pb-8">
-              <div className="flex flex-col gap-1">
+              <div className="flex flex-col gap-2">
                 {navLinks.map((link, index) => (
                   <motion.div
                     key={link.name}
@@ -136,7 +136,7 @@ const Navbar = () => {
                       <a
                         href={link.href}
                         onClick={() => setIsMobileMenuOpen(false)}
-                        className="block py-3 text-lg font-medium text-muted-foreground hover:text-foreground transition-colors"
+                        className="block py-4 text-xl font-medium text-muted-foreground hover:text-primary transition-colors border-b border-border"
                       >
                         {link.name}
                       </a>
@@ -144,8 +144,8 @@ const Navbar = () => {
                       <Link
                         to={link.href}
                         onClick={() => setIsMobileMenuOpen(false)}
-                        className={`block py-3 text-lg font-medium transition-colors ${
-                          isActive(link.href, link.isHash) ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                        className={`block py-4 text-xl font-medium transition-colors border-b border-border ${
+                          isActive(link.href, link.isHash) ? "text-primary" : "text-muted-foreground hover:text-primary"
                         }`}
                       >
                         {link.name}
@@ -161,13 +161,13 @@ const Navbar = () => {
                 className="flex flex-col gap-3 mt-8"
               >
                 <Link to="/register" onClick={() => setIsMobileMenuOpen(false)}>
-                  <Button className="w-full rounded-full bg-primary hover:bg-primary/90 text-primary-foreground">
-                    Register Now
+                  <Button className="w-full rounded-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold uppercase">
+                    Get Funded
                   </Button>
                 </Link>
                 <Link to="/auth" onClick={() => setIsMobileMenuOpen(false)}>
-                  <Button variant="outline" className="w-full rounded-full border-white/[0.15] hover:bg-white/[0.05]">
-                    Log in
+                  <Button variant="outline" className="w-full rounded-full border-border hover:bg-card">
+                    Login
                   </Button>
                 </Link>
               </motion.div>
