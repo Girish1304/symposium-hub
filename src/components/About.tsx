@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Cpu, Users, Trophy, Rocket } from "lucide-react";
-import HolographicCard from "./HolographicCard";
+import triangularArcReactor from "@/assets/triangular-arc-reactor.jpg";
 
 const glassyTextStyle = {
   color: 'hsl(180, 100%, 70%)',
@@ -68,13 +68,13 @@ const About = () => {
           </motion.div>
           
           <h2 
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mt-4 mb-6 tracking-tight uppercase"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mt-4 mb-6 tracking-tight uppercase text-center"
             style={glassyTextStyle}
           >
             THE ULTIMATE TECH EXPERIENCE
           </h2>
           <p 
-            className="text-lg tracking-wide leading-relaxed"
+            className="text-lg tracking-wide leading-relaxed text-center"
             style={{
               color: 'hsl(180, 50%, 70%)',
               textShadow: '0 0 10px hsl(180, 100%, 50%, 0.3)',
@@ -83,6 +83,23 @@ const About = () => {
             JARVIS is more than a symposium—it's a celebration of technology, creativity, and 
             collaboration. Immerse yourself in a world where ideas transform into reality.
           </p>
+        </motion.div>
+
+        {/* Triangular Arc Reactor Image */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={isInView ? { opacity: 1, scale: 1 } : {}}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="flex justify-center mb-16"
+        >
+          <div className="relative">
+            <div className="absolute inset-0 bg-[hsl(180,100%,50%,0.3)] blur-3xl rounded-full scale-75" />
+            <img 
+              src={triangularArcReactor} 
+              alt="Arc Reactor" 
+              className="w-48 h-48 md:w-64 md:h-64 object-contain relative z-10 drop-shadow-[0_0_30px_hsl(180,100%,50%,0.5)]"
+            />
+          </div>
         </motion.div>
 
         {/* Features grid */}
@@ -101,13 +118,13 @@ const About = () => {
                 </div>
                 
                 <h3 
-                  className="text-xl font-bold mb-3 tracking-wide"
+                  className="text-xl font-bold mb-3 tracking-wide text-center"
                   style={glassyTextStyle}
                 >
                   {feature.title}
                 </h3>
                 <p 
-                  className="text-sm leading-relaxed"
+                  className="text-sm leading-relaxed text-center"
                   style={{
                     color: 'hsl(180, 40%, 60%)',
                     textShadow: '0 0 5px hsl(180, 100%, 50%, 0.2)',

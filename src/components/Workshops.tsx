@@ -163,13 +163,13 @@ const Workshops = () => {
           </motion.div>
           
           <h2 
-            className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight mb-6 uppercase"
+            className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight mb-6 uppercase text-center"
             style={glassyTextStyle}
           >
             Learn & Master
           </h2>
           <p 
-            className="text-base md:text-lg max-w-xl mx-auto leading-relaxed"
+            className="text-base md:text-lg max-w-xl mx-auto leading-relaxed text-center"
             style={{
               color: 'hsl(180, 50%, 70%)',
               textShadow: '0 0 10px hsl(180, 100%, 50%, 0.3)',
@@ -296,13 +296,6 @@ const Workshops = () => {
                     )}
                   </AnimatePresence>
 
-                  {/* Registration Button */}
-                  <Link to="/register" className="block">
-                    <button className="w-full py-3 bg-[hsl(180,100%,50%)] hover:bg-[hsl(180,100%,60%)] text-black font-bold text-sm rounded-full transition-all duration-300 flex items-center justify-center gap-2 group/btn shadow-[0_0_20px_hsl(180,100%,50%,0.4)]">
-                      <span>Register Now</span>
-                      <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                    </button>
-                  </Link>
                 </div>
               </div>
             </motion.div>

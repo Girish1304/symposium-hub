@@ -33,8 +33,8 @@ const technicalEvents = [
     image: roboWarImg,
     teamSize: "2-4 members",
     duration: "1 - 1.5 hrs",
-    prize: "₹15,000",
-    regFee: "₹450/team",
+    regFee: "₹500",
+    prizes: { first: "₹10,000", second: "₹7,000", third: "₹3,000" },
     rules: [
       "Robot weight must not exceed 8 kg",
       "Maximum dimensions: 50cm x 50cm x 50cm",
@@ -52,8 +52,8 @@ const technicalEvents = [
     image: rcAdventureImg,
     teamSize: "1-2 members",
     duration: "1 - 1.5 hrs",
-    prize: "₹10,000",
-    regFee: "₹250",
+    regFee: "₹400",
+    prizes: { first: "₹4,000", second: "₹2,000", third: "₹1,000" },
     rules: [
       "Only ground-based RC vehicles allowed",
       "Vehicle must be remote controlled (no autonomous)",
@@ -71,8 +71,8 @@ const technicalEvents = [
     image: lineFollowingImg,
     teamSize: "2-3 members",
     duration: "1 - 1.5 hrs",
-    prize: "₹12,000",
     regFee: "₹250",
+    prizes: { first: "₹3,000", second: "₹1,500", third: "₹800" },
     rules: [
       "Robot must be fully autonomous",
       "Maximum robot size: 25cm x 25cm x 20cm",
@@ -90,8 +90,8 @@ const technicalEvents = [
     image: paperPresentationImg,
     teamSize: "1-2 members",
     duration: "1 - 1.5 hrs",
-    prize: "₹8,000",
     regFee: "₹100",
+    prizes: { first: "₹2,000", second: "₹1,000", third: "₹800" },
     rules: [
       "Paper must be original and unpublished",
       "Topics must be technology-related",
@@ -109,8 +109,8 @@ const technicalEvents = [
     image: projectPresentationImg,
     teamSize: "2-4 members",
     duration: "1 - 1.5 hrs",
-    prize: "₹15,000",
     regFee: "₹100",
+    prizes: { first: "₹2,000", second: "₹1,000", third: "₹800" },
     rules: [
       "Working prototype must be demonstrated",
       "Project documentation required",
@@ -128,8 +128,8 @@ const technicalEvents = [
     image: techQuizImg,
     teamSize: "2 members",
     duration: "1 - 1.5 hrs",
-    prize: "₹6,000",
     regFee: "Free",
+    prizes: { first: "₹600", second: "₹400", third: "₹200" },
     rules: [
       "Prelims: Written round (30 questions, 20 mins)",
       "Finals: Buzzer round for top 6 teams",
@@ -147,8 +147,8 @@ const technicalEvents = [
     image: roboTugImg,
     teamSize: "2-3 members",
     duration: "1 - 1.5 hrs",
-    prize: "₹10,000",
-    regFee: "₹50",
+    regFee: "₹400",
+    prizes: { first: "₹4,000", second: "₹2,000", third: "₹1,000" },
     rules: [
       "Robot weight limit: 5 kg",
       "Must use provided rope attachment point",
@@ -166,8 +166,8 @@ const technicalEvents = [
     image: techConnexionsImg,
     teamSize: "2 members",
     duration: "1 - 1.5 hrs",
-    prize: "₹5,000",
     regFee: "Free",
+    prizes: { first: "₹600", second: "₹400", third: "₹200" },
     rules: [
       "Written puzzle-based competition",
       "Connect related technical concepts",
@@ -185,8 +185,8 @@ const technicalEvents = [
     image: mazeSimulationImg,
     teamSize: "1-2 members",
     duration: "1 - 1.5 hrs",
-    prize: "₹8,000",
-    regFee: "Free",
+    regFee: "₹250",
+    prizes: { first: "₹1,300", second: "₹700", third: "₹500" },
     rules: [
       "Can use simulation software or physical robot",
       "Maze dimensions will be revealed on spot",
@@ -309,21 +309,23 @@ const TechnicalEvents = () => {
                                 {event.regFee}
                               </span>
                             </div>
-                            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-[hsl(180,100%,50%,0.15)] border border-[hsl(180,100%,50%,0.3)] rounded text-xs">
-                              <Award className="w-3.5 h-3.5 text-[hsl(180,100%,70%)]" />
-                              <span className="text-[hsl(180,100%,70%)] font-semibold">{event.prize}</span>
+                          </div>
+                          
+                          {/* Prize Pool */}
+                          <div className="flex flex-wrap gap-2 mt-3">
+                            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-[hsl(45,100%,50%,0.1)] border border-[hsl(45,100%,50%,0.3)] rounded text-xs">
+                              <Award className="w-3.5 h-3.5 text-[hsl(45,100%,60%)]" />
+                              <span className="text-[hsl(45,100%,70%)] font-semibold">1st: {event.prizes.first}</span>
+                            </div>
+                            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-[hsl(200,20%,50%,0.1)] border border-[hsl(200,20%,50%,0.3)] rounded text-xs">
+                              <Award className="w-3.5 h-3.5 text-[hsl(200,20%,70%)]" />
+                              <span className="text-[hsl(200,20%,80%)] font-semibold">2nd: {event.prizes.second}</span>
+                            </div>
+                            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-[hsl(25,60%,40%,0.2)] border border-[hsl(25,60%,50%,0.3)] rounded text-xs">
+                              <Award className="w-3.5 h-3.5 text-[hsl(25,60%,60%)]" />
+                              <span className="text-[hsl(25,60%,70%)] font-semibold">3rd: {event.prizes.third}</span>
                             </div>
                           </div>
-                        </div>
-
-                        {/* Registration Button */}
-                        <div className="flex-shrink-0">
-                          <Link to="/register">
-                            <Button className="rounded-full px-6 bg-[hsl(180,100%,50%)] hover:bg-[hsl(180,100%,60%)] text-black font-bold uppercase text-xs tracking-wide shadow-[0_0_20px_hsl(180,100%,50%,0.5)]">
-                              Register
-                              <ArrowRight className="w-4 h-4 ml-2" />
-                            </Button>
-                          </Link>
                         </div>
                       </div>
 
