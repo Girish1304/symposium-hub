@@ -15,6 +15,15 @@ import roboTugImg from "@/assets/events/robo-tug.png";
 import techConnexionsImg from "@/assets/events/tech-connexions.png";
 import mazeSimulationImg from "@/assets/events/maze-simulation.png";
 
+const glassyTextStyle = {
+  color: 'hsl(180, 100%, 70%)',
+  textShadow: `
+    0 0 10px hsl(180, 100%, 50%, 0.8),
+    0 0 20px hsl(180, 100%, 50%, 0.5),
+    0 0 40px hsl(180, 100%, 50%, 0.3)
+  `,
+};
+
 const technicalEvents = [
   {
     id: 1,
@@ -209,19 +218,28 @@ const TechnicalEvents = () => {
           className="text-center max-w-3xl mx-auto mb-16"
         >
           <motion.div 
-            className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/20 rounded-full mb-6"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-[hsl(180,100%,50%,0.1)] border border-[hsl(180,100%,50%,0.3)] rounded-full mb-6"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ delay: 0.1 }}
           >
-            <span className="w-2 h-2 bg-primary rounded-full" />
-            <span className="text-sm font-medium text-primary uppercase tracking-wide">Technical Events</span>
+            <span className="w-2 h-2 bg-[hsl(180,100%,50%)] rounded-full animate-pulse shadow-[0_0_10px_hsl(180,100%,50%)]" />
+            <span className="text-sm font-medium text-[hsl(180,100%,70%)] uppercase tracking-wide">Technical Events</span>
           </motion.div>
           
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight mb-4 uppercase">
-            Compete & <span className="text-gradient">Conquer</span>
+          <h2 
+            className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight mb-4 uppercase"
+            style={glassyTextStyle}
+          >
+            Compete & Conquer
           </h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">
+          <p 
+            className="text-lg leading-relaxed"
+            style={{
+              color: 'hsl(180, 50%, 70%)',
+              textShadow: '0 0 10px hsl(180, 100%, 50%, 0.3)',
+            }}
+          >
             9 challenging events designed to test your skills, creativity, and innovation.
           </p>
         </motion.div>
@@ -236,7 +254,7 @@ const TechnicalEvents = () => {
               transition={{ duration: 0.4, delay: 0.05 * index }}
               className="group"
             >
-              <div className="relative bg-card border border-border rounded-xl overflow-hidden hover:border-primary/30 transition-all duration-300">
+              <div className="relative bg-[hsl(180,100%,50%,0.03)] backdrop-blur-sm border border-[hsl(180,100%,50%,0.2)] rounded-xl overflow-hidden hover:border-[hsl(180,100%,50%,0.5)] transition-all duration-300">
                 <div className="flex flex-col md:flex-row">
                   {/* Event Image */}
                   <div className="relative w-full md:w-48 h-40 md:h-auto flex-shrink-0 overflow-hidden">
@@ -245,10 +263,10 @@ const TechnicalEvents = () => {
                       alt={event.name}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent to-card hidden md:block" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent md:hidden" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[hsl(200,20%,10%)] hidden md:block" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[hsl(200,20%,10%)] to-transparent md:hidden" />
                     {/* Event number badge */}
-                    <div className="absolute top-3 left-3 px-2.5 py-1 bg-primary text-primary-foreground rounded text-xs font-bold font-mono">
+                    <div className="absolute top-3 left-3 px-2.5 py-1 bg-[hsl(180,100%,50%)] text-black rounded text-xs font-bold font-mono">
                       #{String(event.id).padStart(2, '0')}
                     </div>
                   </div>
@@ -259,32 +277,41 @@ const TechnicalEvents = () => {
                       <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
                         <div className="flex-1">
                           <div className="flex items-center gap-3 mb-2">
-                            <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center">
-                              <event.icon className="w-4 h-4 text-primary" />
+                            <div className="w-9 h-9 rounded-lg bg-[hsl(180,100%,50%,0.1)] border border-[hsl(180,100%,50%,0.3)] flex items-center justify-center">
+                              <event.icon className="w-4 h-4 text-[hsl(180,100%,70%)]" style={{ filter: 'drop-shadow(0 0 6px hsl(180, 100%, 50%, 0.8))' }} />
                             </div>
-                            <h3 className="text-lg font-display font-bold tracking-tight group-hover:text-primary transition-colors uppercase">
+                            <h3 
+                              className="text-lg font-display font-bold tracking-tight uppercase"
+                              style={glassyTextStyle}
+                            >
                               {event.name}
                             </h3>
                           </div>
-                          <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-2">
+                          <p 
+                            className="text-sm leading-relaxed mb-4 line-clamp-2"
+                            style={{
+                              color: 'hsl(180, 40%, 60%)',
+                              textShadow: '0 0 5px hsl(180, 100%, 50%, 0.2)',
+                            }}
+                          >
                             {event.description}
                           </p>
                           
                           {/* Meta info */}
                           <div className="flex flex-wrap gap-2">
-                            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-muted rounded text-xs">
-                              <Users className="w-3.5 h-3.5 text-muted-foreground" />
-                              <span className="text-foreground/80">{event.teamSize}</span>
+                            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-[hsl(180,100%,50%,0.1)] border border-[hsl(180,100%,50%,0.2)] rounded text-xs">
+                              <Users className="w-3.5 h-3.5 text-[hsl(180,100%,60%)]" />
+                              <span className="text-[hsl(180,80%,70%)]">{event.teamSize}</span>
                             </div>
-                            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-muted rounded text-xs">
-                              <IndianRupee className="w-3.5 h-3.5 text-muted-foreground" />
-                              <span className={event.regFee === "Free" ? "text-accent font-semibold" : "text-foreground/80"}>
+                            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-[hsl(180,100%,50%,0.1)] border border-[hsl(180,100%,50%,0.2)] rounded text-xs">
+                              <IndianRupee className="w-3.5 h-3.5 text-[hsl(180,100%,60%)]" />
+                              <span className={event.regFee === "Free" ? "text-[hsl(120,100%,60%)] font-semibold" : "text-[hsl(180,80%,70%)]"}>
                                 {event.regFee}
                               </span>
                             </div>
-                            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-primary/10 rounded text-xs">
-                              <Award className="w-3.5 h-3.5 text-primary" />
-                              <span className="text-primary font-semibold">{event.prize}</span>
+                            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-[hsl(180,100%,50%,0.15)] border border-[hsl(180,100%,50%,0.3)] rounded text-xs">
+                              <Award className="w-3.5 h-3.5 text-[hsl(180,100%,70%)]" />
+                              <span className="text-[hsl(180,100%,70%)] font-semibold">{event.prize}</span>
                             </div>
                           </div>
                         </div>
@@ -292,7 +319,7 @@ const TechnicalEvents = () => {
                         {/* Registration Button */}
                         <div className="flex-shrink-0">
                           <Link to="/register">
-                            <Button className="rounded-full px-6 bg-primary hover:bg-primary/90 text-primary-foreground font-bold uppercase text-xs tracking-wide">
+                            <Button className="rounded-full px-6 bg-[hsl(180,100%,50%)] hover:bg-[hsl(180,100%,60%)] text-black font-bold uppercase text-xs tracking-wide shadow-[0_0_20px_hsl(180,100%,50%,0.5)]">
                               Register
                               <ArrowRight className="w-4 h-4 ml-2" />
                             </Button>
@@ -303,7 +330,7 @@ const TechnicalEvents = () => {
                       {/* Rules Toggle */}
                       <button
                         onClick={() => toggleExpand(event.id)}
-                        className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors self-start"
+                        className="flex items-center gap-2 text-sm text-[hsl(180,100%,60%)] hover:text-[hsl(180,100%,70%)] transition-colors self-start"
                       >
                         <span className="font-medium">
                           {expandedId === event.id ? "Hide rules" : "View rules"}
@@ -326,7 +353,7 @@ const TechnicalEvents = () => {
                             transition={{ duration: 0.3 }}
                             className="overflow-hidden"
                           >
-                            <div className="pt-4 border-t border-border">
+                            <div className="pt-4 border-t border-[hsl(180,100%,50%,0.2)]">
                               <ul className="grid sm:grid-cols-2 gap-3 text-sm">
                                 {event.rules.map((rule, ruleIndex) => (
                                   <motion.li
@@ -334,9 +361,13 @@ const TechnicalEvents = () => {
                                     initial={{ opacity: 0, x: -10 }}
                                     animate={{ opacity: 1, x: 0 }}
                                     transition={{ delay: ruleIndex * 0.05 }}
-                                    className="flex items-start gap-2 text-muted-foreground"
+                                    className="flex items-start gap-2"
+                                    style={{
+                                      color: 'hsl(180, 40%, 60%)',
+                                      textShadow: '0 0 5px hsl(180, 100%, 50%, 0.2)',
+                                    }}
                                   >
-                                    <span className="text-primary mt-1">•</span>
+                                    <span className="text-[hsl(180,100%,60%)] mt-1">•</span>
                                     <span>{rule}</span>
                                   </motion.li>
                                 ))}

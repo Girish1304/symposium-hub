@@ -4,6 +4,15 @@ import { useRef } from "react";
 import { Cpu, Users, Trophy, Rocket } from "lucide-react";
 import HolographicCard from "./HolographicCard";
 
+const glassyTextStyle = {
+  color: 'hsl(180, 100%, 70%)',
+  textShadow: `
+    0 0 10px hsl(180, 100%, 50%, 0.8),
+    0 0 20px hsl(180, 100%, 50%, 0.5),
+    0 0 40px hsl(180, 100%, 50%, 0.3)
+  `,
+};
+
 const features = [
   {
     icon: Cpu,
@@ -37,8 +46,8 @@ const About = () => {
 
   return (
     <section id="about" className="py-28 relative overflow-hidden">
-      {/* Simplified background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/3 to-background" />
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-[hsl(180,100%,50%,0.03)] to-background" />
       
       <div className="container px-6 relative" ref={ref}>
         <motion.div
@@ -49,40 +58,65 @@ const About = () => {
         >
           {/* Section label */}
           <motion.div 
-            className="inline-flex items-center gap-3 px-5 py-2 bg-card/60 border border-primary/30 backdrop-blur-sm mb-6"
+            className="inline-flex items-center gap-3 px-5 py-2 bg-[hsl(180,100%,50%,0.1)] border border-[hsl(180,100%,50%,0.3)] backdrop-blur-sm mb-6 rounded-full"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ delay: 0.2 }}
           >
-            <div className="w-2 h-2 bg-primary" />
-            <span className="text-primary font-mono text-sm uppercase tracking-[0.2em]">About JARVIS</span>
+            <div className="w-2 h-2 bg-[hsl(180,100%,50%)] rounded-full animate-pulse shadow-[0_0_10px_hsl(180,100%,50%)]" />
+            <span className="text-[hsl(180,100%,70%)] font-mono text-sm uppercase tracking-[0.2em]">About JARVIS</span>
           </motion.div>
           
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-4 mb-6 tracking-tight">
-            THE ULTIMATE <span className="text-gradient">TECH EXPERIENCE</span>
+          <h2 
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mt-4 mb-6 tracking-tight uppercase"
+            style={glassyTextStyle}
+          >
+            THE ULTIMATE TECH EXPERIENCE
           </h2>
-          <p className="text-lg text-muted-foreground tracking-wide leading-relaxed">
+          <p 
+            className="text-lg tracking-wide leading-relaxed"
+            style={{
+              color: 'hsl(180, 50%, 70%)',
+              textShadow: '0 0 10px hsl(180, 100%, 50%, 0.3)',
+            }}
+          >
             JARVIS is more than a symposium—it's a celebration of technology, creativity, and 
-            collaboration. Immerse yourself in a world where <span className="text-primary">ideas</span> transform into <span className="text-secondary">reality</span>.
+            collaboration. Immerse yourself in a world where ideas transform into reality.
           </p>
         </motion.div>
 
-        {/* Features grid - increased gap */}
+        {/* Features grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature, index) => (
-            <HolographicCard key={feature.title} delay={0.1 * index} variant={feature.variant}>
-              <div className="p-6">
-                {/* Simplified icon container */}
-                <div className="w-14 h-14 mb-5 flex items-center justify-center border border-primary/30 bg-primary/5">
-                  <feature.icon className={`w-6 h-6 ${feature.variant === 'primary' ? 'text-primary' : 'text-secondary'}`} />
+            <motion.div
+              key={feature.title}
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.1 * index }}
+            >
+              <div className="p-6 bg-[hsl(180,100%,50%,0.05)] backdrop-blur-sm border border-[hsl(180,100%,50%,0.2)] rounded-xl hover:border-[hsl(180,100%,50%,0.5)] transition-all duration-300 h-full">
+                {/* Icon container */}
+                <div className="w-14 h-14 mb-5 flex items-center justify-center border border-[hsl(180,100%,50%,0.3)] bg-[hsl(180,100%,50%,0.1)] rounded-lg">
+                  <feature.icon className="w-6 h-6 text-[hsl(180,100%,70%)]" style={{ filter: 'drop-shadow(0 0 8px hsl(180, 100%, 50%, 0.8))' }} />
                 </div>
                 
-                <h3 className="text-xl font-bold mb-3 tracking-wide">
+                <h3 
+                  className="text-xl font-bold mb-3 tracking-wide"
+                  style={glassyTextStyle}
+                >
                   {feature.title}
                 </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{feature.description}</p>
+                <p 
+                  className="text-sm leading-relaxed"
+                  style={{
+                    color: 'hsl(180, 40%, 60%)',
+                    textShadow: '0 0 5px hsl(180, 100%, 50%, 0.2)',
+                  }}
+                >
+                  {feature.description}
+                </p>
               </div>
-            </HolographicCard>
+            </motion.div>
           ))}
         </div>
       </div>

@@ -1,7 +1,7 @@
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Cpu, Factory, Code, Car, Bot, BarChart3, ChevronDown, Users, Clock, Wrench, IndianRupee } from "lucide-react";
+import { ArrowRight, Cpu, Factory, Code, Car, Bot, BarChart3, ChevronDown, Users, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
 
 // Import workshop images
@@ -11,6 +11,15 @@ import ros2Img from "@/assets/workshops/ros2.png";
 import bajaImg from "@/assets/workshops/baja.png";
 import kukaImg from "@/assets/workshops/kuka.png";
 import sapImg from "@/assets/workshops/sap.png";
+
+const glassyTextStyle = {
+  color: 'hsl(180, 100%, 70%)',
+  textShadow: `
+    0 0 10px hsl(180, 100%, 50%, 0.8),
+    0 0 20px hsl(180, 100%, 50%, 0.5),
+    0 0 40px hsl(180, 100%, 50%, 0.3)
+  `,
+};
 
 const workshops = [
   {
@@ -144,20 +153,28 @@ const Workshops = () => {
         >
           {/* Badge */}
           <motion.div 
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-[hsl(170,100%,50%,0.1)] border border-[hsl(170,100%,50%,0.3)] rounded-full mb-8"
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-[hsl(180,100%,50%,0.1)] border border-[hsl(180,100%,50%,0.3)] rounded-full mb-8"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ delay: 0.2 }}
           >
-            <div className="w-2 h-2 bg-[hsl(170,100%,50%)] rounded-full animate-pulse shadow-[0_0_10px_hsl(170,100%,50%)]" />
-            <span className="text-[hsl(170,100%,50%)] text-sm font-medium tracking-wide">HANDS-ON WORKSHOPS</span>
+            <div className="w-2 h-2 bg-[hsl(180,100%,50%)] rounded-full animate-pulse shadow-[0_0_10px_hsl(180,100%,50%)]" />
+            <span className="text-[hsl(180,100%,70%)] text-sm font-medium tracking-wide">HANDS-ON WORKSHOPS</span>
           </motion.div>
           
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight mb-6 text-white uppercase">
-            Learn &{" "}
-            <span className="text-[hsl(32,100%,50%)] drop-shadow-[0_0_20px_hsl(32,100%,50%,0.5)]">Master</span>
+          <h2 
+            className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight mb-6 uppercase"
+            style={glassyTextStyle}
+          >
+            Learn & Master
           </h2>
-          <p className="text-base md:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed">
+          <p 
+            className="text-base md:text-lg max-w-xl mx-auto leading-relaxed"
+            style={{
+              color: 'hsl(180, 50%, 70%)',
+              textShadow: '0 0 10px hsl(180, 100%, 50%, 0.3)',
+            }}
+          >
             6 intensive hands-on workshops designed to give you practical skills with industry experts.
           </p>
         </motion.div>
@@ -172,7 +189,7 @@ const Workshops = () => {
               transition={{ duration: 0.4, delay: 0.06 * index }}
               className="group"
             >
-              <div className="relative bg-card/60 backdrop-blur-sm rounded-2xl border border-border hover:border-[hsl(170,100%,50%,0.5)] transition-all duration-300 overflow-hidden h-full">
+              <div className="relative bg-[hsl(180,100%,50%,0.03)] backdrop-blur-sm rounded-2xl border border-[hsl(180,100%,50%,0.2)] hover:border-[hsl(180,100%,50%,0.5)] transition-all duration-300 overflow-hidden h-full">
                 {/* Workshop Image */}
                 <div className="relative w-full h-40 overflow-hidden">
                   <img 
@@ -180,15 +197,15 @@ const Workshops = () => {
                     alt={workshop.name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-card via-card/60 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[hsl(200,20%,10%)] via-[hsl(200,20%,10%,0.6)] to-transparent" />
                   
                   {/* Workshop number badge */}
-                  <div className="absolute top-3 left-3 px-2.5 py-1 bg-[hsl(32,100%,50%)] text-black text-xs font-bold rounded-full">
+                  <div className="absolute top-3 left-3 px-2.5 py-1 bg-[hsl(180,100%,50%)] text-black text-xs font-bold rounded-full">
                     W{String(workshop.id).padStart(2, '0')}
                   </div>
                   
                   {/* Price badge */}
-                  <div className="absolute top-3 right-3 px-3 py-1 bg-card/90 backdrop-blur-sm border border-border text-[hsl(170,100%,50%)] text-sm font-semibold rounded-full">
+                  <div className="absolute top-3 right-3 px-3 py-1 bg-[hsl(200,20%,10%,0.9)] backdrop-blur-sm border border-[hsl(180,100%,50%,0.3)] text-[hsl(180,100%,70%)] text-sm font-semibold rounded-full">
                     {workshop.price}
                   </div>
                 </div>
@@ -196,34 +213,43 @@ const Workshops = () => {
                 {/* Workshop Content */}
                 <div className="p-5">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-9 h-9 rounded-xl bg-[hsl(170,100%,50%,0.1)] flex items-center justify-center">
-                      <workshop.icon className="w-4 h-4 text-[hsl(170,100%,50%)]" />
+                    <div className="w-9 h-9 rounded-xl bg-[hsl(180,100%,50%,0.1)] border border-[hsl(180,100%,50%,0.3)] flex items-center justify-center">
+                      <workshop.icon className="w-4 h-4 text-[hsl(180,100%,70%)]" style={{ filter: 'drop-shadow(0 0 6px hsl(180, 100%, 50%, 0.8))' }} />
                     </div>
-                    <h3 className="text-sm font-bold tracking-wide text-white group-hover:text-[hsl(170,100%,50%)] transition-colors duration-300">
+                    <h3 
+                      className="text-sm font-bold tracking-wide"
+                      style={glassyTextStyle}
+                    >
                       {workshop.name}
                     </h3>
                   </div>
                   
-                  <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                  <p 
+                    className="text-sm leading-relaxed mb-4"
+                    style={{
+                      color: 'hsl(180, 40%, 60%)',
+                      textShadow: '0 0 5px hsl(180, 100%, 50%, 0.2)',
+                    }}
+                  >
                     {workshop.description}
                   </p>
                   
                   {/* Workshop meta info */}
                   <div className="flex flex-wrap gap-2 mb-4">
-                    <div className="flex items-center gap-1.5 text-xs text-muted-foreground px-2.5 py-1.5 bg-muted/50 rounded-full">
-                      <Clock className="w-3 h-3 text-[hsl(170,100%,50%,0.7)]" />
-                      <span>{workshop.duration}</span>
+                    <div className="flex items-center gap-1.5 text-xs px-2.5 py-1.5 bg-[hsl(180,100%,50%,0.1)] border border-[hsl(180,100%,50%,0.2)] rounded-full">
+                      <Clock className="w-3 h-3 text-[hsl(180,100%,60%)]" />
+                      <span className="text-[hsl(180,80%,70%)]">{workshop.duration}</span>
                     </div>
-                    <div className="flex items-center gap-1.5 text-xs text-muted-foreground px-2.5 py-1.5 bg-muted/50 rounded-full">
-                      <Users className="w-3 h-3 text-[hsl(170,100%,50%,0.7)]" />
-                      <span>{workshop.capacity}</span>
+                    <div className="flex items-center gap-1.5 text-xs px-2.5 py-1.5 bg-[hsl(180,100%,50%,0.1)] border border-[hsl(180,100%,50%,0.2)] rounded-full">
+                      <Users className="w-3 h-3 text-[hsl(180,100%,60%)]" />
+                      <span className="text-[hsl(180,80%,70%)]">{workshop.capacity}</span>
                     </div>
                   </div>
 
                   {/* Topics Toggle */}
                   <button
                     onClick={() => toggleExpand(workshop.id)}
-                    className="flex items-center gap-2 text-[hsl(170,100%,50%)] hover:text-[hsl(170,100%,60%)] transition-colors mb-4 w-full"
+                    className="flex items-center gap-2 text-[hsl(180,100%,60%)] hover:text-[hsl(180,100%,70%)] transition-colors mb-4 w-full"
                   >
                     <span className="text-xs font-medium">
                       {expandedId === workshop.id ? "Hide Topics" : "View Topics"}
@@ -246,7 +272,7 @@ const Workshops = () => {
                         transition={{ duration: 0.3 }}
                         className="overflow-hidden"
                       >
-                        <div className="pb-4 border-t border-border pt-4 mb-4">
+                        <div className="pb-4 border-t border-[hsl(180,100%,50%,0.2)] pt-4 mb-4">
                           <ul className="space-y-2">
                             {workshop.topics.map((topic, topicIndex) => (
                               <motion.li
@@ -254,9 +280,13 @@ const Workshops = () => {
                                 initial={{ opacity: 0, x: -10 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: topicIndex * 0.05 }}
-                                className="flex items-start gap-2 text-sm text-muted-foreground"
+                                className="flex items-start gap-2 text-sm"
+                                style={{
+                                  color: 'hsl(180, 40%, 60%)',
+                                  textShadow: '0 0 5px hsl(180, 100%, 50%, 0.2)',
+                                }}
                               >
-                                <div className="w-1.5 h-1.5 bg-[hsl(32,100%,50%)] rounded-full mt-1.5 flex-shrink-0" />
+                                <div className="w-1.5 h-1.5 bg-[hsl(180,100%,50%)] rounded-full mt-1.5 flex-shrink-0" />
                                 <span>{topic}</span>
                               </motion.li>
                             ))}
@@ -268,7 +298,7 @@ const Workshops = () => {
 
                   {/* Registration Button */}
                   <Link to="/register" className="block">
-                    <button className="w-full py-3 bg-[hsl(32,100%,50%)] hover:bg-[hsl(32,100%,55%)] text-black font-bold text-sm rounded-full transition-all duration-300 flex items-center justify-center gap-2 group/btn shadow-[0_0_20px_hsl(32,100%,50%,0.3)]">
+                    <button className="w-full py-3 bg-[hsl(180,100%,50%)] hover:bg-[hsl(180,100%,60%)] text-black font-bold text-sm rounded-full transition-all duration-300 flex items-center justify-center gap-2 group/btn shadow-[0_0_20px_hsl(180,100%,50%,0.4)]">
                       <span>Register Now</span>
                       <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                     </button>

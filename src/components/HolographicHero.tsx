@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, Zap, Cpu, CircuitBoard, Wrench } from "lucide-react";
 import CountdownTimer from "@/components/CountdownTimer";
-import HolographicLogo3D from "@/components/HolographicLogo3D";
+import ArcReactor3D from "@/components/ArcReactor3D";
 
 // Glassy text style for unified cyan theme
 const glassyTextStyle = {
@@ -66,7 +66,7 @@ const HolographicHero = () => {
             transition={{ delay: 0.15, duration: 0.8 }}
             className="mb-6"
           >
-            <HolographicLogo3D />
+            <ArcReactor3D />
           </motion.div>
 
           {/* Main heading - Glassy Hero title with Audiowide font */}

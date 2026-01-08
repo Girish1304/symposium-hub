@@ -7,6 +7,15 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 
+const glassyTextStyle = {
+  color: 'hsl(180, 100%, 70%)',
+  textShadow: `
+    0 0 10px hsl(180, 100%, 50%, 0.8),
+    0 0 20px hsl(180, 100%, 50%, 0.5),
+    0 0 40px hsl(180, 100%, 50%, 0.3)
+  `,
+};
+
 const Contact = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -62,9 +71,9 @@ const Contact = () => {
   return (
     <section id="contact" className="py-24 relative overflow-hidden">
       {/* Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background" />
-      <div className="absolute top-1/4 left-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-[hsl(180,100%,50%,0.03)] to-background" />
+      <div className="absolute top-1/4 left-0 w-96 h-96 bg-[hsl(180,100%,50%,0.08)] rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-[hsl(180,100%,50%,0.05)] rounded-full blur-3xl" />
 
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
@@ -74,12 +83,30 @@ const Contact = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary">
-              CONTACT US
-            </span>
+          <motion.div 
+            className="inline-flex items-center gap-2 px-4 py-2 bg-[hsl(180,100%,50%,0.1)] border border-[hsl(180,100%,50%,0.3)] rounded-full mb-6"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+          >
+            <span className="w-2 h-2 bg-[hsl(180,100%,50%)] rounded-full animate-pulse shadow-[0_0_10px_hsl(180,100%,50%)]" />
+            <span className="text-sm font-medium text-[hsl(180,100%,70%)] uppercase tracking-wide">Get In Touch</span>
+          </motion.div>
+          
+          <h2 
+            className="text-4xl md:text-5xl font-bold mb-4 uppercase"
+            style={glassyTextStyle}
+          >
+            Contact Us
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <p 
+            className="text-lg max-w-2xl mx-auto"
+            style={{
+              color: 'hsl(180, 50%, 70%)',
+              textShadow: '0 0 10px hsl(180, 100%, 50%, 0.3)',
+            }}
+          >
             Have questions about JARVIS 2026? We're here to help. Send us a message and we'll respond as soon as possible.
           </p>
         </motion.div>
@@ -92,19 +119,22 @@ const Contact = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="bg-card/50 backdrop-blur-sm border border-primary/20 rounded-2xl p-8">
-              <h3 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
-                <MessageSquare className="w-6 h-6 text-primary" />
+            <div className="bg-[hsl(180,100%,50%,0.03)] backdrop-blur-sm border border-[hsl(180,100%,50%,0.2)] rounded-2xl p-8">
+              <h3 
+                className="text-2xl font-bold mb-6 flex items-center gap-3"
+                style={glassyTextStyle}
+              >
+                <MessageSquare className="w-6 h-6 text-[hsl(180,100%,70%)]" style={{ filter: 'drop-shadow(0 0 8px hsl(180, 100%, 50%, 0.8))' }} />
                 Send us a Message
               </h3>
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="space-y-2">
-                  <Label htmlFor="name" className="text-foreground">
+                  <Label htmlFor="name" className="text-[hsl(180,80%,70%)]">
                     Your Name
                   </Label>
                   <div className="relative">
-                    <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                    <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[hsl(180,60%,50%)]" />
                     <Input
                       id="name"
                       name="name"
@@ -112,17 +142,17 @@ const Contact = () => {
                       onChange={handleChange}
                       placeholder="Enter your name"
                       required
-                      className="pl-10 bg-background/50 border-primary/30 focus:border-primary"
+                      className="pl-10 bg-[hsl(200,20%,10%,0.5)] border-[hsl(180,100%,50%,0.3)] focus:border-[hsl(180,100%,50%)] text-[hsl(180,80%,80%)] placeholder:text-[hsl(180,30%,40%)]"
                     />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="email" className="text-foreground">
+                  <Label htmlFor="email" className="text-[hsl(180,80%,70%)]">
                     Email Address
                   </Label>
                   <div className="relative">
-                    <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                    <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[hsl(180,60%,50%)]" />
                     <Input
                       id="email"
                       name="email"
@@ -131,13 +161,13 @@ const Contact = () => {
                       onChange={handleChange}
                       placeholder="your.email@example.com"
                       required
-                      className="pl-10 bg-background/50 border-primary/30 focus:border-primary"
+                      className="pl-10 bg-[hsl(200,20%,10%,0.5)] border-[hsl(180,100%,50%,0.3)] focus:border-[hsl(180,100%,50%)] text-[hsl(180,80%,80%)] placeholder:text-[hsl(180,30%,40%)]"
                     />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="subject" className="text-foreground">
+                  <Label htmlFor="subject" className="text-[hsl(180,80%,70%)]">
                     Subject
                   </Label>
                   <Input
@@ -147,12 +177,12 @@ const Contact = () => {
                     onChange={handleChange}
                     placeholder="What's this about?"
                     required
-                    className="bg-background/50 border-primary/30 focus:border-primary"
+                    className="bg-[hsl(200,20%,10%,0.5)] border-[hsl(180,100%,50%,0.3)] focus:border-[hsl(180,100%,50%)] text-[hsl(180,80%,80%)] placeholder:text-[hsl(180,30%,40%)]"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="message" className="text-foreground">
+                  <Label htmlFor="message" className="text-[hsl(180,80%,70%)]">
                     Message
                   </Label>
                   <Textarea
@@ -163,18 +193,18 @@ const Contact = () => {
                     placeholder="Tell us more about your inquiry..."
                     required
                     rows={5}
-                    className="bg-background/50 border-primary/30 focus:border-primary resize-none"
+                    className="bg-[hsl(200,20%,10%,0.5)] border-[hsl(180,100%,50%,0.3)] focus:border-[hsl(180,100%,50%)] text-[hsl(180,80%,80%)] placeholder:text-[hsl(180,30%,40%)] resize-none"
                   />
                 </div>
 
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-primary to-accent hover:opacity-90 text-primary-foreground font-semibold py-6"
+                  className="w-full bg-[hsl(180,100%,50%)] hover:bg-[hsl(180,100%,60%)] text-black font-bold py-6 shadow-[0_0_25px_hsl(180,100%,50%,0.4)]"
                 >
                   {isSubmitting ? (
                     <span className="flex items-center gap-2">
-                      <div className="w-5 h-5 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
+                      <div className="w-5 h-5 border-2 border-black/30 border-t-black rounded-full animate-spin" />
                       Sending...
                     </span>
                   ) : (
@@ -196,11 +226,20 @@ const Contact = () => {
             transition={{ duration: 0.6 }}
             className="space-y-6"
           >
-            <div className="bg-card/50 backdrop-blur-sm border border-primary/20 rounded-2xl p-8">
-              <h3 className="text-2xl font-bold text-foreground mb-6">
+            <div className="bg-[hsl(180,100%,50%,0.03)] backdrop-blur-sm border border-[hsl(180,100%,50%,0.2)] rounded-2xl p-8">
+              <h3 
+                className="text-2xl font-bold mb-6"
+                style={glassyTextStyle}
+              >
                 Get in Touch
               </h3>
-              <p className="text-muted-foreground mb-8">
+              <p 
+                className="mb-8"
+                style={{
+                  color: 'hsl(180, 40%, 60%)',
+                  textShadow: '0 0 5px hsl(180, 100%, 50%, 0.2)',
+                }}
+              >
                 Whether you have questions about registration, events, workshops, or anything else, our team is ready to answer all your questions.
               </p>
 
@@ -215,14 +254,22 @@ const Contact = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: index * 0.1 }}
-                    className="flex items-start gap-4 p-4 rounded-xl bg-background/30 border border-primary/10 hover:border-primary/30 transition-colors group"
+                    className="flex items-start gap-4 p-4 rounded-xl bg-[hsl(180,100%,50%,0.05)] border border-[hsl(180,100%,50%,0.15)] hover:border-[hsl(180,100%,50%,0.4)] transition-colors group"
                   >
-                    <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                      <info.icon className="w-6 h-6" />
+                    <div className="p-3 rounded-lg bg-[hsl(180,100%,50%,0.1)] border border-[hsl(180,100%,50%,0.2)] group-hover:bg-[hsl(180,100%,50%)] group-hover:border-transparent transition-all">
+                      <info.icon className="w-6 h-6 text-[hsl(180,100%,70%)] group-hover:text-black transition-colors" style={{ filter: 'drop-shadow(0 0 6px hsl(180, 100%, 50%, 0.8))' }} />
                     </div>
                     <div>
-                      <p className="text-sm text-muted-foreground">{info.label}</p>
-                      <p className="text-foreground font-medium">{info.value}</p>
+                      <p className="text-sm text-[hsl(180,50%,50%)]">{info.label}</p>
+                      <p 
+                        className="font-medium"
+                        style={{
+                          color: 'hsl(180, 80%, 70%)',
+                          textShadow: '0 0 8px hsl(180, 100%, 50%, 0.4)',
+                        }}
+                      >
+                        {info.value}
+                      </p>
                     </div>
                   </motion.a>
                 ))}
@@ -230,11 +277,19 @@ const Contact = () => {
             </div>
 
             {/* Quick Response Promise */}
-            <div className="bg-gradient-to-r from-primary/20 to-accent/20 backdrop-blur-sm border border-primary/30 rounded-2xl p-6 text-center">
-              <h4 className="text-xl font-bold text-foreground mb-2">
+            <div className="bg-[hsl(180,100%,50%,0.08)] backdrop-blur-sm border border-[hsl(180,100%,50%,0.3)] rounded-2xl p-6 text-center">
+              <h4 
+                className="text-xl font-bold mb-2"
+                style={glassyTextStyle}
+              >
                 Quick Response Guaranteed
               </h4>
-              <p className="text-muted-foreground">
+              <p 
+                style={{
+                  color: 'hsl(180, 40%, 60%)',
+                  textShadow: '0 0 5px hsl(180, 100%, 50%, 0.2)',
+                }}
+              >
                 We typically respond within 24 hours. For urgent matters, please call us directly.
               </p>
             </div>
