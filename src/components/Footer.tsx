@@ -1,13 +1,11 @@
 import { forwardRef } from "react";
 import { Link } from "react-router-dom";
-import { Instagram, Twitter, Linkedin, Youtube, Mail, MapPin } from "lucide-react";
+import { Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 
 const Footer = forwardRef<HTMLElement>((_, ref) => {
   const socialLinks = [
     { icon: Instagram, href: "#", label: "Instagram" },
-    { icon: Twitter, href: "#", label: "Twitter" },
     { icon: Linkedin, href: "#", label: "LinkedIn" },
-    { icon: Youtube, href: "#", label: "YouTube" },
   ];
 
   const quickLinks = [
@@ -97,13 +95,24 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
             <ul className="space-y-4">
               <li>
                 <a
-                  href="mailto:jarvis@citchennai.edu"
+                  href="tel:+919962775469"
+                  className="flex items-center gap-3 text-muted-foreground hover:text-[hsl(170,100%,50%)] transition-colors text-sm"
+                >
+                  <div className="w-9 h-9 rounded-full bg-muted border border-border flex items-center justify-center">
+                    <Phone className="w-4 h-4" />
+                  </div>
+                  +91 99627 75469
+                </a>
+              </li>
+              <li>
+                <a
+                  href="mailto:jarvis2026@citchennai.net"
                   className="flex items-center gap-3 text-muted-foreground hover:text-[hsl(170,100%,50%)] transition-colors text-sm"
                 >
                   <div className="w-9 h-9 rounded-full bg-muted border border-border flex items-center justify-center">
                     <Mail className="w-4 h-4" />
                   </div>
-                  jarvis@citchennai.edu
+                  jarvis2026@citchennai.net
                 </a>
               </li>
               <li className="flex items-start gap-3 text-muted-foreground text-sm">
