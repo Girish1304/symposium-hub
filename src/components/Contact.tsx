@@ -49,16 +49,16 @@ const Contact = () => {
 
   const contactInfo = [
     {
+      icon: Phone,
+      label: "Phone",
+      value: "+91 99627 75469",
+      href: "tel:+919962775469"
+    },
+    {
       icon: Mail,
       label: "Email",
       value: "jarvis2026@citchennai.net",
       href: "mailto:jarvis2026@citchennai.net"
-    },
-    {
-      icon: Phone,
-      label: "Phone",
-      value: "+91 1234567789",
-      href: "tel:+911234567789"
     },
     {
       icon: MapPin,
