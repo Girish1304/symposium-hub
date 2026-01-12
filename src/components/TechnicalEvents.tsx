@@ -257,11 +257,11 @@ const TechnicalEvents = () => {
               <div className="relative bg-[hsl(180,100%,50%,0.03)] backdrop-blur-sm border border-[hsl(180,100%,50%,0.2)] rounded-xl overflow-hidden hover:border-[hsl(180,100%,50%,0.5)] transition-all duration-300">
                 <div className="flex flex-col md:flex-row">
                   {/* Event Image */}
-                  <div className="relative w-full md:w-48 h-48 md:h-auto flex-shrink-0 overflow-hidden">
+                  <div className="relative w-full md:w-48 h-48 md:h-auto flex-shrink-0 overflow-hidden bg-black/30">
                     <img 
                       src={event.image} 
                       alt={event.name}
-                      className="w-full h-full object-contain bg-black/50 group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[hsl(200,20%,10%)] hidden md:block" />
                     <div className="absolute inset-0 bg-gradient-to-t from-[hsl(200,20%,10%)] to-transparent md:hidden" />
