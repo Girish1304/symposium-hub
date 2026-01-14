@@ -483,19 +483,20 @@ const ArcReactorSplash = ({ onComplete }: ArcReactorSplashProps) => {
           </motion.h2>
           
           <motion.p
-            className="text-lg md:text-xl tracking-[0.15em] uppercase font-mono font-bold"
+            className="text-2xl md:text-3xl tracking-[0.15em] uppercase font-mono font-extrabold px-6 py-3 bg-black/40 rounded-lg border border-cyan-400/30"
             style={{ 
-              color: 'rgba(0, 180, 255, 0.95)',
-              textShadow: '0 0 20px rgba(0, 150, 220, 0.6), 0 0 40px rgba(0, 100, 180, 0.4)'
+              color: 'rgba(0, 220, 255, 1)',
+              textShadow: '0 0 30px rgba(0, 200, 255, 0.9), 0 0 60px rgba(0, 150, 220, 0.7), 0 0 90px rgba(0, 100, 180, 0.5)'
             }}
             animate={{
-              opacity: [0.7, 1, 0.7],
+              opacity: [0.85, 1, 0.85],
+              scale: [1, 1.02, 1],
             }}
-            transition={{ duration: 1.5, repeat: Infinity }}
+            transition={{ duration: 1.2, repeat: Infinity }}
           >
             {isBooting 
               ? "Initializing Systems..." 
-              : `Tap Arc Reactor to Initialize [${clickCount}/3]`
+              : `⚡ Tap Arc Reactor to Initialize [${clickCount}/3]`
             }
           </motion.p>
 
