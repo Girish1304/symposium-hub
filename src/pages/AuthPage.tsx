@@ -13,34 +13,13 @@ import Footer from "@/components/Footer";
 import ScanLineOverlay from "@/components/ScanLineOverlay";
 import { z } from "zod";
 
-// Personal email domains to block
-const BLOCKED_DOMAINS = [
-  'gmail.com',
-  'yahoo.com',
-  'hotmail.com',
-  'outlook.com',
-  'live.com',
-  'aol.com',
-  'icloud.com',
-  'mail.com',
-  'protonmail.com',
-  'zoho.com',
-  'yandex.com',
-  'gmx.com',
-  'rediffmail.com',
-];
-
-// Validation schema
+// Validation schema - all emails are supported
 const authSchema = z.object({
   email: z
     .string()
     .trim()
     .email({ message: "Please enter a valid email address" })
-    .max(255, { message: "Email must be less than 255 characters" })
-    .refine((email) => {
-      const domain = email.split('@')[1]?.toLowerCase();
-      return domain && !BLOCKED_DOMAINS.includes(domain);
-    }, { message: "Please use your institutional email (college/school/company). Personal emails are not allowed." }),
+    .max(255, { message: "Email must be less than 255 characters" }),
   password: z
     .string()
     .min(6, { message: "Password must be at least 6 characters" })
@@ -199,7 +178,7 @@ const AuthPage = () => {
                     {isLogin ? "WELCOME BACK" : "JOIN JARVIS 2026"}
                   </h1>
                   <p className="text-muted-foreground">
-                    Use your institutional email (college/school/company) to continue
+                    Enter your email address to continue
                   </p>
                 </div>
 
@@ -208,14 +187,14 @@ const AuthPage = () => {
                   <form onSubmit={handleAuth} className="space-y-6">
                     <div className="space-y-2">
                       <Label htmlFor="email" className="text-sm font-mono uppercase tracking-wider">
-                        Institutional Email
+                        Email Address
                       </Label>
                       <div className="relative">
                         <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
                         <Input
                           id="email"
                           type="email"
-                          placeholder="you@institution.edu"
+                          placeholder="you@example.com"
                           value={email}
                           onChange={(e) => {
                             setEmail(e.target.value);
@@ -296,8 +275,7 @@ const AuthPage = () => {
 
                 {/* Info note */}
                 <p className="text-center text-xs text-muted-foreground mt-6 font-mono">
-                  Personal emails (Gmail, Yahoo, etc.) are not accepted.<br />
-                  Please use your official institutional email.
+                  All email addresses are supported for registration.
                 </p>
               </motion.div>
             </div>
