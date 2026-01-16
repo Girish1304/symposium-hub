@@ -1,8 +1,6 @@
-import { motion, useInView, AnimatePresence } from "framer-motion";
-import { useRef, useState } from "react";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Bot, Car, Route, FileText, Presentation, Brain, Swords, Link2, Grid3X3, ChevronDown, Users, Award, IndianRupee } from "lucide-react";
-import { Link } from "react-router-dom";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import { Bot, Car, Route, FileText, Presentation, Brain, Swords, Link2, Grid3X3, Users, Award, IndianRupee, Mail } from "lucide-react";
 
 // Import event images
 import roboWarImg from "@/assets/events/robo-war.png";
@@ -35,14 +33,6 @@ const technicalEvents = [
     duration: "1 - 1.5 hrs",
     regFee: "₹500",
     prizes: { first: "₹10,000", second: "₹7,000", third: "₹3,000" },
-    rules: [
-      "Robot weight must not exceed 8 kg",
-      "Maximum dimensions: 50cm x 50cm x 50cm",
-      "No flame-based or chemical weapons allowed",
-      "Wireless control only (2.4 GHz recommended)",
-      "Each match lasts 3 minutes or until knockout",
-      "Judges' decision is final in all disputes",
-    ],
   },
   {
     id: 2,
@@ -54,14 +44,6 @@ const technicalEvents = [
     duration: "1 - 1.5 hrs",
     regFee: "₹400",
     prizes: { first: "₹4,000", second: "₹2,000", third: "₹1,000" },
-    rules: [
-      "Only ground-based RC vehicles allowed",
-      "Vehicle must be remote controlled (no autonomous)",
-      "Maximum vehicle size: 30cm x 20cm x 15cm",
-      "Touching the vehicle during run results in penalty",
-      "Track must be completed within time limit",
-      "Fastest completion time wins",
-    ],
   },
   {
     id: 3,
@@ -73,14 +55,6 @@ const technicalEvents = [
     duration: "1 - 1.5 hrs",
     regFee: "₹250",
     prizes: { first: "₹3,000", second: "₹1,500", third: "₹800" },
-    rules: [
-      "Robot must be fully autonomous",
-      "Maximum robot size: 25cm x 25cm x 20cm",
-      "Line width: 2.5cm black on white surface",
-      "Robot must complete track without manual intervention",
-      "Fastest time with least errors wins",
-      "Multiple attempts allowed within time slot",
-    ],
   },
   {
     id: 4,
@@ -92,14 +66,6 @@ const technicalEvents = [
     duration: "1 - 1.5 hrs",
     regFee: "₹100",
     prizes: { first: "₹2,000", second: "₹1,000", third: "₹800" },
-    rules: [
-      "Paper must be original and unpublished",
-      "Topics must be technology-related",
-      "Abstract submission required before event",
-      "Presentation time: 10 minutes max",
-      "Q&A session: 3 minutes",
-      "Plagiarism will result in disqualification",
-    ],
   },
   {
     id: 5,
@@ -111,14 +77,6 @@ const technicalEvents = [
     duration: "1 - 1.5 hrs",
     regFee: "₹100",
     prizes: { first: "₹2,000", second: "₹1,000", third: "₹800" },
-    rules: [
-      "Working prototype must be demonstrated",
-      "Project documentation required",
-      "Innovation and practicality will be judged",
-      "Presentation time: 15 minutes",
-      "Demo and Q&A: 5 minutes",
-      "All team members must participate",
-    ],
   },
   {
     id: 6,
@@ -130,14 +88,6 @@ const technicalEvents = [
     duration: "1 - 1.5 hrs",
     regFee: "Free",
     prizes: { first: "₹600", second: "₹400", third: "₹200" },
-    rules: [
-      "Prelims: Written round (30 questions, 20 mins)",
-      "Finals: Buzzer round for top 6 teams",
-      "Topics: CS, Electronics, Physics, General Tech",
-      "No electronic devices allowed",
-      "Negative marking in prelims",
-      "Tie-breaker questions in case of draw",
-    ],
   },
   {
     id: 7,
@@ -149,14 +99,6 @@ const technicalEvents = [
     duration: "1 - 1.5 hrs",
     regFee: "₹400",
     prizes: { first: "₹4,000", second: "₹2,000", third: "₹1,000" },
-    rules: [
-      "Robot weight limit: 5 kg",
-      "Must use provided rope attachment point",
-      "No adhesive materials on wheels",
-      "Match duration: 2 minutes or until win",
-      "Best of 3 rounds in finals",
-      "Robot must not damage arena or opponent",
-    ],
   },
   {
     id: 8,
@@ -168,14 +110,6 @@ const technicalEvents = [
     duration: "1 - 1.5 hrs",
     regFee: "Free",
     prizes: { first: "₹600", second: "₹400", third: "₹200" },
-    rules: [
-      "Written puzzle-based competition",
-      "Connect related technical concepts",
-      "Multiple rounds with increasing difficulty",
-      "No external resources allowed",
-      "Time bonus for early completion",
-      "Highest score wins",
-    ],
   },
   {
     id: 9,
@@ -187,25 +121,12 @@ const technicalEvents = [
     duration: "1 - 1.5 hrs",
     regFee: "₹250",
     prizes: { first: "₹1,300", second: "₹700", third: "₹500" },
-    rules: [
-      "Can use simulation software or physical robot",
-      "Maze dimensions will be revealed on spot",
-      "Algorithm efficiency will be evaluated",
-      "Time and path optimization both count",
-      "Multiple attempts allowed",
-      "Cleanest solution with fastest time wins",
-    ],
   },
 ];
 
 const TechnicalEvents = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [expandedId, setExpandedId] = useState<number | null>(null);
-
-  const toggleExpand = (id: number) => {
-    setExpandedId(expandedId === id ? null : id);
-  };
 
   return (
     <section id="events" className="py-24 lg:py-32 relative overflow-hidden">
@@ -328,56 +249,6 @@ const TechnicalEvents = () => {
                           </div>
                         </div>
                       </div>
-
-                      {/* Rules Toggle */}
-                      <button
-                        onClick={() => toggleExpand(event.id)}
-                        className="flex items-center gap-2 text-sm text-[hsl(180,100%,60%)] hover:text-[hsl(180,100%,70%)] transition-colors self-start"
-                      >
-                        <span className="font-medium">
-                          {expandedId === event.id ? "Hide rules" : "View rules"}
-                        </span>
-                        <motion.div
-                          animate={{ rotate: expandedId === event.id ? 180 : 0 }}
-                          transition={{ duration: 0.2 }}
-                        >
-                          <ChevronDown className="w-4 h-4" />
-                        </motion.div>
-                      </button>
-
-                      {/* Expandable Rules Section */}
-                      <AnimatePresence>
-                        {expandedId === event.id && (
-                          <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: "auto", opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.3 }}
-                            className="overflow-hidden"
-                          >
-                            <div className="pt-4 border-t border-[hsl(180,100%,50%,0.2)]">
-                              <ul className="grid sm:grid-cols-2 gap-3 text-sm">
-                                {event.rules.map((rule, ruleIndex) => (
-                                  <motion.li
-                                    key={ruleIndex}
-                                    initial={{ opacity: 0, x: -10 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ delay: ruleIndex * 0.05 }}
-                                    className="flex items-start gap-2"
-                                    style={{
-                                      color: 'hsl(180, 40%, 60%)',
-                                      textShadow: '0 0 5px hsl(180, 100%, 50%, 0.2)',
-                                    }}
-                                  >
-                                    <span className="text-[hsl(180,100%,60%)] mt-1">•</span>
-                                    <span>{rule}</span>
-                                  </motion.li>
-                                ))}
-                              </ul>
-                            </div>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
                     </div>
                   </div>
                 </div>
@@ -385,6 +256,28 @@ const TechnicalEvents = () => {
             </motion.div>
           ))}
         </div>
+
+        {/* Contact Email */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          className="mt-12 text-center"
+        >
+          <div className="inline-flex items-center gap-3 px-6 py-4 bg-[hsl(180,100%,50%,0.05)] border border-[hsl(180,100%,50%,0.2)] rounded-xl">
+            <Mail className="w-5 h-5 text-[hsl(180,100%,60%)]" style={{ filter: 'drop-shadow(0 0 6px hsl(180, 100%, 50%, 0.8))' }} />
+            <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
+              <span className="text-sm text-[hsl(180,50%,70%)]">For queries, contact:</span>
+              <a 
+                href="mailto:citmctjarvis@gmail.com"
+                className="text-[hsl(180,100%,70%)] font-semibold hover:text-[hsl(180,100%,80%)] transition-colors"
+                style={{ textShadow: '0 0 10px hsl(180, 100%, 50%, 0.5)' }}
+              >
+                citmctjarvis@gmail.com
+              </a>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
