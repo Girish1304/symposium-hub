@@ -1,6 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Bot, Car, Route, FileText, Presentation, Brain, Swords, Link2, Grid3X3, Users, Award, IndianRupee, Mail } from "lucide-react";
+import { Bot, Car, Route, FileText, Presentation, Brain, Swords, Link2, Grid3X3, Users, Award, IndianRupee, Mail, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 // Import event images
 import roboWarImg from "@/assets/events/robo-war.png";
@@ -247,6 +248,15 @@ const TechnicalEvents = () => {
                               <span className="text-[hsl(25,60%,70%)] font-semibold">3rd: {event.prizes.third}</span>
                             </div>
                           </div>
+                          
+                          {/* Register Button */}
+                          <Link 
+                            to="/register"
+                            className="inline-flex items-center gap-2 mt-4 px-4 py-2 bg-[hsl(180,100%,50%)] hover:bg-[hsl(180,100%,60%)] text-black font-semibold text-sm rounded-lg transition-all duration-300 hover:shadow-[0_0_20px_hsl(180,100%,50%,0.5)] group/btn"
+                          >
+                            <span>Register Now</span>
+                            <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                          </Link>
                         </div>
                       </div>
                     </div>
