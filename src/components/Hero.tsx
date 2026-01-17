@@ -136,7 +136,7 @@ const Hero = () => {
           >
             {[
               { value: "15+", label: "EVENTS" },
-              { value: "₹1L+", label: "REWARDS" },
+              { value: "₹2L+", label: "REWARDS" },
               { value: "6", label: "WORKSHOPS" },
               { value: "1000+", label: "PARTICIPANTS" },
             ].map((stat, index) => (
