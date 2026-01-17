@@ -180,7 +180,7 @@ const Workshops = () => {
                   </p>
                   
                   {/* Workshop meta info */}
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2 mb-4">
                     <div className="flex items-center gap-1.5 text-xs px-2.5 py-1.5 bg-[hsl(180,100%,50%,0.1)] border border-[hsl(180,100%,50%,0.2)] rounded-full">
                       <Clock className="w-3 h-3 text-[hsl(180,100%,60%)]" />
                       <span className="text-[hsl(180,80%,70%)]">{workshop.duration}</span>
@@ -190,6 +190,14 @@ const Workshops = () => {
                       <span className="text-[hsl(180,80%,70%)]">{workshop.capacity}</span>
                     </div>
                   </div>
+                  
+                  {/* Register Button */}
+                  <a
+                    href="/register"
+                    className="w-full flex items-center justify-center gap-2 py-2.5 px-4 bg-[hsl(180,100%,50%,0.15)] hover:bg-[hsl(180,100%,50%,0.25)] border border-[hsl(180,100%,50%,0.4)] hover:border-[hsl(180,100%,50%,0.7)] text-[hsl(180,100%,70%)] hover:text-[hsl(180,100%,85%)] rounded-xl font-semibold text-sm transition-all duration-300 group-hover:shadow-[0_0_20px_hsl(180,100%,50%,0.3)]"
+                  >
+                    Register Now
+                  </a>
                 </div>
               </div>
             </motion.div>
