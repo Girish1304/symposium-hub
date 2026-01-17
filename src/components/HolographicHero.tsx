@@ -18,7 +18,7 @@ const HolographicHero = () => {
   const stats = [
     { value: "9+", label: "Events", icon: Zap },
     { value: "6+", label: "Workshops", icon: Wrench },
-    { value: "₹50K+", label: "Prizes", icon: CircuitBoard },
+    { value: "₹2L+", label: "Prizes", icon: CircuitBoard },
     { value: "1000+", label: "Participants", icon: Cpu },
   ];
 
